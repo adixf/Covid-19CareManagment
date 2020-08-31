@@ -76,6 +76,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Commands\SignupCommand.cs" />
     <Compile Include="Interfaces\ILoginVM.cs" />
     <Compile Include="Models\LoginM.cs" />
     <Compile Include="Tools\VerifyString.cs" />
