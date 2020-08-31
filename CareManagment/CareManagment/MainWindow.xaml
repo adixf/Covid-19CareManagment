@@ -1,0 +1,42 @@
+﻿<Window x:Class="CareManagment.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CareManagment"
+        mc:Ignorable="d"
+        Title="יד ביד" WindowState="Maximized">
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <!-- top menu -->
+        <materialDesign:Card Background="Transparent" UniformCornerRadius="20" Margin="10,0,10,0">
+            <Image Stretch="Fill" Source="/CareManagment;component/Images/top-bg.jpg"/>
+        </materialDesign:Card>
+
+        <StackPanel Margin="20,0,20,0" HorizontalAlignment="Right" Orientation="Horizontal" Background="Transparent">
+            <Button BorderBrush="Transparent" Background="Transparent" Content="לתרומה" Foreground="White"></Button>
+            <Button BorderBrush="Transparent" Background="Transparent" Content="צור קשר" Foreground="White"></Button>
+            <Button BorderBrush="Transparent" Background="Transparent" Content="קצת עלינו" Foreground="White"></Button>
+            <Button BorderBrush="Transparent" Background="Transparent" Content="כניסה" Foreground="White"></Button>
+            <TextBlock Style="{StaticResource textFont}" Foreground="White" Text="יד ביד" FontSize="30" FontWeight="DemiBold" VerticalAlignment="Center" />
+            <Rectangle Width="10" Fill="Transparent"></Rectangle>
+            <Border BorderBrush="Transparent" Background="Transparent"
+                BorderThickness="8" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Image Width="35" Height="35" Source="C:/semester_3.2/Covid-19CareSystem/CareSystem/Images/give-love.png"></Image>
+            </Border>
+            <Rectangle Fill="Transparent" Width="20"></Rectangle>
+        </StackPanel>
+
+        <!-- user controls -->
+
+        <materialDesign:Card Margin="10" Grid.Row="1" UniformCornerRadius="20">
+            <Grid Name="UserControlGrid"></Grid>
+        </materialDesign:Card>
+
+    </Grid>
+</Window>

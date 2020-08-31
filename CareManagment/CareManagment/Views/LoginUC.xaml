@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="CareManagment.Views.LoginUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CareManagment"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush Opacity="0.8" ImageSource="/CareManagment;component/Images/hands.jpg" />
+    </UserControl.Background>
+    <Grid Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+        </Grid>
+        <Border Grid.Column="1" Grid.Row="1" BorderBrush="#FFD17B7C" Background="#FFD17B7C"
+                BorderThickness="15" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Image Stretch="Uniform"  Source="C:\semester_3.2\Covid-19CareSystem\CareSystem\bin\debug\Images\voluntary-service.png"></Image>
+        </Border>
+        <TextBlock Style="{StaticResource textFont}" Grid.Row="2" Grid.ColumnSpan="3" Text="פורטל מתנדבים"  FontSize="40" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Style="{StaticResource roundedCornersBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                             materialDesign:HintAssist.Hint="כתובת מייל"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                    </TextBox>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="User" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1" Style="{StaticResource roundedCornersBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <PasswordBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="סיסמה"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                    </PasswordBox>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="Lock" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <Button Grid.Row="2" Background="#FFC66465" BorderThickness="0"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <TextBlock Text="כניסה" />
+            </Button>
+            
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="13" Text="?עוד לא רשום" Grid.Column="1" VerticalAlignment="Center">
+                </TextBlock>
+                <Button Content="צור חשבון" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

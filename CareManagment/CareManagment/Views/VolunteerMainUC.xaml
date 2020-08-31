@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="CareManagment.Views.VolunteerMainUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CareManagment.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid >
+      
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- top bar -->
+
+            <Grid Grid.Row="0">
+                <Grid.Background>
+                <ImageBrush Opacity="1" ImageSource="/CareManagment;component/Images/top-bg.jpg">
+                    </ImageBrush>
+                </Grid.Background>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Content="התנתק"
+                        FontSize="12" Foreground="White"></Button>
+                <Separator Background="White" Width="2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Ellipse Margin="10 0" Width="30" Height="30" Fill="WhiteSmoke"></Ellipse>
+                <Separator Background="White" Width="2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="יונתן כהן"
+                           FontSize="14" Foreground="White"></TextBlock>
+            </StackPanel>
+            
+        </Grid>
+
+        <!-- user control grid -->
+        <Grid Grid.Row="1" Name="UserControlGrid">
+        </Grid>
+    </Grid>
+</UserControl>

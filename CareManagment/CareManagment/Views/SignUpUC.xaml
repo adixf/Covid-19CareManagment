@@ -1,0 +1,178 @@
+﻿<UserControl x:Class="CareManagment.Views.SignUpUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CareManagment.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush Opacity="0.8" ImageSource="/CareManagment;component/Images/hands.jpg" />
+    </UserControl.Background>
+    <Grid Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource textFont}" Grid.Row="1" Grid.ColumnSpan="3" Text="הרשמה"  FontSize="35" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Style="{StaticResource roundedCornersBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="שם פרטי" 
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                    </TextBox>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="UserAdd" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1" Style="{StaticResource roundedCornersBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="שם משפחה" 
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                    </TextBox>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="Family" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" Style="{StaticResource roundedCornersBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="מספר טלפון"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                    </TextBox>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="Phone" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="3" Style="{StaticResource roundedCornersBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="כתובת מייל"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                    </TextBox>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="Gmail" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Border Style="{StaticResource roundedCornersBorder}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="מס בית"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                        </TextBox>
+                        
+                    </Grid>
+                </Border>
+                <Border Width="170" Style="{StaticResource roundedCornersBorder}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="רחוב"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                        </TextBox>
+                      
+                    </Grid>
+                </Border>
+                <Border Style="{StaticResource roundedCornersBorder}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="עיר"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                        </TextBox>
+                        <!--materialDesign:PackIcon Grid.Column="2" Kind="House" HorizontalAlignment="Left" VerticalAlignment="Center"/-->
+                    </Grid>
+                </Border>
+            </StackPanel>
+            <Border Grid.Row="5" Style="{StaticResource roundedCornersBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <PasswordBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="בחר סיסמה"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+
+                    </PasswordBox>
+                    <materialDesign:PackIcon Grid.Column="0" Kind="Eye" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <Button Grid.Row="6" Background="#FFC66465" BorderThickness="0"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <TextBlock Text="הירשם" />
+            </Button>
+
+
+        </Grid>
+    </Grid>
+</UserControl>
