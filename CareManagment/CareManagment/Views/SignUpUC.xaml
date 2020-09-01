@@ -19,7 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
@@ -27,6 +27,7 @@
 
         <Grid Grid.Column="1" Grid.Row="2">
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -99,9 +100,14 @@
                     <materialDesign:PackIcon Grid.Column="2" Kind="Gmail" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
-            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Border Style="{StaticResource roundedCornersBorder}" >
-                    <Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource roundedCornersBorder}" >
+                    <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="6*"/>
@@ -111,13 +117,12 @@
                                  materialDesign:HintAssist.Hint="מס בית"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center">
-
                         </TextBox>
                         
                     </Grid>
                 </Border>
-                <Border Width="170" Style="{StaticResource roundedCornersBorder}" >
-                    <Grid>
+                <Border Grid.Column="1" Style="{StaticResource roundedCornersBorder}" >
+                    <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="6*"/>
@@ -132,7 +137,7 @@
                       
                     </Grid>
                 </Border>
-                <Border Style="{StaticResource roundedCornersBorder}" >
+                <Border Grid.Column="2" Style="{StaticResource roundedCornersBorder}" >
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -148,7 +153,7 @@
                         <!--materialDesign:PackIcon Grid.Column="2" Kind="House" HorizontalAlignment="Left" VerticalAlignment="Center"/-->
                     </Grid>
                 </Border>
-            </StackPanel>
+            </Grid>
             <Border Grid.Row="5" Style="{StaticResource roundedCornersBorder}" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -166,7 +171,14 @@
                 </Grid>
             </Border>
 
-            <Button Grid.Row="6" Background="#FFC66465" BorderThickness="0"
+
+            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" Content="אני מנהל" FontSize="16" Foreground="White"/>
+                <RadioButton BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" Content="אני מתנדב" FontSize="16" Foreground="White"/>
+            </StackPanel>
+           
+
+            <Button Grid.Row="7" Background="#FFC66465" BorderThickness="0"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="הירשם" />

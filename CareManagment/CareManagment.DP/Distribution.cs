@@ -13,5 +13,6 @@ namespace CareManagment.DP
         public List<Package> Packages { get; set; }
         public DateTime Date { get; set; }
         public Admin Admin { get; set; }
+        public bool IsDelivered { get; set; }
     }
 }

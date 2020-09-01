@@ -8,29 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
-            <Expander HorizontalAlignment="Stretch">
-                <Expander.Header>
-                    <TextBlock HorizontalAlignment="Right" FontSize="16">בחר תאריך לחלוקה</TextBlock>
-                </Expander.Header>
-
-                <Grid>
-                    <DatePicker Width="300" materialDesign:HintAssist.Hint="בחר תאריך"
-  />
-                </Grid>
-            </Expander>
-            <Expander HorizontalAlignment="Stretch" >
-                <Expander.Header>
-                    <TextBlock HorizontalAlignment="Right" FontSize="16">בחר חבילות לחלוקה</TextBlock>
-                </Expander.Header>
-            </Expander>
-            <Expander HorizontalAlignment="Stretch" >
-                <Expander.Header>
-                    <TextBlock HorizontalAlignment="Right" FontSize="16">מצא מתנדבים קרובים</TextBlock>
-                </Expander.Header>
-            </Expander>
-          
-        </StackPanel>
-      
+       
     </Grid>
 </UserControl>

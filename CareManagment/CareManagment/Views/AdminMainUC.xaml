@@ -5,152 +5,97 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CareManagment.Views"
-             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="WhiteSmoke">
+    <!-- top bar -->
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
+
         <!-- top bar -->
 
-            <ToolBarTray Background="LightGray" Grid.Row="0" VerticalAlignment="Center">
-                <ToolBar Background="Transparent" Style="{DynamicResource MaterialDesignToolBar}" HorizontalAlignment="Left">
 
-                    <Button Content="התנתק"></Button>
-                    <Separator/>
-                    <Ellipse Width="30" Height="30" Fill="WhiteSmoke">
-                        <!--Ellipse.Fill>
-                        <ImageBrush ImageSource="/CareSystem;component/Images/user.png"></ImageBrush>
-                    </-->
-                    </Ellipse>
-                    <Separator/>
-                <Label VerticalAlignment="Center" Content="אריאל לביא"></Label>
-            </ToolBar>
-            </ToolBarTray>
-        <ToolBarTray Background="LightGray" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right">
-            <ToolBar Background="Transparent" Style="{DynamicResource MaterialDesignToolBar}" HorizontalAlignment="Right">
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <ImageBrush Opacity="1" ImageSource="/CareManagment;component/Images/top-bg.jpg">
+                </ImageBrush>
+            </Grid.Background>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                
+                <Ellipse Margin="10 0" Width="30" Height="30">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/CareManagment;component/Images/user.png"></ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Separator Background="White" Width="2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <TextBlock Margin="10,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="אריאל לביא"
+                           FontSize="14" Foreground="White"></TextBlock>
+            </StackPanel>
+            <Button Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Content="התנתק"
+                        FontSize="12" Foreground="White"></Button>
+           
+        </Grid>
 
+        <!-- option cards -->
+        <Grid Background="White" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-                <Button Content="סטטיסטיקה"></Button>
-                <Separator/>
-                <Button Content="נמענים"></Button>
-                <Separator/>
-                <Button Content="מתנדבים"></Button>
-                <Separator/>
-                <Button Content="חלוקות"></Button>
+            <!-- statistics card -->
+            <materialDesign:Card Grid.Column="0" Margin="15" UniformCornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/charts.jpg"></Image>
+                    <TextBlock Style="{StaticResource textFont}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="סטטיסטיקה"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                </Grid>
+            </materialDesign:Card>
+            <!-- recipients card -->
+            <materialDesign:Card Grid.Column="1" Margin="15" UniformCornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/old-ppl.jpg"></Image>
+                    <TextBlock Style="{StaticResource textFont}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="נמענים"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                </Grid>
+            </materialDesign:Card>
+            <!-- volunteers card -->
+            <materialDesign:Card Grid.Column="2" Margin="15" UniformCornerRadius="20" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/kids.jpeg"></Image>
+                    <TextBlock Style="{StaticResource textFont}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="מתנדבים"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                </Grid>
+            </materialDesign:Card>
+            <!-- distributions card -->
+            <materialDesign:Card Grid.Column="3" Margin="15" UniformCornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/box3.jpg"></Image>
+                    <TextBlock Style="{StaticResource textFont}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="חלוקות"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
 
-            </ToolBar>
-        </ToolBarTray>
-
-
-        <!-- distributions area -->
-        <TextBlock Margin="0,0,50,0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
-                   FontSize="20" Text="חלוקות"></TextBlock>
-        <materialDesign:DrawerHost Grid.Row="2" Grid.Column="2">
-            <Button Content="אפשרויות" Margin="10,0,10,0" Background="DarkGray"
-                Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                CommandParameter="{x:Static Dock.Top}">
-
-            </Button>
-            <materialDesign:DrawerHost.TopDrawerContent>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button
-                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                        CommandParameter="{x:Static Dock.Top}"
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="ArrowUp"></materialDesign:PackIcon>
-                    </Button>
-                    <Button
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        היום
-                    </Button>
-                    <Button
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        השבוע
-                    </Button>
-                    <Button
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        הכל
-                    </Button>
-                </StackPanel>
-            </materialDesign:DrawerHost.TopDrawerContent>
-        </materialDesign:DrawerHost>
-        <materialDesign:Card Grid.Column="2" Grid.Row="3" UniformCornerRadius="20" Margin="6">
-            <ListView >
-                <ListViewItem>
-                    חלוקה 1
-                </ListViewItem>
-                <ListViewItem>
-                    חלוקה 2
-                </ListViewItem>
-                <ListViewItem>
-                    חלוקה 3
-                </ListViewItem>
-                <ListViewItem>
-                    חלוקה 4
-                </ListViewItem>
-                <ListViewItem>
-                    חלוקה 5
-                </ListViewItem>
-            </ListView>
-        </materialDesign:Card>
-
-        <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right">
-            <Button Margin="6" Height="35" Width="35" materialDesign:ShadowAssist.ShadowDepth="Depth2" BorderBrush="Transparent" Foreground="#DD000000" Background="#FFC66465" ToolTip="הוסף חלוקה">
-                <materialDesign:PackIcon Kind="Add" Height="25" Width="25"/>
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}">
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Margin="6" Height="35" Width="35" materialDesign:ShadowAssist.ShadowDepth="Depth2" BorderBrush="Transparent" Foreground="#DD000000" Background="#FFC66465" >
-                <materialDesign:PackIcon Kind="Search" Height="25" Width="25"/>
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}">
-
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>
-              
-
-        <!--StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-            <Button Margin="10" 
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"   
-                 materialDesign:ButtonAssist.CornerRadius="20">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="מתנדבים" />
-                    <materialDesign:PackIcon Margin="3" VerticalAlignment="Center" Kind="Hand"></materialDesign:PackIcon>
-                </StackPanel>
-            </Button>
-            <Button Margin="10"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"   
-                 materialDesign:ButtonAssist.CornerRadius="20">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="נמענים" />
-                    <materialDesign:PackIcon Margin="3" VerticalAlignment="Center" Kind="House"></materialDesign:PackIcon>
-                </StackPanel>
-            </Button>
-        </-->
-        
-
-
-        <materialDesign:Card Grid.Row="4" Grid.ColumnSpan="3"  UniformCornerRadius="20" Margin="6">
-            <lvc:CartesianChart Series="{Binding SeriesCollection}" />
-        </materialDesign:Card>
     </Grid>
 </UserControl>

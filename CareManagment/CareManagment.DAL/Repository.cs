@@ -134,7 +134,7 @@ namespace CareManagment.DAL
                 else
                     oldElement = ctx.Admins.Find(user.PersonId);
 
-                oldElement.FisrtName = user.FisrtName;
+                oldElement.FirstName = user.FirstName;
                 oldElement.LastName = user.LastName;
                 oldElement.PhoneNumber = user.PhoneNumber;
                 oldElement.MailAddress = user.MailAddress;
@@ -150,7 +150,7 @@ namespace CareManagment.DAL
             using (var ctx = new CareManagmentDbContext())
             {
                 var oldElement = ctx.Recipients.Find(recipient.PersonId);
-                oldElement.FisrtName = recipient.FisrtName;
+                oldElement.FirstName = recipient.FirstName;
                 oldElement.LastName = recipient.LastName;
                 oldElement.PhoneNumber = recipient.PhoneNumber;
                 oldElement.MailAddress = recipient.MailAddress;

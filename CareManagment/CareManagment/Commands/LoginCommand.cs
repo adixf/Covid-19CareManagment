@@ -11,7 +11,7 @@ namespace CareManagment.Commands
 {
     class LoginCommand : ICommand
     {
-        // current vm
+        // current vm using command
         public ILoginVM CurrentVM { get; set; }
 
         // ctor

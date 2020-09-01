@@ -37,7 +37,7 @@ namespace CareManagment
         public MainWindow()
         {
             InitializeComponent();
-            CurrentUC = new LoginUC();
+            CurrentUC = new AdminMainUC();
         }
     }
 }

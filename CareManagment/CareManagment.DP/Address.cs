@@ -10,6 +10,17 @@ namespace CareManagment.DP
     {
         public string City { get; set; }
         public string Street { get; set; }
-        public string BuildingNumber { get; set; }
+        public int BuildingNumber { get; set; }
+
+        public Address(string City, string Street, int BuildingNumber)
+        {
+            this.City = City;
+            this.Street = Street;
+            this.BuildingNumber = BuildingNumber;
+        }
+        public string ToString()
+        {
+            return Street + " " + BuildingNumber + " " + City;
+        }
     }
 }

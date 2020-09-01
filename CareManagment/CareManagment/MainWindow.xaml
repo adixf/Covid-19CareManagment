@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CareManagment"
         mc:Ignorable="d"
-        Title="יד ביד" WindowState="Maximized">
+        Title="יד ביד" WindowState="Maximized" ResizeMode="NoResize">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -27,7 +27,7 @@
             <Rectangle Width="10" Fill="Transparent"></Rectangle>
             <Border BorderBrush="Transparent" Background="Transparent"
                 BorderThickness="8" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <Image Width="35" Height="35" Source="C:/semester_3.2/Covid-19CareSystem/CareSystem/Images/give-love.png"></Image>
+                <Image Width="35" Height="35" Source="/CareManagment;component/Images/give-love.png"></Image>
             </Border>
             <Rectangle Fill="Transparent" Width="20"></Rectangle>
         </StackPanel>

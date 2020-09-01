@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="CareManagment.Views.RecipientsViewUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CareManagment.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}">
+            <materialDesign:PackIcon Kind="ArrowForward" />
+        </Button>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="נמענים" FontSize="25" FontWeight="Bold"></TextBlock>
+        <materialDesign:Card Grid.Row="1" Margin="10">
+            <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding Volunteers}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" 
+           FlowDirection="RightToLeft" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="שם פרטי" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="שם משפחה" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Header="מייל" Binding="{Binding MailAddress}"/>
+                    <DataGridTextColumn Header="טלפון" Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Header="כתובת" Binding="{Binding Address}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

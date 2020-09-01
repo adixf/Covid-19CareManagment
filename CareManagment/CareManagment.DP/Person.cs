@@ -10,8 +10,8 @@ namespace CareManagment.DP
     public class Person
     {
         public int Id { get; set; }
-        public int PersonId { get; set; }
-        public string FisrtName { get; set; }
+        public string PersonId { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public MailAddress MailAddress { get; set; }
