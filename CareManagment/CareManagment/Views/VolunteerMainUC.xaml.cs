@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CareManagment.DP;
+using CareManagment.ViewModels;
 
 namespace CareManagment.Views
 {
@@ -21,25 +22,13 @@ namespace CareManagment.Views
     /// </summary>
     public partial class VolunteerMainUC : UserControl
     {
-        private UserControl currentUC;
-        public UserControl CurrentUC
-        {
-            get { return currentUC; }
-            set
-            {
-                // switch user control
-                UserControlGrid.Children.Remove(currentUC);
-                currentUC = value;
-                UserControlGrid.Children.Add(currentUC);
-
-            }
-        }
+        
 
         public VolunteerMainUC()
         {
             InitializeComponent();
 
-            CurrentUC = new VolunteerDistributionsUC();
+            DataContext = new VolunteerMainVM();
         }
 
     }

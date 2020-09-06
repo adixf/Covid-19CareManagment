@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace CareManagment.Views
 {
     /// <summary>
-    /// Interaction logic for AdminDistributionsUC.xaml
+    /// Interaction logic for ContactUsUC.xaml
     /// </summary>
-    public partial class AdminDistributionsUC : UserControl
+    public partial class ContactUsUC : UserControl
     {
-        public AdminDistributionsUC()
+        public ContactUsUC()
         {
             InitializeComponent();
-            List<int> lst = new List<int> { 1, 2, 7,9,9,9,9};
-            newDistributions.ItemsSource = lst;
-            List<int> lst2 = new List<int> { 1, 2, 3, 4 ,9,9,9,9,9,9,9,9,9};
-            oldDistributions.ItemsSource = lst2;
         }
     }
 }

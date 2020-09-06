@@ -34,7 +34,7 @@
                 BorderThickness="15" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Image Stretch="Uniform"  Source="/CareManagment;component/Images/voluntary-service.png"></Image>
         </Border>
-        <TextBlock Style="{StaticResource textFont}" Grid.Row="2" Grid.ColumnSpan="3" Text="פורטל מתנדבים"  FontSize="40" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
+        <TextBlock Style="{StaticResource textFont}" Grid.Row="2" Grid.ColumnSpan="3" Text="כניסה לחשבון"  FontSize="40" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
         <Grid Grid.Row="3" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -90,8 +90,9 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="13" Text="?עוד לא רשום" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                 </TextBlock>
-                <Button Content="צור חשבון" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button.Template>
+                <Button Content="צור חשבון" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Command="{Binding Path=DataContext.DisplaySignUpView, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Mode=OneWay}">
+                <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <ContentPresenter VerticalAlignment="Center"/>
                         </ControlTemplate>

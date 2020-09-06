@@ -1,5 +1,4 @@
-﻿using CareManagment.BL;
-using CareManagment.DP;
+﻿using CareManagment.ViewModels;
 using CareManagment.Views;
 using System;
 using System.Collections.Generic;
@@ -23,31 +22,13 @@ namespace CareManagment
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserControl currentUC;
-        public UserControl CurrentUC
-        {
-            get { return currentUC; }
-            set
-            {
-                UserControlGrid.Children.Remove(currentUC);
-                currentUC = value;
-                UserControlGrid.Children.Add(currentUC);
-            }
-        }
-
 
         public MainWindow()
         {
             InitializeComponent();
-            CurrentUC = new AdminMainUC();
-            var v = new Distribution();
-            v.IsDelivered = true;
-            v.Date = DateTime.Now;
-            //new BLImp().AddDistribution(v);
 
-            var t = new BLImp().GetAllPersons();
-            foreach (var ele in t)
-                MessageBox.Show(ele.Address.ToString());
+            DataContext = new MainWindowVM();
+
         }
     }
 }

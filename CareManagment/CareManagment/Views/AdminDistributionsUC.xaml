@@ -9,127 +9,94 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid Background="White">
 
-        <!--<ToolBarTray Background="LightGray" Grid.Row="0" VerticalAlignment="Center">
-            <ToolBar Background="Transparent" Style="{DynamicResource MaterialDesignToolBar}" HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
 
-                <Button Content="התנתק"></Button>
-                <Separator/>
-                <Ellipse Width="30" Height="30" Fill="WhiteSmoke">
-                    --><!--Ellipse.Fill>
-                        <ImageBrush ImageSource="/CareSystem;component/Images/user.png"></ImageBrush>
-                    </--><!--
-                </Ellipse>
-                <Separator/>
-                <Label VerticalAlignment="Center" Content="אריאל לביא"></Label>
-            </ToolBar>
-        </ToolBarTray>
-        <ToolBarTray Background="LightGray" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right">
-            <ToolBar Background="Transparent" Style="{DynamicResource MaterialDesignToolBar}" HorizontalAlignment="Right">
-
-
-                <Button Content="סטטיסטיקה"></Button>
-                <Separator/>
-                <Button Content="נמענים"></Button>
-                <Separator/>
-                <Button Content="מתנדבים"></Button>
-                <Separator/>
-                <Button Content="חלוקות"></Button>
-
-            </ToolBar>
-        </ToolBarTray>
-
-
-        --><!-- distributions area --><!--
-        <TextBlock Margin="0,0,50,0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
-                   FontSize="20" Text="חלוקות"></TextBlock>
-        <materialDesign:DrawerHost Grid.Row="2" Grid.Column="2">
-            <Button Content="אפשרויות" Margin="10,0,10,0" Background="DarkGray"
-                Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                CommandParameter="{x:Static Dock.Top}">
-
-            </Button>
-            <materialDesign:DrawerHost.TopDrawerContent>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button
-                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                        CommandParameter="{x:Static Dock.Top}"
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="ArrowUp"></materialDesign:PackIcon>
-                    </Button>
-                    <Button
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        היום
-                    </Button>
-                    <Button
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        השבוע
-                    </Button>
-                    <Button
-                        Style="{DynamicResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center">
-                        הכל
-                    </Button>
-                </StackPanel>
-            </materialDesign:DrawerHost.TopDrawerContent>
-        </materialDesign:DrawerHost>
-        <materialDesign:Card Grid.Column="2" Grid.Row="3" UniformCornerRadius="20" Margin="6">
-            <ListView RenderTransformOrigin="0.5,0.5" Margin="124,40,45,99" >
-                <ListView.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-0.175"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ListView.RenderTransform>
-
-            </ListView>
-        </materialDesign:Card>
-
-        <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right">
-            <Button Margin="6" Height="35" Width="35" materialDesign:ShadowAssist.ShadowDepth="Depth2" BorderBrush="Transparent" Foreground="#DD000000" Background="#FFC66465" ToolTip="הוסף חלוקה">
-                <materialDesign:PackIcon Kind="Add" Height="25" Width="25"/>
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}">
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Margin="6" Height="35" Width="35" materialDesign:ShadowAssist.ShadowDepth="Depth2" BorderBrush="Transparent" Foreground="#DD000000" Background="#FFC66465" >
-                <materialDesign:PackIcon Kind="Search" Height="25" Width="25"/>
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionMiniButton}">
-
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>-->
-
-
-        <!--StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-            <Button Margin="10" 
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"   
-                 materialDesign:ButtonAssist.CornerRadius="20">
+            <Button Margin="20 0" HorizontalAlignment="Right" Width="150" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="#FFC66465">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="מתנדבים" />
-                    <materialDesign:PackIcon Margin="3" VerticalAlignment="Center" Kind="Hand"></materialDesign:PackIcon>
+                    <TextBlock Foreground="White" Text="הוסף חלוקה"></TextBlock>
+                    <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
                 </StackPanel>
             </Button>
-            <Button Margin="10"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"   
-                 materialDesign:ButtonAssist.CornerRadius="20">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="נמענים" />
-                    <materialDesign:PackIcon Margin="3" VerticalAlignment="Center" Kind="House"></materialDesign:PackIcon>
-                </StackPanel>
-            </Button>
-        </-->
+            <materialDesign:Card Grid.Row="1" Margin="10" UniformCornerRadius="20" >
+                <Grid  Background="LightGray" HorizontalAlignment="Stretch">
+                    <ListView Name="newDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
 
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="55" CornerRadius="15" BorderThickness="2" BorderBrush="#FFD17B7C" Background="White">
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox VerticalAlignment="Center" Grid.Column="1" Content="החלוקה בוצעה"
+                                              FontWeight="Bold" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}">
+                                        </CheckBox>
+                                        <Button Grid.Column="2" Background="#FFD17B7C"  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                                            <materialDesign:PackIcon Height="20" Width="20" Kind="Printer"></materialDesign:PackIcon>
+                                        </Button>
+                                        <TextBlock Grid.Column="3" Text="מתנדב אחראי: יונתן קדם" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="4" Text="24.10.20" FontWeight="Bold" VerticalAlignment="Center"/>
 
+                                        <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="5" Background="{x:Null}" BorderBrush="LightGray">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock>הצג פרטי חלוקה</TextBlock>
+                                                <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
 
+            </materialDesign:Card>
+            <Label Grid.Row="2" Margin="0,0,40,0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">חלוקות קודמות</Label>
+            <materialDesign:Card Background="LightGray" Grid.Row="3" Margin="10" UniformCornerRadius="20">
+                <ListView Name="oldDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth4" CornerRadius="15" BorderThickness="2" BorderBrush="LightGray" Background="White">
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox IsEnabled="False" IsChecked="True" Foreground="Black" Grid.Column="1" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}" VerticalAlignment="Center">
+                                        החלוקה בוצעה
+                                    </CheckBox>
+                                    <TextBlock Grid.Column="3" Text="24.10.20" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" Text="מתנדב אחראי: יונתן קדם" VerticalAlignment="Center"/>
 
+                                    <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="4" Background="{x:Null}" BorderBrush="LightGray">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock>הצג פרטי חלוקה</TextBlock>
+                                            <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </materialDesign:Card>
+        </Grid>
     </Grid>
 </UserControl>

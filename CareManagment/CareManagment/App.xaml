@@ -2,10 +2,54 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CareManagment"
-             xmlns:local1="clr-namespace:CareManagment.Tools"
+             xmlns:ViewModels="clr-namespace:CareManagment.ViewModels"
+             xmlns:Views="clr-namespace:CareManagment.Views"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
         <ResourceDictionary>
+            <DataTemplate DataType="{x:Type ViewModels:LoginVM}">
+                <Views:LoginUC />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:SignUpVM}">
+                <Views:SignUpUC />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:AboutUsVM}">
+                <Views:AboutUsUC />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:ContactUsVM}">
+                <Views:ContactUsUC />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:DonationVM}">
+                <Views:DonationUC />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:VolunteerDistributionsVM}">
+                <Views:VolunteerDistributionsVM/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:VolunteerMainVM}">
+                <Views:VolunteerMainUC/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:AdminMainVM}">
+                <Views:AdminMainUC/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:AdminOptionsVM}">
+                <Views:AdminOptionsUC/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:AdminDistributionsVM}">
+                <Views:AdminDistributionsUC/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:AddDistributionVM}">
+                <Views:AddDistributionUC/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:VolunteersViewVM}">
+                <Views:VolunteersViewUC/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:RecipientsViewVM}">
+                <Views:RecipientsViewUC/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:StatisticsVM}">
+                <Views:StatisticsUC/>
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
@@ -13,7 +57,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.lime.xaml" />
                 <ResourceDictionary Source="Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-                      
         </ResourceDictionary>
     </Application.Resources>
 </Application>

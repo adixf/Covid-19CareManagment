@@ -85,12 +85,31 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AddDistribution.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Commands\SignupCommand.cs" />
-    <Compile Include="Interfaces\ILoginVM.cs" />
+    <Compile Include="Commands\SignUpCommand.cs" />
     <Compile Include="Models\LoginM.cs" />
+    <Compile Include="Models\SignUpM.cs" />
     <Compile Include="Tools\VerifyString.cs" />
+    <Compile Include="ViewModels\AboutUsVM.cs" />
+    <Compile Include="ViewModels\AddDistributionVM.cs" />
+    <Compile Include="ViewModels\AdminDistributionsVM.cs" />
+    <Compile Include="ViewModels\AdminMainVM.cs" />
+    <Compile Include="ViewModels\AdminOptionsVM.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ContactUsVM.cs" />
+    <Compile Include="ViewModels\DonationVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
+    <Compile Include="ViewModels\MainWindowVM.cs" />
+    <Compile Include="ViewModels\RecipientsViewVM.cs" />
+    <Compile Include="ViewModels\SignUpVM.cs" />
+    <Compile Include="ViewModels\StatisticsVM.cs" />
+    <Compile Include="ViewModels\VolunteerDistributionsVM.cs" />
+    <Compile Include="ViewModels\VolunteerMainVM.cs" />
+    <Compile Include="ViewModels\VolunteersViewVM.cs" />
+    <Compile Include="Views\AboutUsUC.xaml.cs">
+      <DependentUpon>AboutUsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddDistributionUC.xaml.cs">
       <DependentUpon>AddDistributionUC.xaml</DependentUpon>
     </Compile>
@@ -100,8 +119,17 @@
     <Compile Include="Views\AdminMainUC.xaml.cs">
       <DependentUpon>AdminMainUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminOptionsUC.xaml.cs">
+      <DependentUpon>AdminOptionsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactUsUC.xaml.cs">
+      <DependentUpon>ContactUsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DistributionDetailsUC.xaml.cs">
       <DependentUpon>DistributionDetailsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DonationUC.xaml.cs">
+      <DependentUpon>DonationUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginUC.xaml.cs">
       <DependentUpon>LoginUC.xaml</DependentUpon>
@@ -142,6 +170,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AboutUsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddDistributionUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -154,9 +186,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\AdminOptionsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContactUsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DistributionDetailsUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DonationUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginUC.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +325,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\transition1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\transition2.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0-ci1901\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0-ci1901\build\MaterialDesignThemes.targets')" />

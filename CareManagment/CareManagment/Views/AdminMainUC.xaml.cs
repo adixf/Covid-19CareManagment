@@ -1,4 +1,5 @@
-﻿using LiveCharts;
+﻿using CareManagment.ViewModels;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ namespace CareManagment.Views
         public AdminMainUC()
         {
             InitializeComponent();
-            
+
+            DataContext = new AdminMainVM();
         }
 
        

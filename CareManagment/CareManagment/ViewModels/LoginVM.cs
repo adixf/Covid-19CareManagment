@@ -1,5 +1,4 @@
 ﻿using CareManagment.Commands;
-using CareManagment.Interfaces;
 using CareManagment.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Windows.Input;
 
 namespace CareManagment.ViewModels
 {
-    public class LoginVM : ILoginVM
+    public class LoginVM : BaseViewModel
     {       
         public LoginM CurrentModel { get; set; }
 

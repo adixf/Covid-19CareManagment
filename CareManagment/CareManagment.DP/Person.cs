@@ -16,5 +16,15 @@ namespace CareManagment.DP
         public string PhoneNumber { get; set; }
         public string MailAddress { get; set; }
         public Address Address { get; set; }
+
+        public Person(string personId, string firstName, string lastName, string phoneNumber, string mailAddress, Address address)
+        {
+            PersonId = personId;
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            MailAddress = mailAddress;
+            Address = address;
+        }
     }
 }
