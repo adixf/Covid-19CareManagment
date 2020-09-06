@@ -8,7 +8,8 @@ namespace CareManagment.DP
 {
     public class Package
     {
-        public Recipient Recipient { get; set; }
-        public List<PkgType> Contents { get; set; }
+        public Person Recipient { get; set; }
+        public PkgType Contents { get; set; }
+        public string Id { get; set; }
     }
 }

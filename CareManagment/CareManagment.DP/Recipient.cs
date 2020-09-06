@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CareManagment.DP
 {
-    public class Recipient : Person
+    class Recipient :Person
     {
 
     }

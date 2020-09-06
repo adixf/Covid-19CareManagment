@@ -9,19 +9,11 @@ namespace CareManagment.BL.Interfaces
 {
     public interface IBL
     {
-        void AddVolunteer(Volunteer volunteer);
         void AddDistribution(Distribution distribution);
-        void AddRecipient(Recipient recipient);
-        void AddAdmin(Admin admin);
-
-        void UpdateUser(User user);
-        void UpdateRecipient(Recipient recipient);
-
-        List<Recipient> GetRecipients(Func<Recipient, bool> predicate = null);
-        List<Distribution> GetDistribution(Func<Distribution, bool> predicate = null);
-        List<Volunteer> GetVolunteers(Func<Volunteer, bool> predicate = null);
-        List<Admin> GetAdmins(Func<Volunteer, bool> predicate = null);
-
+        void AddPerson(Person person);
+        void UpdatePerson(Person person);
+        List<Person> GetAllPersons(Func<Person, bool> predicate = null);
+        List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null);
         JsonAddress GetAddressDetails(Address address);
         bool ValidUser(string userName, string password);
     }

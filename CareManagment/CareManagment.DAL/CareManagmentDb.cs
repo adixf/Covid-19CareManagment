@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace CareManagment.DAL
 {
-    class CareManagmentDbContext : DbContext
+    class CareManagmentDb : DbContext
     {
-        public DbSet<Volunteer> Volunteers { get; set; }
-        public DbSet<Admin> Admins { get; set; }
+        public CareManagmentDb():base("CareManagmentDb2020")
+        {
+
+        }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Distribution> Distributions { get; set; }
-        public DbSet<Recipient> Recipients { get; set; }
+        
     }
 }

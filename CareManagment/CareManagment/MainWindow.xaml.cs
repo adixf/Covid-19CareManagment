@@ -1,4 +1,6 @@
-﻿using CareManagment.Views;
+﻿using CareManagment.BL;
+using CareManagment.DP;
+using CareManagment.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +40,14 @@ namespace CareManagment
         {
             InitializeComponent();
             CurrentUC = new AdminMainUC();
+            var v = new Distribution();
+            v.IsDelivered = true;
+            v.Date = DateTime.Now;
+            //new BLImp().AddDistribution(v);
+
+            var t = new BLImp().GetAllPersons();
+            foreach (var ele in t)
+                MessageBox.Show(ele.Address.ToString());
         }
     }
 }

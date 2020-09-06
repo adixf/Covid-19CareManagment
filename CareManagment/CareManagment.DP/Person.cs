@@ -14,7 +14,7 @@ namespace CareManagment.DP
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public MailAddress MailAddress { get; set; }
+        public string MailAddress { get; set; }
         public Address Address { get; set; }
     }
 }

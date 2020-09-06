@@ -24,141 +24,68 @@ namespace CareManagment.DAL
             Jaddress.Longitude = parseJson[0]["lon"].ToString();
             return Jaddress;
         }
-        public List<Distribution> GetDistribution(Func<Distribution, bool> predicate = null)
+        public void AddPerson(Person person)
         {
-            var result = new List<Distribution>();
-            using (var ctx = new CareManagmentDbContext())
+            using (var ctx = new CareManagmentDb())
             {
-                if (predicate == null)
-                    result = ctx.Distributions.ToList();
-                else
-                {
-                    result = (from element in ctx.Distributions
-                              where predicate(element)
-                              select element).ToList();
-                }
-
-            }
-            return result;
-        }
-        public List<Volunteer> GetVolunteers(Func<Volunteer, bool> predicate = null)
-        {
-            var result = new List<Volunteer>();
-            using (var ctx = new CareManagmentDbContext())
-            {
-                if (predicate == null)
-                    result = ctx.Volunteers.ToList();
-                else
-                {
-                    result = (from element in ctx.Volunteers
-                              where predicate(element)
-                              select element).ToList();
-                }
-
-            }
-            return result;
-        }
-        public List<Recipient> GetRecipients(Func<Recipient, bool> predicate = null)
-        {
-            var result = new List<Recipient>();
-            using (var ctx = new CareManagmentDbContext())
-            {
-                if (predicate == null)
-                    result = ctx.Recipients.ToList();
-                else
-                {
-                    result = (from element in ctx.Recipients
-                              where predicate(element)
-                              select element).ToList();
-                }
-
-            }
-            return result;
-        }
-        public List<Admin> GetAdmins(Func<Admin, bool> predicate = null)
-        {
-            var result = new List<Admin>();
-            using (var ctx = new CareManagmentDbContext())
-            {
-                if (predicate == null)
-                    result = ctx.Admins.ToList();
-                else
-                {
-                    result = (from element in ctx.Admins
-                              where predicate(element)
-                              select element).ToList();
-                }
-
-            }
-            return result;
-        }
-        public void AddVolunteer(Volunteer volunteer)
-        {
-            using (var ctx = new CareManagmentDbContext())
-            {
-                ctx.Volunteers.Add(volunteer);
+                ctx.Persons.Add(person);
                 ctx.SaveChanges();
             }
+
         }
         public void AddDistribution(Distribution distribution)
         {
-            using (var ctx = new CareManagmentDbContext())
+            using (var ctx = new CareManagmentDb())
             {
                 ctx.Distributions.Add(distribution);
                 ctx.SaveChanges();
             }
         }
-        public void AddRecipient(Recipient recipient)
+        public void UpdatePerson(Person person)
         {
-            using (var ctx = new CareManagmentDbContext())
+            using (var context = new CareManagmentDb())
             {
-                ctx.Recipients.Add(recipient);
-                ctx.SaveChanges();
+                var old = context.Persons.Find(person.PersonId);
+                old.FirstName = person.FirstName;
+                old.LastName = person.LastName;
+                old.PhoneNumber = person.PhoneNumber;
+                old.Address = person.Address;
+                old.MailAddress = person.MailAddress;
+                context.SaveChanges();
             }
         }
-        public void AddAdmin(Admin admin)
+        public List<Person> GetAllPersons(Func<Person, bool> predicate = null)
         {
-            using (var ctx = new CareManagmentDbContext())
+            List<Person> result = new List<Person>();
+            using (var context = new CareManagmentDb())
             {
-                ctx.Admins.Add(admin);
-                ctx.SaveChanges();
-            }
-        }
-        public void UpdateUser(User user)
-        {
-            using (var ctx = new CareManagmentDbContext())
-            {
-                User oldElement;
-                if (user is Volunteer)
-                    oldElement = ctx.Volunteers.Find(user.PersonId);
+                if (predicate == null)
+                    result = context.Persons.ToList();
                 else
-                    oldElement = ctx.Admins.Find(user.PersonId);
-
-                oldElement.FirstName = user.FirstName;
-                oldElement.LastName = user.LastName;
-                oldElement.PhoneNumber = user.PhoneNumber;
-                oldElement.MailAddress = user.MailAddress;
-                oldElement.Password = user.Password;
-                oldElement.Address = user.Address;
-                ctx.SaveChanges();
-
+                {
+                    result = (from element in context.Persons
+                              where predicate(element)
+                              select element).ToList();
+                }
             }
+            return result;
         }
-        public void UpdateRecipient(Recipient recipient)
+        public List<Distribution> GetAllDistribution(Func<Distribution, bool> predicate = null)
         {
-
-            using (var ctx = new CareManagmentDbContext())
+            List<Distribution> result = new List<Distribution>();
+            using (var context = new CareManagmentDb())
             {
-                var oldElement = ctx.Recipients.Find(recipient.PersonId);
-                oldElement.FirstName = recipient.FirstName;
-                oldElement.LastName = recipient.LastName;
-                oldElement.PhoneNumber = recipient.PhoneNumber;
-                oldElement.MailAddress = recipient.MailAddress;
-                oldElement.Address = recipient.Address;
-                ctx.SaveChanges();
+                if (predicate == null)
+                    result = context.Distributions.ToList();
+                else
+                {
+                    result = (from element in context.Distributions
+                              where predicate(element)
+                              select element).ToList();
+                }
             }
+            return result;
         }
-       
     }
 }
 
