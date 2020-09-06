@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="CareManagment.Views.AdminOptionsUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CareManagment.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid Background="White" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- statistics card -->
+            <materialDesign:Card Grid.Column="0" Margin="15" UniformCornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/charts.jpg"></Image>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="סטטיסטיקה"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                        <Button Command="{Binding Path=DataContext.DisplayStatisticsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+                            Style="{StaticResource MaterialDesignIconButton}">
+                            <materialDesign:PackIcon Kind="ExpandVertical" Height="40" Width="40"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+            <!-- recipients card -->
+            <materialDesign:Card Grid.Column="1" Margin="15" UniformCornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/old-ppl.jpg"></Image>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="נמענים"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                        <Button Command="{Binding Path=DataContext.DisplayRecipientsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+                            Style="{StaticResource MaterialDesignIconButton}">
+                            <materialDesign:PackIcon Kind="ExpandVertical" Height="40" Width="40"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+            <!-- volunteers card -->
+            <materialDesign:Card Grid.Column="2" Margin="15" UniformCornerRadius="20" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/kids.jpeg"></Image>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="מתנדבים"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                        <Button Command="{Binding Path=DataContext.DisplayVolunteersView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+                            Style="{StaticResource MaterialDesignIconButton}">
+                            <materialDesign:PackIcon Kind="ExpandVertical" Height="40" Width="40"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+            <!-- distributions card -->
+            <materialDesign:Card Grid.Column="3" Margin="15" UniformCornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/box3.jpg"></Image>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="חלוקות"
+                               Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
+                        <Button Command="{Binding Path=DataContext.DisplayDistributionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+                            Style="{StaticResource MaterialDesignIconButton}">
+                            <materialDesign:PackIcon Kind="ExpandVertical" Height="40" Width="40"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -18,7 +18,7 @@ namespace CareManagment.DP
             this.Street = Street;
             this.BuildingNumber = BuildingNumber;
         }
-        public string ToString()
+        public override string ToString()
         {
             return Street + " " + BuildingNumber + " " + City;
         }

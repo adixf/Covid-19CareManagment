@@ -91,9 +91,21 @@ namespace CareManagment.Views
                 Address = new Address("ירושלים", "בית הדפוס", 7)
             };
 
-
-            Volunteers = new ObservableCollection<Volunteer> { v1, v2, v3, v4, v5, v6};
             
+            Volunteers = new ObservableCollection<Volunteer> { v1, v2, v3, v4, v5, v6};
+            for (int i = 0; i < 50; i++)
+            {
+                Volunteer v = new Volunteer
+                {
+                    PersonId = "123456789",
+                    FirstName = "מנחם",
+                    LastName = "נתנזון",
+                    MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+                    PhoneNumber = "0523416355",
+                    Address = new Address("ירושלים", "בית הדפוס", 7)
+                };
+                Volunteers.Add(v);
+            }
             DataContext = this;
 
         }

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CareManagment.Interfaces
+namespace CareManagment.ViewModels
 {
-    interface ILoginVM
+    class VolunteersViewVM : BaseViewModel
     {
-        bool ValidUser(string userName, string password);
     }
 }

@@ -1,4 +1,5 @@
-﻿using CareManagment.Views;
+﻿using CareManagment.ViewModels;
+using CareManagment.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,23 +22,13 @@ namespace CareManagment
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserControl currentUC;
-        public UserControl CurrentUC
-        {
-            get { return currentUC; }
-            set
-            {
-                UserControlGrid.Children.Remove(currentUC);
-                currentUC = value;
-                UserControlGrid.Children.Add(currentUC);
-            }
-        }
-
 
         public MainWindow()
         {
             InitializeComponent();
-            CurrentUC = new AdminMainUC();
+
+            DataContext = new MainWindowVM();
+
         }
     }
 }

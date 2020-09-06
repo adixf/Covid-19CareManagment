@@ -9,6 +9,6 @@ namespace CareManagment.DP
     public class Package
     {
         public Recipient Recipient { get; set; }
-        public List<PkgType> Contents { get; set; }
+        public PkgType Contents { get; set; }
     }
 }

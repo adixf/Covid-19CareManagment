@@ -8,6 +8,173 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-       
+        <Grid.Background>
+            <ImageBrush Opacity="0.8" ImageSource="/CareManagment;component/Images/top-bg.jpg">
+            </ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignIconForegroundButton}">
+            <materialDesign:PackIcon Kind="ArrowForward" Foreground="White"/>
+        </Button>
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="הוספת חלוקה" FontSize="25" FontWeight="Bold" Foreground="White"></TextBlock>
+
+        <!-- right side -->
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <!-- top bar -->
+
+            <!-- date picker -->
+            <TextBlock Grid.Row="0" Foreground="White" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Text="בחר תאריך"></TextBlock>
+            <materialDesign:Card Grid.Row="1" Grid.Column="2" UniformCornerRadius="20">
+                <DatePicker FlowDirection="LeftToRight" HorizontalAlignment="Center" Language="he-IL" Foreground="Black"
+                    materialDesign:HintAssist.Hint="    00/00/00    " FontSize="20" HorizontalContentAlignment="Center"/>
+            </materialDesign:Card>
+
+            <!--- recipients view -->
+
+            <TextBlock Grid.Row="2" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="בחר נמענים"></TextBlock>
+            <CheckBox Name="checkAll" Grid.Row="3" Style="{StaticResource MaterialDesignFilterChipCheckBox}" Content="בחר הכל"
+                   HorizontalAlignment="Left" Foreground="White" FontSize="14" Background="White"></CheckBox>
+            <materialDesign:Card Grid.Row="3" Grid.Column="2" UniformCornerRadius="20">
+                <ListView Name="packagesList" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                      ItemsSource="{Binding Volunteers}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid Height="30" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="5" HorizontalAlignment="Center" Text="{Binding FirstName}"></TextBlock>
+                                <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding Address}"></TextBlock>
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
+                                <ComboBox Grid.Column="1">
+                                    <ComboBoxItem>מזון</ComboBoxItem>
+                                    <ComboBoxItem>תרופות</ComboBoxItem>
+                                    <ComboBoxItem>בגדים</ComboBoxItem>
+                                    <ComboBoxItem>משחקים</ComboBoxItem>
+                                </ComboBox>
+                                <ToggleButton Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" 
+                                              Background="#FFC66465">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=checkAll, Path=IsChecked}" Value="True">
+                                                    <Setter Property="IsChecked" Value="True"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=checkAll,Path=IsChecked}" Value="False">
+                                                    <Setter Property="IsChecked" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                    <materialDesign:PackIcon Height="24" Width="24"  Kind="Check" Foreground="Black">
+                                    </materialDesign:PackIcon>
+                                </ToggleButton>
+
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </materialDesign:Card>
+
+            <Button Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Content="בקש ביצוע חלוקה" Foreground="White" Background="#FFC66465" materialDesign:ButtonAssist.CornerRadius="15"
+                VerticalContentAlignment="Top" >
+            </Button>
+        </Grid>
+      
+        <!-- left grid -->
+
+        <Grid Grid.Column="1" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="RightToLeft" Text="הנה החלוקות שיצרנו:"></TextBlock>
+            <materialDesign:Card Grid.Row="1" UniformCornerRadius="20" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <ListView HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Distributions}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid Height="30" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="5" HorizontalAlignment="Center" Text="{Binding FirstName}"></TextBlock>
+                                <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding Address}"></TextBlock>
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
+                                <ComboBox Grid.Column="1">
+                                    <ComboBoxItem>מזון</ComboBoxItem>
+                                    <ComboBoxItem>תרופות</ComboBoxItem>
+                                    <ComboBoxItem>בגדים</ComboBoxItem>
+                                    <ComboBoxItem>משחקים</ComboBoxItem>
+                                </ComboBox>
+                                <ToggleButton Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" 
+                                              Background="#FFC66465">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=checkAll, Path=IsChecked}" Value="True">
+                                                    <Setter Property="IsChecked" Value="True"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=checkAll,Path=IsChecked}" Value="False">
+                                                    <Setter Property="IsChecked" Value="False"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                    <materialDesign:PackIcon Height="24" Width="24"  Kind="Check" Foreground="Black">
+                                    </materialDesign:PackIcon>
+                                </ToggleButton>
+
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </materialDesign:Card>
+            <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Content="אשר" Foreground="White" Background="#FFC66465" materialDesign:ButtonAssist.CornerRadius="15"
+                VerticalContentAlignment="Top" >
+
+            </Button>
+        </Grid>
+        
     </Grid>
 </UserControl>

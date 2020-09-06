@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CareManagment.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace CareManagment.Views
         public LoginUC()
         {
             InitializeComponent();
+            DataContext = new LoginVM();
         }
 
      

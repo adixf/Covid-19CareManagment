@@ -17,25 +17,29 @@
         
         <!-- top bar -->
 
-            <Grid Grid.Row="0">
-                <Grid.Background>
+        <Grid Grid.Row="0">
+            <Grid.Background>
                 <ImageBrush Opacity="1" ImageSource="/CareManagment;component/Images/top-bg.jpg">
-                    </ImageBrush>
-                </Grid.Background>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Content="התנתק"
-                        FontSize="12" Foreground="White"></Button>
+                </ImageBrush>
+            </Grid.Background>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                <Ellipse Margin="10 0" Width="30" Height="30">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/CareManagment;component/Images/user.png"></ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
                 <Separator Background="White" Width="2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                <Ellipse Margin="10 0" Width="30" Height="30" Fill="WhiteSmoke"></Ellipse>
-                <Separator Background="White" Width="2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="יונתן כהן"
+                <TextBlock Margin="10,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="אריאל לביא"
                            FontSize="14" Foreground="White"></TextBlock>
             </StackPanel>
-            
+            <Button Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Content="התנתק"
+                        FontSize="12" Foreground="White"></Button>
         </Grid>
 
         <!-- user control grid -->
-        <Grid Grid.Row="1" Name="UserControlGrid">
+        <Grid Grid.Row="1">
+            <ContentControl Content="{Binding CurrentVolunteerVM}"></ContentControl>
         </Grid>
     </Grid>
 </UserControl>

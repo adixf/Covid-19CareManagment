@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CareManagment"
         mc:Ignorable="d"
-        Title="יד ביד" WindowState="Maximized" ResizeMode="NoResize">
+        Title="יד ביד" WindowState="Maximized" ResizeMode="CanMinimize">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -19,23 +19,26 @@
         </materialDesign:Card>
 
         <StackPanel Margin="20,0,20,0" HorizontalAlignment="Right" Orientation="Horizontal" Background="Transparent">
-            <Button BorderBrush="Transparent" Background="Transparent" Content="לתרומה" Foreground="White"></Button>
-            <Button BorderBrush="Transparent" Background="Transparent" Content="צור קשר" Foreground="White"></Button>
-            <Button BorderBrush="Transparent" Background="Transparent" Content="קצת עלינו" Foreground="White"></Button>
-            <Button BorderBrush="Transparent" Background="Transparent" Content="כניסה" Foreground="White"></Button>
-            <TextBlock Style="{StaticResource textFont}" Foreground="White" Text="יד ביד" FontSize="30" FontWeight="DemiBold" VerticalAlignment="Center" />
+            <Button Command="{Binding DisplayDonationView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="לתרומה" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
+            <Button Command="{Binding DisplayContactUsView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="צור קשר" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
+            <Button Command="{Binding DisplayAboutUsView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="קצת עלינו" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
+            <Button Command="{Binding DisplayLoginView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="כניסה" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
             <Rectangle Width="10" Fill="Transparent"></Rectangle>
             <Border BorderBrush="Transparent" Background="Transparent"
                 BorderThickness="8" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Image Width="35" Height="35" Source="/CareManagment;component/Images/give-love.png"></Image>
             </Border>
+            <Rectangle Width="15" Fill="Transparent"></Rectangle>
+            <TextBlock Style="{StaticResource textFont}" Foreground="White" Text="יד ביד" FontSize="30" FontWeight="DemiBold" VerticalAlignment="Center" />
             <Rectangle Fill="Transparent" Width="20"></Rectangle>
         </StackPanel>
 
         <!-- user controls -->
 
         <materialDesign:Card Margin="10" Grid.Row="1" UniformCornerRadius="20">
-            <Grid Name="UserControlGrid"></Grid>
+            <Grid>
+                <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+            </Grid>
         </materialDesign:Card>
 
     </Grid>

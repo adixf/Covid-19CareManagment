@@ -1,4 +1,5 @@
-﻿using CareManagment.Interfaces;
+﻿
+using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace CareManagment.Commands
     class LoginCommand : ICommand
     {
         // current vm using command
-        public ILoginVM CurrentVM { get; set; }
+        public LoginVM CurrentVM { get; set; }
 
-        // ctor
-        public LoginCommand(ILoginVM LoginVM)
+  
+        public LoginCommand(LoginVM LoginVM)
         {
             CurrentVM = LoginVM;
         }

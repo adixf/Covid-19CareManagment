@@ -18,9 +18,9 @@ namespace CareManagment.Views
     /// <summary>
     /// Interaction logic for VolunteerDistributionsUC.xaml
     /// </summary>
-    public partial class VolunteerDistributionsUC : UserControl
+    public partial class VolunteerDistributionsVM : UserControl
     {
-        public VolunteerDistributionsUC()
+        public VolunteerDistributionsVM()
         {
             InitializeComponent();
             // List<Distribution> distributions = new List<Distribution>();

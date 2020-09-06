@@ -36,22 +36,46 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource roundedCornersBorder}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="שם משפחה" 
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding LastName, Mode=TwoWay, ValidatesOnExceptions=True}">
+                        </TextBox>
+                     
+                    </Grid>
+                </Border>
+                <Border Grid.Column="1" Style="{StaticResource roundedCornersBorder}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
 
-            <Border Grid.Row="0" Style="{StaticResource roundedCornersBorder}" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="6*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                        <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
                                  materialDesign:HintAssist.Hint="שם פרטי" 
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
-                    </TextBox>
-                    <materialDesign:PackIcon Grid.Column="2" Kind="UserAdd" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                </Grid>
-            </Border>
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding FirstName, Mode=TwoWay, ValidatesOnExceptions=True}">
+                        </TextBox>
+                        <materialDesign:PackIcon Grid.Column="2" Kind="UserAdd" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+            
             <Border Grid.Row="1" Style="{StaticResource roundedCornersBorder}" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -60,14 +84,16 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
-                                 materialDesign:HintAssist.Hint="שם משפחה" 
+                                 materialDesign:HintAssist.Hint="תעודת זהות" 
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding PersonId, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
                     <materialDesign:PackIcon Grid.Column="2" Kind="Family" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
+
             <Border Grid.Row="2" Style="{StaticResource roundedCornersBorder}" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -78,7 +104,8 @@
                     <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
                                  materialDesign:HintAssist.Hint="מספר טלפון"
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding PhoneNumber, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
                     <materialDesign:PackIcon Grid.Column="2" Kind="Phone" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -94,7 +121,8 @@
                     <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
                                  materialDesign:HintAssist.Hint="כתובת מייל"
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding MailAddress, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
                     <materialDesign:PackIcon Grid.Column="2" Kind="Gmail" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -116,7 +144,8 @@
                         <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
                                  materialDesign:HintAssist.Hint="מס בית"
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding BuildingNumber, Mode=TwoWay, ValidatesOnExceptions=True}">
                         </TextBox>
                         
                     </Grid>
@@ -131,7 +160,8 @@
                         <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
                                  materialDesign:HintAssist.Hint="רחוב"
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding StreetName, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                         </TextBox>
                       
@@ -147,7 +177,8 @@
                         <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
                                  materialDesign:HintAssist.Hint="עיר"
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding City, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                         </TextBox>
                         <!--materialDesign:PackIcon Grid.Column="2" Kind="House" HorizontalAlignment="Left" VerticalAlignment="Center"/-->
@@ -161,12 +192,13 @@
                         <ColumnDefinition Width="6*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <PasswordBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                    <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
                                  materialDesign:HintAssist.Hint="בחר סיסמה"
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center"
+                                 Text="{Binding Password, Mode=TwoWay, ValidatesOnExceptions=True}">
 
-                    </PasswordBox>
+                    </TextBox>
                     <materialDesign:PackIcon Grid.Column="0" Kind="Eye" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
