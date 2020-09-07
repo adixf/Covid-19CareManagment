@@ -21,11 +21,8 @@ namespace CareManagment.BL
 
         public bool ValidUser(string userName, string password)
         {
-           /* if (IRepository.GetAdmins(x => x.MailAddress == userName && x.Password == password).Count != 0)
+            if (IRepository.GetAllUsers(x => x.MailAddress == userName && x.Password == password).Count != 0)
                 return true;
-
-            if (IRepository.GetVolunteers(x => x.MailAddress == userName && x.Password == password).Count != 0)
-                return true;*/
             return false;
             
         }

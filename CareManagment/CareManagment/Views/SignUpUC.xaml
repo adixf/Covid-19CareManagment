@@ -205,8 +205,8 @@
 
 
             <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
-                <RadioButton BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" Content="אני מנהל" FontSize="16" Foreground="White"/>
-                <RadioButton BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" Content="אני מתנדב" FontSize="16" Foreground="White"/>
+                <RadioButton IsChecked="{Binding isAdmin}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מנהל" FontSize="16" Foreground="White"/>
+                <RadioButton IsChecked="{Binding isVolunteer}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מתנדב" FontSize="16" Foreground="White"/>
             </StackPanel>
            
 

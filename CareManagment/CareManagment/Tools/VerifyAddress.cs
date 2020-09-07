@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CareManagment.DAL
+namespace CareManagment.Tools
 {
-    public class Class1
+    class VerifyAddress
     {
+        public bool IsValidAddress()
+        {
+            return true;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CareManagment.DP;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,8 +15,10 @@ namespace CareManagment
     /// </summary>
     public partial class App : Application
     {
+        public User LoggedUser { get; set; }
         public App()
-        {          
+        { 
+            
         }
     }
 }

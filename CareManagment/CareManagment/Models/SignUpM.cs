@@ -20,7 +20,11 @@ namespace CareManagment.Models
 
         public void SignUp(User user)
         {
-            // BL.AddPerson();
+            if (BL.GetAllPersons(x => x.PersonId == user.PersonId || x.MailAddress==user.MailAddress).Count != 0)
+                throw new Exception("המשתמש כבר קיים במערכת");
+            if (new Tools.VerifyAddress().IsValidAddress())
+                throw new Exception("הכתובת שהזנת לא קיימת");
+            BL.AddPerson(user);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace CareManagment.DAL
             Jaddress.Longitude = parseJson[0]["lon"].ToString();
             return Jaddress;
         }
+
         public void AddPerson(Person person)
         {
             using (var ctx = new CareManagmentDb())
@@ -33,6 +34,7 @@ namespace CareManagment.DAL
             }
 
         }
+
         public void AddDistribution(Distribution distribution)
         {
             using (var ctx = new CareManagmentDb())
@@ -41,6 +43,7 @@ namespace CareManagment.DAL
                 ctx.SaveChanges();
             }
         }
+
         public void UpdatePerson(Person person)
         {
             using (var context = new CareManagmentDb())
@@ -54,6 +57,7 @@ namespace CareManagment.DAL
                 context.SaveChanges();
             }
         }
+
         public List<Person> GetAllPersons(Func<Person, bool> predicate = null)
         {
             List<Person> result = new List<Person>();
@@ -70,6 +74,7 @@ namespace CareManagment.DAL
             }
             return result;
         }
+
         public List<Distribution> GetAllDistribution(Func<Distribution, bool> predicate = null)
         {
             List<Distribution> result = new List<Distribution>();
@@ -85,6 +90,23 @@ namespace CareManagment.DAL
                 }
             }
             return result;
+        }
+
+        public List<User> GetAllUsers(Func<User, bool> predicate = null)
+        {
+            /*List<> result = new List<Distribution>();
+            using (var context = new CareManagmentDb())
+            {
+                if (predicate == null)
+                    result = context.ToList();
+                else
+                {
+                    result = (from element in context.Distributions
+                              where predicate(element)
+                              select element).ToList();
+                }
+            }*/
+            return null;
         }
     }
 }

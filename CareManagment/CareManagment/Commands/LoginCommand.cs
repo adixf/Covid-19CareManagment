@@ -1,4 +1,5 @@
 ﻿
+using CareManagment.DP;
 using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CareManagment.Commands
@@ -21,38 +23,23 @@ namespace CareManagment.Commands
             CurrentVM = LoginVM;
         }
 
-
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-            if (!(parameter is List<string> details))
-                return false;
-
-            if (details.Count != 2)
-                return false;
-
-            string email = details[0];
-            string password = details[1];
-
-            if (password.Length == 0) return false;
-
-            MailAddress mailAddress;
-            try
-            {
-                mailAddress = new MailAddress(email);
-            }
-            catch (Exception)
-            {
-                return false;
-            }           
             return true;
         }
 
         public void Execute(object parameter)
         {
-            var userLogin = parameter as List<string>;
-            // if (CurrentVM.ValidUser(userLogin[0], userLogin[1]))
+
+            // if (CurrentVM.ValidUser(CurrentVM.Email, CurrentVM.Password))
+                // ((App)Application.Current).LoggedUser = CurrentVM.CurrentModel.BL.GetUser(...);   
+             // else CurrentVM.IsInvalidUser = true;
         }
     }
 }
