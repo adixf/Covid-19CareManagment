@@ -10,16 +10,16 @@ namespace CareManagment.Models
 {
     public class LoginM
     {
-        public IBL BLImp { get; set; }
+        public IBL BL { get; set; }
 
         public LoginM()
         {
-            BLImp = new BLImp();
+            BL= new BLImp();
         }
 
         public bool ValidUser(string email, string password)
         {
-            return BLImp.ValidUser(email, password);
+            return BL.ValidUser(email, password);
         }
     }
 

@@ -13,6 +13,7 @@ namespace CareManagment.DAL.Interfaces
         void AddDistribution(Distribution distribution);
         void UpdatePerson(Person person);
         List<Person> GetAllPersons(Func<Person, bool> predicate = null);
+        List<User> GetAllUsers(Func<User, bool> predicate = null);
         List<Distribution> GetAllDistribution(Func<Distribution, bool> predicate = null);
         List<User> GetAllUsers(Func<User, bool> predicate = null);
 

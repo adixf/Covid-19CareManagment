@@ -28,7 +28,7 @@ namespace CareManagment.ViewModels
         // check if email and password describe an existing user
         public bool ValidUser(string email, string password)
         {
-           return CurrentModel.ValidUser(email, password);
+            return CurrentModel.ValidUser(email, password);
         }
     }
 }

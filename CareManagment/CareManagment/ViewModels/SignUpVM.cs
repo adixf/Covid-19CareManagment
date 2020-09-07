@@ -120,6 +120,9 @@ namespace CareManagment.ViewModels
             }
         }
 
+        public bool IsAdmin { get; set; }
+        public bool IsVolunteer { get; set; }
+
         #endregion
 
         public SignUpM SignUpModel { get; set; }
@@ -133,7 +136,9 @@ namespace CareManagment.ViewModels
 
         public void SignUp()
         {
-            SignUpModel.SignUp(new User(personId,FirstName,LastName,PhoneNumber,MailAddress,new Address(City,StreetName, int.Parse(BuildingNumber)),Password));
+            UserType userType;
+            if (IsAdmin) userType = UserType.Admin; else userType = UserType.Volunteer;
+            SignUpModel.SignUp(new User(personId,FirstName,LastName,PhoneNumber,MailAddress,new Address(City,StreetName, int.Parse(BuildingNumber)),Password,userType));
         }
     }
 }

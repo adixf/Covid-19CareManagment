@@ -24,15 +24,90 @@ namespace CareManagment.Views
     {
         //public ObservableCollection<Volunteer> Volunteers { get; set; }
 
-        public VolunteersViewUC()
-        {
-            InitializeComponent();
+        //public VolunteersViewUC()
+        //{
+        //    InitializeComponent();
 
 
 
-          
-            DataContext = this;
+        //    Volunteer v1 = new Volunteer
+        //    {
+        //        PersonId = "123456789",
+        //        FirstName = "מנחם",
+        //        LastName = "נתנזון",
+        //        MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+        //        PhoneNumber = "0523416355",
+        //        Address = new Address("ירושלים", "בית הדפוס", 7)
+        //};
+       
+        //    Volunteer v2 = new Volunteer
+        //    {
+        //        PersonId = "123456789",
+        //        FirstName = "מנחם",
+        //        LastName = "נתנזון",
+        //        MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+        //        PhoneNumber = "0523416355",
+        //        Address = new Address("ירושלים", "בית הדפוס", 7)
+        //    };
+        //    Volunteer v3 = new Volunteer
+        //    {
+        //        PersonId = "123456789",
+        //        FirstName = "מנחם",
+        //        LastName = "נתנזון",
+        //        MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+        //        PhoneNumber = "0523416355",
+        //        Address = new Address("ירושלים", "בית הדפוס", 7)
+        //    };
 
-        }
+        //    Volunteer v4 = new Volunteer
+        //    {
+        //        PersonId = "123456789",
+        //        FirstName = "מנחם",
+        //        LastName = "נתנזון",
+        //        MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+        //        PhoneNumber = "0523416355",
+        //        Address = new Address("ירושלים", "בית הדפוס", 7)
+        //    };
+
+        //    Volunteer v5 = new Volunteer
+        //    {
+        //        PersonId = "123456789",
+        //        FirstName = "מנחם",
+        //        LastName = "נתנזון",
+        //        MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+        //        PhoneNumber = "0523416355",
+        //        Address = new Address("ירושלים", "בית הדפוס", 7)
+        //    };
+
+
+
+        //    Volunteer v6 = new Volunteer
+        //    {
+        //        PersonId = "123456789",
+        //        FirstName = "מנחם",
+        //        LastName = "נתנזון",
+        //        MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+        //        PhoneNumber = "0523416355",
+        //        Address = new Address("ירושלים", "בית הדפוס", 7)
+        //    };
+
+            
+        //    Volunteers = new ObservableCollection<Volunteer> { v1, v2, v3, v4, v5, v6};
+        //    for (int i = 0; i < 50; i++)
+        //    {
+        //        Volunteer v = new Volunteer
+        //        {
+        //            PersonId = "123456789",
+        //            FirstName = "מנחם",
+        //            LastName = "נתנזון",
+        //            MailAddress = new System.Net.Mail.MailAddress("menachemnata12@gmail.com"),
+        //            PhoneNumber = "0523416355",
+        //            Address = new Address("ירושלים", "בית הדפוס", 7)
+        //        };
+        //        Volunteers.Add(v);
+        //    }
+        //    DataContext = this;
+
+        //}
     }
 }

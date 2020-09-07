@@ -82,7 +82,7 @@
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="כניסה" />
             </Button>
-            
+
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -92,7 +92,7 @@
                 </TextBlock>
                 <Button Content="צור חשבון" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center"
                         Command="{Binding Path=DataContext.DisplaySignUpView, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Mode=OneWay}">
-                <Button.Template>
+                    <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <ContentPresenter VerticalAlignment="Center"/>
                         </ControlTemplate>
@@ -100,5 +100,13 @@
                 </Button>
             </Grid>
         </Grid>
+
+        <!--<materialDesign:DialogHost HorizontalAlignment="Center" VerticalAlignment="Center" IsOpen="{Binding IsInvalidUser}"
+                                   CloseOnClickAway="True"
+                                   OverlayBackground="{DynamicResource PrimaryHueDarkBrush}">
+            <Border BorderThickness="1" BorderBrush="Black" MinWidth="256" MinHeight="256" ClipToBounds="True">
+                <materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>-->
+
     </Grid>
 </UserControl>

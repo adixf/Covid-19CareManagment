@@ -50,7 +50,7 @@
             <!--- recipients view -->
 
             <TextBlock Grid.Row="2" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="בחר נמענים"></TextBlock>
-            <CheckBox Name="checkAll" Grid.Row="3" Style="{StaticResource MaterialDesignFilterChipCheckBox}" Content="בחר הכל"
+            <CheckBox Name="checkAll" Grid.Row="2" Style="{StaticResource MaterialDesignFilterChipCheckBox}" Content="בחר הכל"
                    HorizontalAlignment="Left" Foreground="White" FontSize="14" Background="White"></CheckBox>
             <materialDesign:Card Grid.Row="3" Grid.Column="2" UniformCornerRadius="20">
                 <ListView Name="packagesList" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"

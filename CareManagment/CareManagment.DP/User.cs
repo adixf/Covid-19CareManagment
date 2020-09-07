@@ -8,16 +8,15 @@ namespace CareManagment.DP
 {
     public class User : Person
     {
-        public User(string personId, string firstName, string lastName, string phoneNumber, string mailAddress, Address address, string password) :base(personId, firstName,lastName, phoneNumber, mailAddress, address)
+        public User() { }
+        
+        public User(string personId, string firstName, string lastName, string phoneNumber, string mailAddress, Address address, string password, UserType userType) :base(personId, firstName,lastName, phoneNumber, mailAddress, address)
         {
             Password = password;
-        }
-        public User()
-        {
-
+            UserType = userType;
         }
 
         public string Password { get; set; }
-        public UserType TypePerson { set; get; }
+        public UserType UserType { set; get; }
     }
 }
