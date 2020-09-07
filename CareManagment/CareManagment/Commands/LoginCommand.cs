@@ -37,9 +37,9 @@ namespace CareManagment.Commands
         public void Execute(object parameter)
         {
 
-            // if (CurrentVM.ValidUser(CurrentVM.Email, CurrentVM.Password))
-                // ((App)Application.Current).LoggedUser = CurrentVM.CurrentModel.BL.GetUser(...);   
-             // else CurrentVM.IsInvalidUser = true;
+            if (CurrentVM.ValidUser(CurrentVM.Email, CurrentVM.Password))
+                ((App)Application.Current).LoggedUser = CurrentVM.CurrentModel.BL.GetUser(...);   
+             else CurrentVM.IsInvalidUser = true;
         }
     }
 }
