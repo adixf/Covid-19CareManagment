@@ -78,7 +78,7 @@
             </Border>
 
             <Button Grid.Row="2" Background="#FFC66465" BorderThickness="0"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}" Command="{Binding LoginCommand}"
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="כניסה" />
             </Button>
@@ -101,12 +101,28 @@
             </Grid>
         </Grid>
 
-        <!--<materialDesign:DialogHost HorizontalAlignment="Center" VerticalAlignment="Center" IsOpen="{Binding IsInvalidUser}"
-                                   CloseOnClickAway="True"
-                                   OverlayBackground="{DynamicResource PrimaryHueDarkBrush}">
-            <Border BorderThickness="1" BorderBrush="Black" MinWidth="256" MinHeight="256" ClipToBounds="True">
-                <materialDesign:DialogHost.DialogContent>
-        </materialDesign:DialogHost>-->
+        <materialDesign:DialogHost
+                             HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                      IsOpen="{Binding ShowMessage}"
+  DialogContent="{Binding Sample4Content}"
+  CloseOnClickAway="True"
+  OverlayBackground="Beige">
+            <Border
+    BorderThickness="1"
+    BorderBrush="Red"
+    MinWidth="256"
+    MinHeight="256"
+    ClipToBounds="True">
+                <Button
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      Command="{Binding OpenSample4DialogCommand}">
+                    RUN
+                </Button>
+            </Border>
+        </materialDesign:DialogHost>
+
 
     </Grid>
 </UserControl>

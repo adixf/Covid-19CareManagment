@@ -98,9 +98,7 @@ namespace CareManagment.DAL
                 }
                 else
                 {
-                    result = (from element in context.Persons.OfType<User>()
-                              where predicate(element)
-                              select element).ToList();
+                   result = context.Persons.OfType<User>().Where(predicate).ToList();                   
                 }
                 
             }

@@ -37,7 +37,7 @@
 
         <materialDesign:Card Margin="10" Grid.Row="1" UniformCornerRadius="20">
             <Grid>
-                <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+                <ContentControl Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}"></ContentControl>
             </Grid>
         </materialDesign:Card>
 

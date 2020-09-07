@@ -66,7 +66,7 @@ namespace CareManagment.ViewModels
 
         public MainWindowVM()
         {
-            CurrentViewModel = new LoginVM();
+           // CurrentViewModel = new LoginVM();
         }
         
     }

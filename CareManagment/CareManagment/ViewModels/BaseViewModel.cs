@@ -16,8 +16,15 @@ namespace CareManagment.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
+        public BaseViewModel()
+        {
+            ShowMessage = false;
+        }
 
-
-        // public User CurrentUser { get; set; }
+        private bool showMessage;
+         public bool ShowMessage { get { return showMessage; }
+            set { showMessage = value;
+                OnPropertyRaised("ShowMessage");  } }
+        
     }
 }
