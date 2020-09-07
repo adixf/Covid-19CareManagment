@@ -86,6 +86,27 @@ namespace CareManagment.DAL
             }
             return result;
         }
+        public List<User> GetAllUsers(Func<User, bool> predicate = null)
+        {
+            List<User> result = new List<User>();
+            using (var context = new CareManagmentDb())
+            {
+                if (predicate == null)
+                {
+                    result = (from element in context.Persons.OfType<User>()
+                              select element).ToList();
+                }
+                else
+                {
+                    result = (from element in context.Persons.OfType<User>()
+                              where predicate(element)
+                              select element).ToList();
+                }
+                
+            }
+            return result;
+           
+        }
     }
 }
 

@@ -12,8 +12,12 @@ namespace CareManagment.DP
         {
             Password = password;
         }
+        public User()
+        {
+
+        }
 
         public string Password { get; set; }
-        public TypePerson TypePerson { set; get; }
+        public UserType TypePerson { set; get; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using CareManagment.ViewModels;
+﻿using CareManagment.BL;
+using CareManagment.BL.Interfaces;
+using CareManagment.ViewModels;
 using CareManagment.Views;
 using System;
 using System.Collections.Generic;
@@ -28,6 +30,11 @@ namespace CareManagment
             InitializeComponent();
 
             DataContext = new MainWindowVM();
+            IBL v = new BLImp();
+            var t = v.GetAllPersons();
+            foreach (var ele in t)
+                MessageBox.Show(ele.FirstName);
+           // v.AddPerson(new DP.Person("209425602", "hahaha", "fgf", "0546867152", "nana@gmail.com", new DP.Address("bet ", "hgh", 1)));
 
         }
     }

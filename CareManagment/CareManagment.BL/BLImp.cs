@@ -21,11 +21,8 @@ namespace CareManagment.BL
 
         public bool ValidUser(string userName, string password)
         {
-           /* if (IRepository.GetAdmins(x => x.MailAddress == userName && x.Password == password).Count != 0)
+            if (IRepository.GetAllUsers(x => x.MailAddress == userName && x.Password == password).Count != 0)
                 return true;
-
-            if (IRepository.GetVolunteers(x => x.MailAddress == userName && x.Password == password).Count != 0)
-                return true;*/
             return false;
             
         }
@@ -45,6 +42,10 @@ namespace CareManagment.BL
         public List<Person> GetAllPersons(Func<Person, bool> predicate = null)
         {
            return IRepository.GetAllPersons(predicate);
+        }
+        public List<User> GetAllUsers(Func<User, bool> predicate = null)
+        {
+            return IRepository.GetAllUsers(predicate);
         }
 
         public JsonAddress GetAddressDetails(Address address)

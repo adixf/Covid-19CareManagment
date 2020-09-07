@@ -26,33 +26,14 @@ namespace CareManagment.Commands
 
         public bool CanExecute(object parameter)
         {
-            if (!(parameter is List<string> details))
-                return false;
-
-            if (details.Count != 2)
-                return false;
-
-            string email = details[0];
-            string password = details[1];
-
-            if (password.Length == 0) return false;
-
-            MailAddress mailAddress;
-            try
-            {
-                mailAddress = new MailAddress(email);
-            }
-            catch (Exception)
-            {
-                return false;
-            }           
+            
             return true;
         }
 
         public void Execute(object parameter)
         {
-            var userLogin = parameter as List<string>;
-            // if (CurrentVM.ValidUser(userLogin[0], userLogin[1]))
+           if(!CurrentVM.ValidUser(CurrentVM.Email,CurrentVM.Password))
+
         }
     }
 }

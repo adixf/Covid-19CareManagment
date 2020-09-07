@@ -10,5 +10,6 @@ namespace CareManagment.DP
     {
         public Recipient Recipient { get; set; }
         public PkgType Contents { get; set; }
+        public string Id { get; set; }
     }
 }

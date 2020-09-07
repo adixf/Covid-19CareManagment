@@ -8,7 +8,8 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type ViewModels:LoginVM}">
+            
+             <DataTemplate DataType="{x:Type ViewModels:LoginVM}">
                 <Views:LoginUC />
             </DataTemplate>
             <DataTemplate DataType="{x:Type ViewModels:SignUpVM}">
@@ -50,6 +51,8 @@
             <DataTemplate DataType="{x:Type ViewModels:StatisticsVM}">
                 <Views:StatisticsUC/>
             </DataTemplate>
+           
+           
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
