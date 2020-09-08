@@ -15,6 +15,10 @@ namespace CareManagment.DP
             Password = password;
             UserType = userType;
         }
+        public User(User user)
+        {
+
+        }
 
         public string Password { get; set; }
         public UserType UserType { set; get; }

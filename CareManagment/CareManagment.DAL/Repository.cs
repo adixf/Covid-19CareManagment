@@ -63,9 +63,7 @@ namespace CareManagment.DAL
                     result = context.Persons.ToList();
                 else
                 {
-                    result = (from element in context.Persons
-                              where predicate(element)
-                              select element).ToList();
+                    result = context.Persons.OfType<Person>().Where(predicate).ToList();
                 }
             }
             return result;
@@ -79,9 +77,7 @@ namespace CareManagment.DAL
                     result = context.Distributions.ToList();
                 else
                 {
-                    result = (from element in context.Distributions
-                              where predicate(element)
-                              select element).ToList();
+                    result = context.Distributions.OfType<Distribution>().Where(predicate).ToList();
                 }
             }
             return result;

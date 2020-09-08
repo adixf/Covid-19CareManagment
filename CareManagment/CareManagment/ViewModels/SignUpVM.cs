@@ -134,11 +134,27 @@ namespace CareManagment.ViewModels
             SignUpModel = new SignUpM();
         }
 
+        
         public void SignUp()
         {
             UserType userType;
-            if (IsAdmin) userType = UserType.Admin; else userType = UserType.Volunteer;
-            SignUpModel.SignUp(new User(personId,FirstName,LastName,PhoneNumber,MailAddress,new Address(City,StreetName, int.Parse(BuildingNumber)),Password,userType));
+            if (IsAdmin)
+                userType = UserType.Admin;
+            else
+                userType = UserType.Volunteer;
+            User user = new User(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)), Password, userType);
+            try
+            {
+                SignUpModel.SignUp(user);
+                Message = "נוספת למערכת בהצלחה";
+                ShowMessage = true;
+            }
+            catch(Exception e)
+            {
+                Message = e.Message;
+                ShowMessage = true;
+            }
+           
         }
     }
 }

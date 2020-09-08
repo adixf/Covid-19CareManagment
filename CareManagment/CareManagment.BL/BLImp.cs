@@ -19,13 +19,6 @@ namespace CareManagment.BL
             IRepository = new Repository();
         }
 
-        public bool ValidUser(string userName, string password)
-        {
-            if (IRepository.GetAllUsers(x => x.MailAddress == userName && x.Password == password).Count != 0)
-                return true;
-            return false;
-            
-        }
 
         public void AddPerson(Person person)
         {
@@ -61,6 +54,11 @@ namespace CareManagment.BL
         public void UpdatePerson(Person person)
         {
             IRepository.UpdatePerson(person);
+        }
+
+        public bool ValidUser(string userName, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CareManagment.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,10 +24,11 @@ namespace CareManagment.Views
         public AdminDistributionsUC()
         {
             InitializeComponent();
-            List<int> lst = new List<int> { 1, 2, 7,9,9,9,9};
-            newDistributions.ItemsSource = lst;
-            List<int> lst2 = new List<int> { 1, 2, 3, 4 ,9,9,9,9,9,9,9,9,9};
-            oldDistributions.ItemsSource = lst2;
+            //List<int> lst = new List<int> { 1, 2, 7,9,9,9,9};
+            //newDistributions.ItemsSource = lst;
+            //List<int> lst2 = new List<int> { 1, 2, 3, 4 ,9,9,9,9,9,9,9,9,9};
+            //oldDistributions.ItemsSource = lst2;
+            DataContext = new AdminDistributionsVM();
         }
     }
 }

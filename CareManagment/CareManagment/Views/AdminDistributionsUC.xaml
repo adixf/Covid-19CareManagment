@@ -18,7 +18,8 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <Button Margin="20 0" HorizontalAlignment="Right" Width="150" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="#FFC66465">
+            <Button Margin="20 0" HorizontalAlignment="Right" Width="150" Command="{Binding Path=DataContext.DisplayAddDistributionView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="#FFC66465">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Foreground="White" Text="הוסף חלוקה"></TextBlock>
                     <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
@@ -26,7 +27,8 @@
             </Button>
             <materialDesign:Card Grid.Row="1" Margin="10" UniformCornerRadius="20" >
                 <Grid  Background="LightGray" HorizontalAlignment="Stretch">
-                    <ListView Name="newDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <ListView Name="newDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                              ItemsSource="{Binding NewDistributions}">
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -66,7 +68,8 @@
             </materialDesign:Card>
             <Label Grid.Row="2" Margin="0,0,40,0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">חלוקות קודמות</Label>
             <materialDesign:Card Background="LightGray" Grid.Row="3" Margin="10" UniformCornerRadius="20">
-                <ListView Name="oldDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                <ListView Name="oldDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                          ItemsSource="{Binding OldDistributions}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth4" CornerRadius="15" BorderThickness="2" BorderBrush="LightGray" Background="White">

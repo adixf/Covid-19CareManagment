@@ -91,7 +91,7 @@
                 <TextBlock FontSize="13" Text="?עוד לא רשום" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                 </TextBlock>
                 <Button Content="צור חשבון" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center"
-                        Command="{Binding Path=DataContext.DisplaySignUpView, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Mode=OneWay}">
+                        Command="{Binding DisplaySignUpView}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <ContentPresenter VerticalAlignment="Center"/>
@@ -101,28 +101,21 @@
             </Grid>
         </Grid>
 
-        <materialDesign:DialogHost
-                             HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                      IsOpen="{Binding ShowMessage}"
-  DialogContent="{Binding Sample4Content}"
-  CloseOnClickAway="True"
-  OverlayBackground="Beige">
-            <Border
-    BorderThickness="1"
-    BorderBrush="Red"
-    MinWidth="256"
-    MinHeight="256"
-    ClipToBounds="True">
-                <Button
-      HorizontalAlignment="Center"
-      VerticalAlignment="Center"
-      Command="{Binding OpenSample4DialogCommand}">
-                    RUN
-                </Button>
-            </Border>
+        <materialDesign:DialogHost CloseOnClickAway="True" FlowDirection="RightToLeft" IsOpen="{Binding ShowMessage}">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel>
+                    <TextBlock Text="{Binding Message}" FontSize="15"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0">
+                            חזור בכל זאת
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
+                            ביטול
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-
 
     </Grid>
 </UserControl>

@@ -29,5 +29,15 @@ namespace CareManagment.DP
             MailAddress = mailAddress;
             Address = address;
         }
+
+        public Person(Person p)
+        {
+            PersonId = p.PersonId;
+            FirstName =p.FirstName;
+            LastName = p.LastName;
+            PhoneNumber = p.PhoneNumber;
+            MailAddress =p.MailAddress;
+            Address = new Address(p.Address);
+        }
     }
 }

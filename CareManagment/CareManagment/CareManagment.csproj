@@ -88,8 +88,10 @@
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\SignUpCommand.cs" />
+    <Compile Include="Models\AdminDistributionsM.cs" />
     <Compile Include="Models\LoginM.cs" />
     <Compile Include="Models\SignUpM.cs" />
+    <Compile Include="Tools\Currents.cs" />
     <Compile Include="Tools\VerifyAddress.cs" />
     <Compile Include="Tools\VerifyString.cs" />
     <Compile Include="ViewModels\AboutUsVM.cs" />
