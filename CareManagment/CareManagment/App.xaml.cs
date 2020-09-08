@@ -15,8 +15,8 @@ namespace CareManagment
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application, System.ComponentModel.INotifyPropertyChanged
-    {
+    public partial class App : Application
+    { 
         public void OnPropertyRaised(string propertyname)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));

@@ -37,12 +37,12 @@ namespace CareManagment.Commands
         public void Execute(object parameter)
         {
             if (CurrentVM.ValidUser(CurrentVM.Email, CurrentVM.Password))
-            {
+              {
                 ((App)Application.Current).LoggedUser = CurrentVM.CurrentModel.BL.GetAllUsers(x => x.MailAddress == CurrentVM.Email).First();
-            }
-            else
+              }
+             else
                 CurrentVM.ShowMessage = true;
-              ((App)Application.Current).CurrentViewModel = new AdminOptionsVM();
+             
         }
     }
 }
