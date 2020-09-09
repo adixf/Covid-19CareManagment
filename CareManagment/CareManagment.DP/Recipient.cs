@@ -8,9 +8,14 @@ namespace CareManagment.DP
 {
     public class Recipient :Person
     {
+      //  public ICollection<Package> Packages { get; set; }
+
         public Recipient()
         {
-
+            
         }
     }
 }
+
+
+

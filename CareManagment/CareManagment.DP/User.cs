@@ -8,9 +8,6 @@ namespace CareManagment.DP
 {
     public class User : Person
     {
-        public string Password { get; set; }
-        public UserType UserType { set; get; }
-
         public User() { }
         
         public User(string personId, string firstName, string lastName, string phoneNumber, string mailAddress, Address address, string password, UserType userType) :base(personId, firstName,lastName, phoneNumber, mailAddress, address)
@@ -23,5 +20,9 @@ namespace CareManagment.DP
 
         }
 
+        public string Password { get; set; }
+        public UserType UserType { set; get; }
+
+        
     }
 }

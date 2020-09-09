@@ -17,6 +17,8 @@ namespace CareManagment.DAL
         }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Distribution> Distributions { get; set; }
-        
+        public DbSet<Package> Packages { get; set; }
+       
+
     }
 }

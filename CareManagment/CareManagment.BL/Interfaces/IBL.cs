@@ -11,6 +11,7 @@ namespace CareManagment.BL.Interfaces
     {
         void AddDistribution(Distribution distribution);
         void AddPerson(Person person);
+        void AddPackage(Package package);
         void UpdatePerson(Person person);
         List<Person> GetAllPersons(Func<Person, bool> predicate = null);
         List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null);
