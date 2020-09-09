@@ -8,6 +8,7 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
         <Grid Background="White">
 
@@ -44,13 +45,22 @@
                                             <ColumnDefinition Width="1*"/>
                                         </Grid.ColumnDefinitions>
                                         <CheckBox VerticalAlignment="Center" Grid.Column="1" Content="החלוקה בוצעה"
-                                              FontWeight="Bold" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}">
+                                              FontWeight="Bold" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}"
+                                                  IsChecked="{Binding IsDelivered, Mode=TwoWay}" Command="{Binding DataContext.UpdateCollection, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding Id}">
                                         </CheckBox>
                                         <Button Grid.Column="2" Background="#FFD17B7C"  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
                                             <materialDesign:PackIcon Height="20" Width="20" Kind="Printer"></materialDesign:PackIcon>
                                         </Button>
-                                        <TextBlock Grid.Column="3" Text="מתנדב אחראי: יונתן קדם" FontWeight="Bold" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="4" Text="24.10.20" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="3" FontWeight="Bold" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                                            <TextBlock.Text>
+                                                <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
+                                                    <Binding Path="Volunteer.FirstName"/>
+                                                    <Binding Path="Volunteer.LastName"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+
+                                        <TextBlock Grid.Column="4" Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
                                         <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="5" Background="{x:Null}" BorderBrush="LightGray">
                                             <StackPanel Orientation="Horizontal">
@@ -58,6 +68,9 @@
                                                 <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
                                             </StackPanel>
                                         </Button>
+
+                                        
+
                                     </Grid>
                                 </Border>
                             </DataTemplate>

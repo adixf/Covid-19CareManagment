@@ -75,7 +75,7 @@ namespace CareManagment.DAL
             using (var context = new CareManagmentDb())
             {
                 if (predicate == null)
-                    result = context.Distributions.ToList();
+                    result = context.Distributions.Include(s => s.Admin).Include(s => s.Volunteer).ToList();
                 else
                 {
                     result = context.Distributions.Include(s=>s.Admin).Include(s=>s.Volunteer).OfType<Distribution>().Where(predicate).ToList();
@@ -110,7 +110,7 @@ namespace CareManagment.DAL
             {
                 if (predicate == null)
                 {
-                    result = (from element in context.Packages.OfType<Package>()
+                    result = (from element in context.Packages.Include(s => s.Recipient).Include(s => s.Distribution).OfType<Package>()
                               select element).ToList();
                 }
                 else

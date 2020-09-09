@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CareManagment.DP
 {
-    public class Distribution
+    public class Distribution : INotifyPropertyChanged
     {
 
         public int Id { get; set; }
@@ -24,6 +25,7 @@ namespace CareManagment.DP
         public int VolunteerId { get; set; }
 
         private User admin;
+
         public User Admin
         {
             get { return admin; }
@@ -37,7 +39,24 @@ namespace CareManagment.DP
 
         public List<Package> Packages { get; set; }
         public DateTime Date { get; set; }
-        public bool IsDelivered { get; set; }
+
+        private bool isDelivered;
+        public bool IsDelivered
+        {
+            get { return isDelivered; }
+            set
+            {
+                isDelivered = value;
+                OnPropertyRaised("IsDelivered");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyRaised(string propertyname)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
+        }
 
 
         public Distribution(User volunteer, List<Package> packages, DateTime date, User admin, bool isDelivered)

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CareManagment"
              xmlns:ViewModels="clr-namespace:CareManagment.ViewModels"
+             xmlns:Converters="clr-namespace:CareManagment.Converters"
              xmlns:Views="clr-namespace:CareManagment.Views"
              StartupUri="MainWindow.xaml">
 
@@ -51,8 +52,8 @@
             <DataTemplate DataType="{x:Type ViewModels:StatisticsVM}">
                 <Views:StatisticsUC/>
             </DataTemplate>
-           
-           
+
+            <Converters:FullNameConverter x:Key="FullNameConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

@@ -15,7 +15,7 @@ namespace CareManagment.ViewModels
        
         public MainWindowVM()
         {
-            ((App)Application.Current).Currents.CurrentVM = new AdminMainVM();
+            ((App)Application.Current).Currents.CurrentVM = new LoginVM();
         }
         
     }
