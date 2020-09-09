@@ -10,10 +10,22 @@ namespace CareManagment.DP
     {
 
         public int Id { get; set; }
-        public User Volunteer { get; set; }
+        private User _volunteer;
+        public User Volunteer
+        {
+            get { return _volunteer; }
+            set { _volunteer = value; VolunterrId = _volunteer.Id; }
+        }
+        private User _admin;
+        public User Admin
+        {
+            get { return _admin; }
+            set { _admin = value; AdminId = _admin.Id; }
+        }
+        public int VolunterrId { get; set; }
         public List<Package> Packages { get; set; }
         public DateTime Date { get; set; }
-        public User Admin { get; set; }
+        public int AdminId { get; set; }
         public bool IsDelivered { get; set; }
         public Distribution(User volunteer, List<Package> packages, DateTime date, User admin, bool isDelivered)
         {
