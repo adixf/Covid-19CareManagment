@@ -8,25 +8,31 @@ namespace CareManagment.DP
 {
     public class Distribution
     {
-
         public int Id { get; set; }
-        private User _volunteer;
+        public bool IsDelivered { get; set; }
+        public DateTime Date { get; set; }
+
+        private User volunteer;
         public User Volunteer
         {
-            get { return _volunteer; }
-            set { _volunteer = value; VolunterrId = _volunteer.Id; }
+            get { return volunteer; }
+            set { volunteer = value; VolunteerId = volunteer.Id; }
         }
-        private User _admin;
+
+        private User admin;
         public User Admin
         {
-            get { return _admin; }
-            set { _admin = value; AdminId = _admin.Id; }
+            get { return admin; }
+            set { admin = value; AdminId = admin.Id; }
         }
-        public int VolunterrId { get; set; }
-        public List<Package> Packages { get; set; }
-        public DateTime Date { get; set; }
+
+        public int VolunteerId { get; set; }
         public int AdminId { get; set; }
-        public bool IsDelivered { get; set; }
+
+        public List<Package> Packages { get; set; }
+        
+        
+        
         public Distribution(User volunteer, List<Package> packages, DateTime date, User admin, bool isDelivered)
         {
             Admin = new User(admin.PersonId,admin.FirstName,admin.LastName,admin.PhoneNumber,admin.MailAddress,admin.Address,admin.Password,admin.UserType);
@@ -38,6 +44,7 @@ namespace CareManagment.DP
             //Admin = admin;
             IsDelivered = isDelivered;
         }
+
         public Distribution()
         {
 

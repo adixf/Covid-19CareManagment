@@ -78,7 +78,7 @@ namespace CareManagment.DAL
                     result = context.Distributions.ToList();
                 else
                 {
-                    result = context.Distributions.OfType<Distribution>().Where(predicate).ToList();
+                    result = context.Distributions.Include(d=> d.Admin).Include(d=>d.Volunteer).OfType<Distribution>().Where(predicate).ToList();
                 }
             }
             return result;

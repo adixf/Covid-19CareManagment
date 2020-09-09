@@ -72,6 +72,14 @@ namespace CareManagment.ViewModels
             }
         }
 
+        public ICommand DisplayOptionsView
+        {
+            get
+            {
+                return new BaseCommand(delegate () { CurrentAdminVM = new AdminOptionsVM(); });
+            }
+        }
+
         public ICommand SignOut
         {
             get

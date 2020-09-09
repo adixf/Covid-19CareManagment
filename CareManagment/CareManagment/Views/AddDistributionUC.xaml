@@ -22,10 +22,14 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
-        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignIconForegroundButton}">
+        
+        <!-- top bar -->
+        <Button Grid.Row="0" Grid.Column="3" Command="{Binding Path=DataContext.DisplayDistributionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignIconForegroundButton}"
+                materialDesign:RippleAssist.IsDisabled="True" Background="{x:Null}">
             <materialDesign:PackIcon Kind="ArrowForward" Foreground="White"/>
         </Button>
+        
         <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="הוספת חלוקה" FontSize="25" FontWeight="Bold" Foreground="White"></TextBlock>
 
@@ -38,7 +42,7 @@
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            <!-- top bar -->
+            
 
             <!-- date picker -->
             <TextBlock Grid.Row="0" Foreground="White" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Text="בחר תאריך"></TextBlock>

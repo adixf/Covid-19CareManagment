@@ -16,14 +16,13 @@
 
         <!-- top bar -->
 
-
         <Grid Grid.Row="0">
             <Grid.Background>
                 <ImageBrush Opacity="1" ImageSource="/CareManagment;component/Images/top-bg.jpg">
                 </ImageBrush>
             </Grid.Background>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                
+
                 <Ellipse Margin="10 0" Width="30" Height="30">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="/CareManagment;component/Images/user.png"></ImageBrush>
@@ -34,16 +33,24 @@
                     <TextBlock Margin="8 0" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Text="{Binding Path=Currents.LoggedUser.FirstName, Source={x:Static Application.Current}}"
                            FontSize="14" Foreground="White"></TextBlock>
-                   
+
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
                            Text="{Binding Path=Currents.LoggedUser.LastName, Source={x:Static Application.Current}}"
                            FontSize="14" Foreground="White"></TextBlock>
                 </StackPanel>
-                
+
             </StackPanel>
-            <Button Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}"
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button Margin="10 0 0 0" VerticalAlignment="Center"  Background="{x:Null}" BorderBrush="{x:Null}"
                     Content="התנתק" Command="{Binding SignOut}"
                     FontSize="12" Foreground="White"></Button>
+                <Button Command="{Binding DisplayOptionsView}"
+                    materialDesign:RippleAssist.IsDisabled="True" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Width="28" Kind="Home" Foreground="White"
+                                            ></materialDesign:PackIcon>
+                </Button>
+
+            </StackPanel>
 
         </Grid>
 
