@@ -22,5 +22,7 @@ namespace CareManagment.DP
 
         public string Password { get; set; }
         public UserType UserType { set; get; }
+
+        
     }
 }

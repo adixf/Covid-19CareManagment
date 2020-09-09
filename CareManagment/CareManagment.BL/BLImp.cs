@@ -60,5 +60,10 @@ namespace CareManagment.BL
         {
             throw new NotImplementedException();
         }
+
+        public void AddPackage(Package package)
+        {
+            IRepository.AddPackage(package);
+        }
     }
 }

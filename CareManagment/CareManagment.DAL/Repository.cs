@@ -78,7 +78,7 @@ namespace CareManagment.DAL
                     result = context.Distributions.ToList();
                 else
                 {
-                    result = context.Distributions.OfType<Distribution>().Where(predicate).ToList();
+                    result = context.Distributions.Include(s=>s.Admin).Include(s=>s.Volunteer).OfType<Distribution>().Where(predicate).ToList();
                 }
             }
             return result;
@@ -101,6 +101,34 @@ namespace CareManagment.DAL
             }
             return result;
            
+        }
+
+       public List<Package> GetAllPackages(Func<Package, bool> predicate = null)
+        {
+            List<Package> result = new List<Package>();
+            using (var context = new CareManagmentDb())
+            {
+                if (predicate == null)
+                {
+                    result = (from element in context.Packages.OfType<Package>()
+                              select element).ToList();
+                }
+                else
+                {
+                    result = context.Packages.Include(s=>s.Recipient).Include(s => s.Distribution).Where(predicate).ToList();
+                }
+
+            }
+            return result;
+        }
+
+        public void AddPackage(Package package)
+        {
+            using (var ctx = new CareManagmentDb())
+            {
+                ctx.Packages.Add(package);
+                ctx.SaveChanges();
+            }
         }
     }
 }

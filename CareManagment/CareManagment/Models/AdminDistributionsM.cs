@@ -18,12 +18,12 @@ namespace CareManagment.Models
 
         public AdminDistributionsM()
         {
+
             BL = new BLImp();
             OldDistributions = new List<Distribution>(BL.GetAllDistributions
-                (x => (BL.GetAllUsers(y=>y.Id==x.AdminId).First().MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && x.IsDelivered));
+                (x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && x.IsDelivered));
             NewDistributions = new List<Distribution>(BL.GetAllDistributions
-                (x => (BL.GetAllUsers(y => y.Id == x.AdminId).First().MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && !x.IsDelivered));
+                (x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && !x.IsDelivered));
         }   
-       
-    }
+     }
 }
