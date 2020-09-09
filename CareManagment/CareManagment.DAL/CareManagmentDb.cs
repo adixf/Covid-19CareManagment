@@ -13,7 +13,7 @@ namespace CareManagment.DAL
     {
         public CareManagmentDb():base("CareManagmentDb2020")
         {
-
+            
         }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Distribution> Distributions { get; set; }
