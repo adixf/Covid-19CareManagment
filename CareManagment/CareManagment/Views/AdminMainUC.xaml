@@ -30,12 +30,20 @@
                     </Ellipse.Fill>
                 </Ellipse>
                 <Separator Background="White" Width="2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                <TextBlock Margin="10,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="אריאל לביא"
+                <StackPanel Margin="10,0,20,0" Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <TextBlock Margin="8 0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="{Binding Path=Currents.LoggedUser.FirstName, Source={x:Static Application.Current}}"
                            FontSize="14" Foreground="White"></TextBlock>
-
+                   
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="{Binding Path=Currents.LoggedUser.LastName, Source={x:Static Application.Current}}"
+                           FontSize="14" Foreground="White"></TextBlock>
+                </StackPanel>
+                
             </StackPanel>
-            <Button Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Content="התנתק"
-                        FontSize="12" Foreground="White"></Button>
+            <Button Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}"
+                    Content="התנתק" Command="{Binding SignOut}"
+                    FontSize="12" Foreground="White"></Button>
 
         </Grid>
 

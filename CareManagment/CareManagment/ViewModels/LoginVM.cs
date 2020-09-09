@@ -1,4 +1,5 @@
 ﻿using CareManagment.Commands;
+using CareManagment.DP.Types;
 using CareManagment.Models;
 using System;
 using System.Collections.Generic;
@@ -54,8 +55,8 @@ namespace CareManagment.ViewModels
             }
             else
             {
-                Message = "הפרטים שהזנת אינם נכונים";
-                ShowMessage = true;
+                Message = new Message("אופס!", "הפרטים שהזנת לא תואמים למשתמש קיים" + "\n" + "אנא נסה שנית", true);
+                
             }
                 
         }

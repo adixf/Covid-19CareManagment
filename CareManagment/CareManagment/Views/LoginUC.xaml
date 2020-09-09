@@ -34,7 +34,7 @@
                 BorderThickness="15" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Image Stretch="Uniform"  Source="/CareManagment;component/Images/voluntary-service.png"></Image>
         </Border>
-        <TextBlock Style="{StaticResource textFont}" Grid.Row="2" Grid.ColumnSpan="3" Text="כניסה לחשבון"  FontSize="40" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
+        <TextBlock Style="{StaticResource textFont}" Grid.Row="2" Grid.ColumnSpan="3" Text="פורטל משתמשים"  FontSize="40" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
         <Grid Grid.Row="3" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -77,7 +77,7 @@
                 </Grid>
             </Border>
 
-            <Button Grid.Row="2" Background="#FFC66465" BorderThickness="0"
+            <Button Grid.Row="2" Background="#FFC66465" BorderThickness="0" 
                 Style="{StaticResource MaterialDesignRaisedDarkButton}" Command="{Binding LoginCommand}"
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="כניסה" />
@@ -101,19 +101,30 @@
             </Grid>
         </Grid>
 
-        <materialDesign:DialogHost CloseOnClickAway="True" FlowDirection="RightToLeft" IsOpen="{Binding ShowMessage}">
+        <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="5" CloseOnClickAway="True" FlowDirection="RightToLeft"
+                                   IsOpen="{Binding Message.IsOpen}">
             <materialDesign:DialogHost.DialogContent>
-                <StackPanel>
-                    <TextBlock Text="{Binding Message}" FontSize="15"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0">
-                            חזור בכל זאת
-                        </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
-                            ביטול
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
+                <Grid Height="200" Width="300">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.5*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2.5*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <materialDesign:PackIcon Grid.Row="0" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                             Kind="EmoticonSadOutline" Foreground="DarkRed"></materialDesign:PackIcon>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Message.Header}" FlowDirection="RightToLeft"
+                               TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Message.Content}"
+                               TextAlignment="Center" FontSize="15"/>
+                        <Grid Grid.Row="3" Background="#FFBD515A" Opacity="1">
+                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatButton}"
+                            IsDefault="True" Command="materialDesign:DialogHost.CloseDialogCommand"
+                                Foreground="White">
+                                אישור
+                            </Button>
+                        </Grid>
+                    </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 

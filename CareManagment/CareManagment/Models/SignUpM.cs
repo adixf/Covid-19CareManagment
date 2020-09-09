@@ -20,6 +20,8 @@ namespace CareManagment.Models
 
         public void SignUp(User user)
         {
+            if (new Tools.VerifyString().ArePropertiesNull<User>(user))
+                throw new Exception("אנא מלא את כל השדות");
             if (BL.GetAllUsers(x => x.MailAddress == user.MailAddress).Count != 0)
                 throw new Exception("המשתמש כבר קיים במערכת");
             if (!new Tools.VerifyAddress().IsValidAddress())

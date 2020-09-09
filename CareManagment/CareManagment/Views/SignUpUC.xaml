@@ -62,7 +62,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="6*"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
@@ -216,26 +216,44 @@
                 <TextBlock Text="הירשם" />
             </Button>
 
-      
-
-            <materialDesign:DialogHost CloseOnClickAway="True" FlowDirection="RightToLeft" IsOpen="{Binding ShowMessage}">
-                <materialDesign:DialogHost.DialogContent>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Message}" FontSize="15"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
-                                הכנס שוב
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0" Command="{Binding DisplayLoginView}">
-                                חזור לכניסה
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </materialDesign:DialogHost.DialogContent>
-            </materialDesign:DialogHost>
-
+           
 
 
         </Grid>
+        <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="4" CloseOnClickAway="True" FlowDirection="RightToLeft"
+                                   IsOpen="{Binding Message.IsOpen}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Height="200" Width="300">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2.5*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                             Kind="EmoticonSadOutline" Foreground="DarkRed"></materialDesign:PackIcon>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Message.Header}" FlowDirection="RightToLeft"
+                               TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Message.Content}"
+                               TextAlignment="Center" FontSize="15"/>
+                    <Grid Grid.Row="3" Background="#FFBD515A" Opacity="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatButton}"
+                            IsDefault="True" Command="materialDesign:DialogHost.CloseDialogCommand"
+                                Foreground="White">
+                            נסה שוב
+                        </Button>
+                        <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatButton}"
+                            IsDefault="True" Command="{Binding DisplayLoginView}"
+                                Foreground="White">
+                            חזור לכניסה
+                        </Button>
+                    </Grid>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
     </Grid>
 </UserControl>
