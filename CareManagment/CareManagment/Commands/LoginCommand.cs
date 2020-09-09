@@ -17,7 +17,6 @@ namespace CareManagment.Commands
         // current vm using command
         public LoginVM CurrentVM { get; set; }
 
-  
         public LoginCommand(LoginVM LoginVM)
         {
             CurrentVM = LoginVM;
@@ -34,15 +33,10 @@ namespace CareManagment.Commands
             return true;
         }
 
+
         public void Execute(object parameter)
         {
-            if (CurrentVM.ValidUser(CurrentVM.Email, CurrentVM.Password))
-              {
-                ((App)Application.Current).LoggedUser = CurrentVM.CurrentModel.BL.GetAllUsers(x => x.MailAddress == CurrentVM.Email).First();
-              }
-             else
-                CurrentVM.ShowMessage = true;
-             
+            CurrentVM.Login();           
         }
     }
 }

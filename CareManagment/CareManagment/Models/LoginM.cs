@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CareManagment.BL.Interfaces;
 using CareManagment.BL;
+using System.Collections.ObjectModel;
 using CareManagment.DP;
 
 namespace CareManagment.Models
@@ -12,22 +13,26 @@ namespace CareManagment.Models
     public class LoginM
     {
         public IBL BL { get; set; }
-        public List<User> users { get; set; }
+
+        public ObservableCollection<User> Users { get; set; }
 
         public LoginM()
         {
             BL= new BLImp();
-            users = new List<User>();
-            users = BL.GetAllUsers();
+            Users = new ObservableCollection<User>(BL.GetAllUsers());
         }
 
         public bool ValidUser(string email, string password)
         {
-            foreach (var v in users)
-                if (v.MailAddress == email && v.Password == password)
+            foreach (var user in Users)
+                if (user.MailAddress == email && user.Password == password)
                     return true;
             return false;
-            //return BL.ValidUser(email, password);
+        }
+
+        public User GetUser(string email)
+        {
+            return Users.First(x => x.MailAddress == email);
         }
     }
 

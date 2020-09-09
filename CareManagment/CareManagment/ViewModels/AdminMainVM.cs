@@ -1,4 +1,5 @@
 ﻿using CareManagment.Commands;
+using CareManagment.DP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,14 @@ namespace CareManagment.ViewModels
             get
             {
                 return new BaseCommand(delegate () { CurrentAdminVM = new StatisticsVM(); });
+            }
+        }
+
+        public ICommand DisplayAddDistributionView
+        {
+            get
+            {
+                return new BaseCommand(delegate () { CurrentAdminVM = new AddDistributionVM(); });
             }
         }
 

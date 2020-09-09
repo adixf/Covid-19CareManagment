@@ -1,5 +1,6 @@
 ﻿using CareManagment.BL;
 using CareManagment.BL.Interfaces;
+using CareManagment.DP;
 using CareManagment.ViewModels;
 using CareManagment.Views;
 using System;
@@ -30,12 +31,16 @@ namespace CareManagment
             InitializeComponent();
 
             DataContext = new MainWindowVM();
-            //IBL v = new BLImp();
-           // var t = v.GetAllUsers();
-              // foreach (var ele in t)
-              //  MessageBox.Show(ele.FirstName);
-           // v.AddPerson(new DP.User("209425602", "hahaha", "fgf", "0546867152", "nana@gmail.com", new DP.Address("bet ", "hgh", 1),"209425602",UserType.Volunteer));
+            var v = new BL.BLImp();
+            /* v.AddDistribution(new Distribution(
+                 new User("209425602", "r", "h", "0545581921", "rachelibs1212@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now, new User("209425602", "r", "h", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
 
+             v.AddDistribution(new Distribution(
+       new User("209425602", "r", "h", "0545581921", "rachelibs1277@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now, new User("209425602", "r", "h", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), true));
+
+             v.AddDistribution(new Distribution(
+       new User("209425602", "r", "h", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now, new User("209425602", "r", "h", "0545581921", "rachelibs11112@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), true));
+         }*/
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CareManagment.DP;
+using CareManagment.Tools;
 using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,20 +18,11 @@ namespace CareManagment
     /// </summary>
     public partial class App : Application
     { 
-        public void OnPropertyRaised(string propertyname)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
-        }
-        public User LoggedUser { get; set; }
-        private BaseViewModel currentViewModel;
-        public BaseViewModel CurrentViewModel { get { return currentViewModel; }
-            set { currentViewModel = value;
-                OnPropertyRaised("CurrentViewModel"); } }
+       public Currents Currents { get; set; }
+        
         public App()
         {
-            CurrentViewModel = new LoginVM();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+            Currents = new Currents();
+        }        
     }
 }

@@ -205,16 +205,35 @@
 
 
             <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
-                <RadioButton IsChecked="{Binding isAdmin}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מנהל" FontSize="16" Foreground="White"/>
-                <RadioButton IsChecked="{Binding isVolunteer}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מתנדב" FontSize="16" Foreground="White"/>
+                <RadioButton IsChecked="{Binding IsAdmin}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מנהל" FontSize="16" Foreground="White"/>
+                <RadioButton IsChecked="{Binding IsVolunteer}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מתנדב" FontSize="16" Foreground="White"/>
             </StackPanel>
-           
 
-            <Button Grid.Row="7" Background="#FFC66465" BorderThickness="0"
+
+            <Button Grid.Row="7" Background="#FFC66465" BorderThickness="0" Command="{Binding SignUpCommand}"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="הירשם" />
             </Button>
+
+      
+
+            <materialDesign:DialogHost CloseOnClickAway="True" FlowDirection="RightToLeft" IsOpen="{Binding ShowMessage}">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Message}" FontSize="15"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Command="materialDesign:DialogHost.CloseDialogCommand">
+                                הכנס שוב
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0" Command="{Binding DisplayLoginView}">
+                                חזור לכניסה
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+
 
 
         </Grid>

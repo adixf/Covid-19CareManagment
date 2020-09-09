@@ -18,6 +18,12 @@ namespace CareManagment.DP
             this.Street = Street;
             this.BuildingNumber = BuildingNumber;
         }
+        public Address(Address address)
+        {
+            this.City = address.City;
+            this.Street = address.Street;
+            this.BuildingNumber = address.BuildingNumber;
+        }
         public Address()
         {
           
