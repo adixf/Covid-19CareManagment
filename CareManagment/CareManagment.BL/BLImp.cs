@@ -41,10 +41,7 @@ namespace CareManagment.BL
             return IRepository.GetAllUsers(predicate);
         }
 
-        public JsonAddress GetAddressDetails(Address address)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null)
         {
@@ -56,11 +53,6 @@ namespace CareManagment.BL
             IRepository.UpdatePerson(person);
         }
 
-        public bool ValidUser(string userName, string password)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddPackage(Package package)
         {
             IRepository.AddPackage(package);
@@ -69,6 +61,17 @@ namespace CareManagment.BL
         public void UpdateDistribution(Distribution distribution)
         {
             IRepository.UpdateDistribution(distribution);
+        }
+
+        public bool ValidUser(string userName, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public JsonAddress GetAddressDetails(Address address)
+        {
+            return IRepository.GetAddressDetails(address);
         }
     }
 }

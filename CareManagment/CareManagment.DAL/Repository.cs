@@ -17,15 +17,18 @@ namespace CareManagment.DAL
             WebRequest webRequest = new WebRequest();
             Object o = new object();
             var addressRequests = address.Street + " " + address.BuildingNumber + " " + address.City;
-            var url = @"https://eu1.locationiq.com/v1/search.php?key=e60fc76d273537&q=" + addressRequests + "&format=json";
+            var url = @"https://eu1.locationiq.com/v1/search.php?key=e60fc76d273537&accept-language=he&q=" + addressRequests + "&format=json";
             var requests = webRequest.PostCallAPI(url, o);
             var parseJson = JArray.Parse(requests.ToString());
             var Jaddress = new JsonAddress();
             Jaddress.Latitude = parseJson[0]["lat"].ToString();
             Jaddress.Longitude = parseJson[0]["lon"].ToString();
+            Jaddress.Description = parseJson[0]["display_name"].ToString();
             return Jaddress;
         }
-        public void AddPerson(Person person)
+    
+
+    public void AddPerson(Person person)
         {
             using (var ctx = new CareManagmentDb())
             {

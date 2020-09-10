@@ -2,8 +2,10 @@
 using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -17,12 +19,13 @@ namespace CareManagment.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-
+        public BackgroundWorker CheckDistributionBW;
         public IUpdateCollection CurrentVM { get; set; }
 
         public UpdateCollectionCommand(IUpdateCollection vm)
         {
             CurrentVM = vm;
+            
         }
 
         public bool CanExecute(object parameter)
@@ -32,7 +35,22 @@ namespace CareManagment.Commands
 
         public void Execute(object parameter)
         {
-          CurrentVM.CollectionChanged(parameter);
+            CheckDistributionBW = new BackgroundWorker();            
+            CheckDistributionBW.DoWork += Wait;
+            CheckDistributionBW.RunWorkerCompleted += DoneWaiting;
+            CheckDistributionBW.RunWorkerAsync(parameter);
+           
+        }
+
+        private void Wait(object sender, DoWorkEventArgs e)
+        {
+            e.Result = e.Argument;
+            Thread.Sleep(300);
+        }
+
+        private void DoneWaiting(object sender, RunWorkerCompletedEventArgs e)
+        {
+            CurrentVM.CollectionChanged(e.Result);
         }
     }
 }

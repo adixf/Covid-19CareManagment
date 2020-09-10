@@ -216,8 +216,7 @@
                 <TextBlock Text="הירשם" />
             </Button>
 
-           
-
+          
 
         </Grid>
         <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="4" CloseOnClickAway="True" FlowDirection="RightToLeft"
