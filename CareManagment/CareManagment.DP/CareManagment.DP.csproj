@@ -48,6 +48,7 @@
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recipient.cs" />
+    <Compile Include="Types\Message.cs" />
     <Compile Include="Types\PkgType.cs" />
     <Compile Include="Types\UserType.cs" />
     <Compile Include="User.cs" />

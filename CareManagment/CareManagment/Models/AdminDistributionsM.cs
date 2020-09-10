@@ -13,17 +13,33 @@ namespace CareManagment.Models
     class AdminDistributionsM
     {
         public IBL BL { get; set; }
-        public List<Distribution> OldDistributions { get; set; }
-        public List<Distribution> NewDistributions { get; set; }
+
+        public List<Distribution> OldDistributions
+        {
+            get;
+            set;
+        }
+
+        public List<Distribution> NewDistributions
+        {
+            get;
+            set;
+        }
 
         public AdminDistributionsM()
         {
-
             BL = new BLImp();
-            OldDistributions = new List<Distribution>(BL.GetAllDistributions
-                (x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && x.IsDelivered));
-            NewDistributions = new List<Distribution>(BL.GetAllDistributions
-                (x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && !x.IsDelivered));
+
+            OldDistributions = new List<Distribution>(BL.GetAllDistributions(x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && x.IsDelivered).ToList());
+            NewDistributions = new List<Distribution>(BL.GetAllDistributions(x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && !x.IsDelivered).ToList());
+                
         }   
+
+        public List<Distribution> GetAllDistributions()
+        {
+            var listDistributions = new List<Distribution>(OldDistributions);
+            listDistributions.AddRange(NewDistributions);
+            return listDistributions;
+        }
      }
 }

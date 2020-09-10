@@ -10,6 +10,11 @@ namespace CareManagment.Tools
 {
     public class VerifyString
     {
+        public bool ArePropertiesNull<T>(T obj)
+        {
+            return typeof(T).GetProperties().Any(propertyInfo => propertyInfo.GetValue(obj) == null);
+        }
+
         public bool IsVaildEmail(string emailaddress)
         {
             if (emailaddress.Length < 1)
@@ -50,7 +55,7 @@ namespace CareManagment.Tools
 
         public bool IsValidName(string name)
         {
-            return Regex.IsMatch(name, @"^[a-zA-Z]+$");
+            return Regex.IsMatch(name, @"^\s*[א-ת]+(?:\s+[א-ת]+)*\s*$");
         }
 
         public bool IsValidPassword(string password)

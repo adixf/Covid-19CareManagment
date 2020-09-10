@@ -1,5 +1,6 @@
 ﻿using CareManagment.Commands;
 using CareManagment.DP;
+using CareManagment.DP.Types;
 using CareManagment.Models;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace CareManagment.ViewModels
         private string phoneNumber;
         public string PhoneNumber   
         {
-            get { return personId; }
+            get { return phoneNumber; }
             set
             {
 
@@ -63,7 +64,7 @@ namespace CareManagment.ViewModels
         private string password;
         public string Password
         {
-            get { if (password == null) return password; else return "********"; }
+            get { return password; }
             set
             {
                 if (new Tools.VerifyString().IsValidPassword(value)) password = value;
@@ -142,17 +143,20 @@ namespace CareManagment.ViewModels
                 userType = UserType.Admin;
             else
                 userType = UserType.Volunteer;
-            User user = new User(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)), Password, userType);
+         
             try
             {
+                if (PersonId == null || FirstName == null || LastName == null || PhoneNumber == null || MailAddress == null || City == null || StreetName == null || buildingNumber == null || Password == null)
+                    throw new Exception("אנא מלא את כל השדות");
+
+                User user = new User(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)), Password, userType);
                 SignUpModel.SignUp(user);
-                Message = "נוספת למערכת בהצלחה";
-                ShowMessage = true;
+
+                Message = new Message("ברוך הבא!", "נוספת למערכת בהצלחה", true);
             }
             catch(Exception e)
             {
-                Message = e.Message;
-                ShowMessage = true;
+                Message = new Message("משהו השתבש.", e.Message, true);
             }
            
         }

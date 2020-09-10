@@ -33,16 +33,17 @@ namespace CareManagment
             DataContext = new MainWindowVM();
             var v = new BL.BLImp();
             v.AddDistribution(new Distribution(
-                 new User("209425602", "r", "h", "0545581921", "rachelibs1212@gmail.com", 
+                 new User("209425602", "נעמה", "שנברגר", "0545581921", "rachelibs1212@gmail.com", 
                  new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), 
-                 new List<Package>(), DateTime.Now, new User("209425602", "r", "h", "0545581921", "x@gmail.com", 
+                 new List<Package>(), DateTime.Now.Date,
+                 new User("209425602", "רחלי", "כהן", "0545581921", "x@gmail.com", 
                  new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
 
              v.AddDistribution(new Distribution(
-       new User("209425602", "r", "h", "0545581921", "rachelibs1277@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now, new User("209425602", "r", "h", "0545581921", "x@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), true));
+       new User("209425602", "מרדכי", "אסולין", "0545581921", "rachelibs1277@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now.Date, new User("209425602", "שירה", "פוקס", "0545581921", "x@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
 
              v.AddDistribution(new Distribution(
-       new User("209425602", "r", "h", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now, new User("209425602", "r", "h", "0545581921", "x@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), true));
+       new User("209425602", "יוסף", "גולד", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now.Date, new User("209425602", "יעקב", "אבינו", "0545581921", "x@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
          
          
         }

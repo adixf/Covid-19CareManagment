@@ -23,12 +23,12 @@
             <Button Command="{Binding DisplayContactUsView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="צור קשר" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
             <Button Command="{Binding DisplayAboutUsView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="קצת עלינו" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
             <Button Command="{Binding DisplayLoginView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="כניסה" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
-            <Rectangle Width="10" Fill="Transparent"></Rectangle>
+            <Rectangle Width="8" Fill="Transparent"></Rectangle>
             <Border BorderBrush="Transparent" Background="Transparent"
                 BorderThickness="8" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Image Width="35" Height="35" Source="/CareManagment;component/Images/give-love.png"></Image>
             </Border>
-            <Rectangle Width="15" Fill="Transparent"></Rectangle>
+            <Rectangle Width="3" Fill="Transparent"></Rectangle>
             <TextBlock Style="{StaticResource textFont}" Foreground="White" Text="יד ביד" FontSize="30" FontWeight="DemiBold" VerticalAlignment="Center" />
             <Rectangle Fill="Transparent" Width="20"></Rectangle>
         </StackPanel>

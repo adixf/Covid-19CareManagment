@@ -1,5 +1,6 @@
 ﻿using CareManagment.Commands;
 using CareManagment.DP;
+using CareManagment.DP.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace CareManagment.ViewModels
 
         public BaseViewModel()
         {
-            ShowMessage = false;
+            
         }
 
         #region commands 
@@ -61,19 +62,10 @@ namespace CareManagment.ViewModels
 
         #endregion
 
-        private bool showMessage;
-        public bool ShowMessage
-        {
-            get { return showMessage; }
-            set
-            {
-                showMessage = value;
-                OnPropertyRaised("ShowMessage");
-            }
-        }
+        
 
-        private string message;
-        public string Message
+        private Message message;
+        public Message Message
         {
             get { return message; }
             set

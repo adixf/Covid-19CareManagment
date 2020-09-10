@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CareManagment.ViewModels
@@ -21,6 +22,7 @@ namespace CareManagment.ViewModels
                 OnPropertyRaised("CurrentAdminVM");
             }
         }
+
 
         public AdminMainVM()
         {
@@ -66,11 +68,30 @@ namespace CareManagment.ViewModels
         {
             get
             {
-                return new BaseCommand(delegate () { CurrentAdminVM = new AddDistributionVM(); });
+                return new BaseCommand(delegate () { CurrentAdminVM = new AddDistributionVM();});
             }
         }
 
+        public ICommand DisplayOptionsView
+        {
+            get
+            {
+                return new BaseCommand(delegate () { CurrentAdminVM = new AdminOptionsVM(); });
+            }
+        }
 
+        public ICommand SignOut
+        {
+            get
+            {
+                return new BaseCommand(delegate ()
+                {
+                    ((App)Application.Current).Currents.LoggedUser = null;
+                    ((App)Application.Current).Currents.CurrentVM = new LoginVM();
+                });
+            }
+        }
+      
         #endregion
     }
 }
