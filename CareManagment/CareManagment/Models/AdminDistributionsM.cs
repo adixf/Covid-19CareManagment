@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace CareManagment.Models
 {
-    class AdminDistributionsM
+    public class AdminDistributionsM
     {
         public IBL BL { get; set; }
 
@@ -35,11 +35,17 @@ namespace CareManagment.Models
                 
         }   
 
-        public List<Distribution> GetAllDistributions()
+       /* public List<Distribution> GetAllDistributions()
         {
             var listDistributions = new List<Distribution>(OldDistributions);
             listDistributions.AddRange(NewDistributions);
             return listDistributions;
+        }*/
+        public void SaveChanges(List<Distribution> distributions)
+        {
+            foreach (var element in distributions)
+                BL.UpdateDistribution(element);
+
         }
-     }
+    }
 }

@@ -130,6 +130,20 @@ namespace CareManagment.DAL
                 ctx.SaveChanges();
             }
         }
+
+        public void UpdateDistribution(Distribution distribution)
+        {
+            using (var context = new CareManagmentDb())
+            {
+                var old = context.Distributions.Find(distribution.Id);
+                old.Admin = distribution.Admin;
+                old.Volunteer = distribution.Volunteer;
+                old.IsDelivered = distribution.IsDelivered;
+                old.Packages = distribution.Packages;
+                old.Date = distribution.Date;
+                context.SaveChanges();
+            }
+        }
     }
 }
 

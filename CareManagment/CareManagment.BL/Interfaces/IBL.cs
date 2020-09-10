@@ -13,6 +13,7 @@ namespace CareManagment.BL.Interfaces
         void AddPerson(Person person);
         void AddPackage(Package package);
         void UpdatePerson(Person person);
+        void UpdateDistribution(Distribution distribution);
         List<Person> GetAllPersons(Func<Person, bool> predicate = null);
         List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null);
         List<User> GetAllUsers(Func<User, bool> predicate = null);

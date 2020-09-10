@@ -40,10 +40,10 @@ namespace CareManagment
                  new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
 
              v.AddDistribution(new Distribution(
-       new User("209425602", "מרדכי", "אסולין", "0545581921", "rachelibs1277@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now.Date, new User("209425602", "שירה", "פוקס", "0545581921", "x@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
+       new User("209425602", "מרדכי", "אסולין", "0545581921", "rachelibs1277@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now.Date, new User("209425602", "שירה", "פוקס", "0545581921", "x123@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
 
              v.AddDistribution(new Distribution(
-       new User("209425602", "יוסף", "גולד", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now.Date, new User("209425602", "יעקב", "אבינו", "0545581921", "x@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
+       new User("209425602", "יוסף", "גולד", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now.Date, new User("209425602", "יעקב", "אבינו", "0545581921", "x1234@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
          
          
         }

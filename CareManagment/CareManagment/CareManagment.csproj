@@ -86,11 +86,13 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AddDistribution.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\SaveChangesCommand.cs" />
     <Compile Include="Commands\UpdateCollectionCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\SignUpCommand.cs" />
     <Compile Include="Converters\FullNameConverter.cs" />
     <Compile Include="Interfaces\IDeliverDistributions.cs" />
+    <Compile Include="Interfaces\ISaveChanges.cs" />
     <Compile Include="Models\AdminDistributionsM.cs" />
     <Compile Include="Models\LoginM.cs" />
     <Compile Include="Models\SignUpM.cs" />

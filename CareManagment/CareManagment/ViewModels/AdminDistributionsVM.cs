@@ -12,10 +12,11 @@ using System.Windows.Input;
 
 namespace CareManagment.ViewModels
 {
-    class AdminDistributionsVM : BaseViewModel, IUpdateCollection
+    public class AdminDistributionsVM : BaseViewModel, IUpdateCollection
     {
         public AdminDistributionsM AdminDistributionsM { get; set; }
 
+        public List<Distribution> DistributionsToUpdate { set; get; }
 
         public ObservableCollection<Distribution> NewDistributions { get; set; }
 
@@ -27,13 +28,16 @@ namespace CareManagment.ViewModels
         
 
         public ICommand UpdateCollection { get { return new UpdateCollectionCommand(this); } }
-   
+        public ICommand SaveChangesCommand { get { return new SaveChangesCommand(this); } }
+
+
         public AdminDistributionsVM()
         {
             AdminDistributionsM = new AdminDistributionsM();
 
             OldDistributions = new ObservableCollection<Distribution>(AdminDistributionsM.OldDistributions);
             NewDistributions = new ObservableCollection<Distribution>(AdminDistributionsM.NewDistributions);
+            DistributionsToUpdate = new List<Distribution>();
            
         }
 
@@ -44,6 +48,7 @@ namespace CareManagment.ViewModels
             List<Distribution> AllDistributions = new List<Distribution>(OldDistributions);
             AllDistributions.AddRange(NewDistributions);
             Distribution distribution = AllDistributions.Find(x => x.Id == Id);
+            DistributionsToUpdate.Add(distribution);
             if (distribution.IsDelivered)
             {
                 NewDistributions.Remove(distribution);
@@ -55,6 +60,12 @@ namespace CareManagment.ViewModels
                 OldDistributions.Remove(distribution);
 
             }
+        }
+        public void SaveChanges()
+        {
+            AdminDistributionsM.SaveChanges(DistributionsToUpdate);
+            DistributionsToUpdate.Clear();
+
         }
     }
 }

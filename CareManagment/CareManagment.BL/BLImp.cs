@@ -65,5 +65,10 @@ namespace CareManagment.BL
         {
             IRepository.AddPackage(package);
         }
+
+        public void UpdateDistribution(Distribution distribution)
+        {
+            IRepository.UpdateDistribution(distribution);
+        }
     }
 }
