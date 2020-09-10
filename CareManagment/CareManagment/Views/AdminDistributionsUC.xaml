@@ -68,9 +68,6 @@
                                                 <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
                                             </StackPanel>
                                         </Button>
-
-                                        
-
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -80,12 +77,19 @@
 
             </materialDesign:Card>
             <Label Grid.Row="2" Margin="0,0,40,0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">חלוקות קודמות</Label>
+            <Button Grid.Row="2" Margin="20 0" HorizontalAlignment="Left" Width="150" Command="{Binding SaveChangesCommand}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="Gray">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Foreground="White" Text="שמור שינויים"></TextBlock>
+                    <materialDesign:PackIcon Kind="KeyVariant"></materialDesign:PackIcon>
+                </StackPanel>
+            </Button>
             <materialDesign:Card Background="LightGray" Grid.Row="3" Margin="10" UniformCornerRadius="20">
                 <ListView Name="oldDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                           ItemsSource="{Binding OldDistributions}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth4" CornerRadius="15" BorderThickness="2" BorderBrush="LightGray" Background="White">
+                            <Border Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth4" CornerRadius="15" BorderThickness="2" BorderBrush="LightGray" >
                                 <Grid HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
@@ -95,11 +99,19 @@
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <CheckBox IsEnabled="False" IsChecked="True" Foreground="Black" Grid.Column="1" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}" VerticalAlignment="Center">
+                                    <CheckBox IsChecked="{Binding IsDelivered}" Foreground="Black" Grid.Column="1" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}" VerticalAlignment="Center"
+                                              Command="{Binding DataContext.UpdateCollection, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding Id}">
                                         החלוקה בוצעה
                                     </CheckBox>
-                                    <TextBlock Grid.Column="3" Text="24.10.20" VerticalAlignment="Center"/>
-                                    <TextBlock Grid.Column="2" Text="מתנדב אחראי: יונתן קדם" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                                        <TextBlock.Text>
+                                            <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
+                                                <Binding Path="Volunteer.FirstName"/>
+                                                <Binding Path="Volunteer.LastName"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
 
                                     <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="4" Background="{x:Null}" BorderBrush="LightGray">
                                         <StackPanel Orientation="Horizontal">
@@ -113,7 +125,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </materialDesign:Card>
-            <Button Content="Button" HorizontalAlignment="Left" Command="{Binding SaveChangesCommand}" Margin="207,17.667,0,0" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" Width="75"/>
+           
         </Grid>
     </Grid>
 </UserControl>

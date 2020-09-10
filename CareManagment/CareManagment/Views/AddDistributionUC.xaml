@@ -19,22 +19,23 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         
         <!-- top bar -->
-        <Button Grid.Row="0" Grid.Column="3" Command="{Binding Path=DataContext.DisplayDistributionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+        <Button Grid.Row="0" Grid.Column="4" Command="{Binding Path=DataContext.DisplayDistributionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
                 HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignIconForegroundButton}"
                 materialDesign:RippleAssist.IsDisabled="True" Background="{x:Null}">
             <materialDesign:PackIcon Kind="ArrowForward" Foreground="White"/>
         </Button>
         
-        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource textFont}"
+        <TextBlock Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="הוספת חלוקה" FontSize="25" FontWeight="Bold" Foreground="White"></TextBlock>
 
         <!-- right side -->
-        <Grid Grid.Column="2" Grid.Row="1">
+        <Grid Grid.Column="3" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="2*"/>
@@ -57,13 +58,13 @@
             <CheckBox Name="checkAll" Grid.Row="2" Style="{StaticResource MaterialDesignFilterChipCheckBox}" Content="בחר הכל"
                    HorizontalAlignment="Left" Foreground="White" FontSize="14" Background="White"></CheckBox>
             <materialDesign:Card Grid.Row="3" Grid.Column="2" UniformCornerRadius="20">
-                <ListView Name="packagesList" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                      ItemsSource="{Binding Volunteers}">
+                <ListView Name="packagesList" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" SelectionMode="Multiple"
+                      ItemsSource="{Binding Recipients}" >
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-
-                            <Grid Height="30" HorizontalAlignment="Stretch">
+                            
+                                <Grid Height="30" HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
@@ -83,7 +84,7 @@
                                     <ComboBoxItem>משחקים</ComboBoxItem>
                                 </ComboBox>
                                 <ToggleButton Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" 
-                                              Background="#FFC66465">
+                                              Background="#FFC66465" Command="{Binding AddRecipient}">
                                     <ToggleButton.Style>
                                         <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
                                             <Style.Triggers>
@@ -115,22 +116,22 @@
       
         <!-- left grid -->
 
-        <Grid Grid.Column="1" Visibility="Visible">
+        <Grid Grid.Column="1" Grid.RowSpan="2" Visibility="{Binding IsDistributionReady, Converter={StaticResource BoolToVisConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="RightToLeft" Text="הנה החלוקות שיצרנו:"></TextBlock>
-            <materialDesign:Card Grid.Row="1" UniformCornerRadius="20" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <materialDesign:Card Grid.Row="1" Background="White" UniformCornerRadius="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
                 <ListView HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Distributions}">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
 
-                            <Grid Height="30" HorizontalAlignment="Stretch">
+                            <Grid Height="30" HorizontalAlignment="Stretch" FlowDirection="RightToLeft">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
@@ -139,16 +140,20 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="5" HorizontalAlignment="Center" Text="{Binding FirstName}"></TextBlock>
-                                <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="{Binding LastName}"></TextBlock>
-                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding Address}"></TextBlock>
-                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
-                                <ComboBox Grid.Column="1">
-                                    <ComboBoxItem>מזון</ComboBoxItem>
-                                    <ComboBoxItem>תרופות</ComboBoxItem>
-                                    <ComboBoxItem>בגדים</ComboBoxItem>
-                                    <ComboBoxItem>משחקים</ComboBoxItem>
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Id}"></TextBlock>
+                                <TextBlock Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
+                                            <Binding Path="Volunteer.FirstName"/>
+                                            <Binding Path="Volunteer.LastName"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <ComboBox ItemsSource="{Binding Packages}">
+                                    
                                 </ComboBox>
+                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
+                                
                                 <ToggleButton Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" 
                                               Background="#FFC66465">
                                     <ToggleButton.Style>

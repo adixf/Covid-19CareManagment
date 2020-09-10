@@ -52,7 +52,7 @@
             <DataTemplate DataType="{x:Type ViewModels:StatisticsVM}">
                 <Views:StatisticsUC/>
             </DataTemplate>
-
+            <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
             <Converters:FullNameConverter x:Key="FullNameConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

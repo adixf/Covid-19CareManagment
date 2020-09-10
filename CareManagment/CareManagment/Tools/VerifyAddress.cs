@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CareManagment.BL;
+using CareManagment.DP;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace CareManagment.Tools
 {
     class VerifyAddress
     {
-        public bool IsValidAddress()
+        public bool IsValidAddress(Address address)
         {
-            return true;
+            JsonAddress AddressDetails = new BLImp().GetAddressDetails(address);
+            return AddressDetails.Description.Contains(address.Street) && AddressDetails.Description.Contains(address.City);
         }
+        
+
     }
 }

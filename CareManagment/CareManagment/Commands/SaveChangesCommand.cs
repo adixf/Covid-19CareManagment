@@ -15,7 +15,9 @@ namespace CareManagment.Commands
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
+
         public AdminDistributionsVM CurrentVM { set; get; }
+
         public SaveChangesCommand(AdminDistributionsVM VM)
         {
             CurrentVM = VM;

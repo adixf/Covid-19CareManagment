@@ -35,12 +35,7 @@ namespace CareManagment.Models
                 
         }   
 
-       /* public List<Distribution> GetAllDistributions()
-        {
-            var listDistributions = new List<Distribution>(OldDistributions);
-            listDistributions.AddRange(NewDistributions);
-            return listDistributions;
-        }*/
+
         public void SaveChanges(List<Distribution> distributions)
         {
             foreach (var element in distributions)
