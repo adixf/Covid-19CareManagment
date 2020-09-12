@@ -8,14 +8,17 @@ namespace CareManagment.DP.Types
 {
     public class Message
     {
-        public Message(string header, string content, bool isOpen)
+        public Message(string header, string content, bool isSuccess, bool isError)
         {
             Header = header;
             Content = content;
-            IsOpen = isOpen;
+            IsSuccess = isSuccess;
+            IsError = isError;
+            
         }
         public string Header { get; set; }
         public string Content { get; set; }
-        public bool IsOpen { get; set; }
+        public bool IsSuccess { get; set; }
+        public bool IsError { get; set; }
     }
 }

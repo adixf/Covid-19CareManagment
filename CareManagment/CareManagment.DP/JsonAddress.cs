@@ -8,12 +8,10 @@ namespace CareManagment.DP
 {
     public class JsonAddress
     {
-        public string Description { get; set; }
+        public string DisplayName { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Id { get; set; }
-        public string Osm_id { get; set; }
-        public string Osm_type { get; set; }
-        public List<string> Bondingbox { get; set; }
+        
     }
 }

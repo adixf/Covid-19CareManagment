@@ -52,6 +52,7 @@
                                  materialDesign:HintAssist.Hint="שם משפחה" 
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding LastName, Mode=TwoWay, ValidatesOnExceptions=True}">
                         </TextBox>
                      
@@ -69,6 +70,7 @@
                                  materialDesign:HintAssist.Hint="שם פרטי" 
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding FirstName, Mode=TwoWay, ValidatesOnExceptions=True}">
                         </TextBox>
                         <materialDesign:PackIcon Grid.Column="2" Kind="UserAdd" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -87,6 +89,7 @@
                                  materialDesign:HintAssist.Hint="תעודת זהות" 
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding PersonId, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
@@ -105,6 +108,7 @@
                                  materialDesign:HintAssist.Hint="מספר טלפון"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding PhoneNumber, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
@@ -122,6 +126,7 @@
                                  materialDesign:HintAssist.Hint="כתובת מייל"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding MailAddress, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
@@ -145,6 +150,7 @@
                                  materialDesign:HintAssist.Hint="מס בית"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding BuildingNumber, Mode=TwoWay, ValidatesOnExceptions=True}">
                         </TextBox>
                         
@@ -161,6 +167,7 @@
                                  materialDesign:HintAssist.Hint="רחוב"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding StreetName, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                         </TextBox>
@@ -178,6 +185,7 @@
                                  materialDesign:HintAssist.Hint="עיר"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding City, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                         </TextBox>
@@ -196,6 +204,7 @@
                                  materialDesign:HintAssist.Hint="בחר סיסמה"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center"
+                                 Style="{StaticResource ErrorStyle}"
                                  Text="{Binding Password, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
@@ -216,11 +225,10 @@
                 <TextBlock Text="הירשם" />
             </Button>
 
-          
-
         </Grid>
+        
         <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="4" CloseOnClickAway="True" FlowDirection="RightToLeft"
-                                   IsOpen="{Binding Message.IsOpen}">
+                                   IsOpen="{Binding Message.IsError}">
             <materialDesign:DialogHost.DialogContent>
                 <Grid Height="200" Width="300">
                     <Grid.RowDefinitions>
@@ -249,6 +257,35 @@
                             IsDefault="True" Command="{Binding DisplayLoginView}"
                                 Foreground="White">
                             חזור לכניסה
+                        </Button>
+                    </Grid>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+        <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="4" CloseOnClickAway="True" FlowDirection="RightToLeft"
+                                   IsOpen="{Binding Message.IsSuccess}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Height="200" Width="300">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2.5*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                             Kind="EmoticonCoolOutline" Foreground="#FFF08686"></materialDesign:PackIcon>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Message.Header}" FlowDirection="RightToLeft"
+                               TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Message.Content}"
+                               TextAlignment="Center" FontSize="15"/>
+                    <Grid Grid.Row="3" Background="#FFEC7878" Opacity="1">
+                       
+                       
+                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatButton}"
+                            IsDefault="True" Command="{Binding DisplayLoginView}"
+                                Foreground="White">
+                            סגור
                         </Button>
                     </Grid>
                 </Grid>

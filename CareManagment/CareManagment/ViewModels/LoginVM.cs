@@ -55,7 +55,7 @@ namespace CareManagment.ViewModels
             }
             else
             {
-                Message = new Message("אופס!", "הפרטים שהזנת לא תואמים למשתמש קיים" + "\n" + "אנא נסה שנית", true);
+                Message = new Message("אופס!", "הפרטים שהזנת לא תואמים למשתמש קיים" + "\n" + "אנא נסה שנית", false, true);
                 
             }
                 

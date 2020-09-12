@@ -11,7 +11,7 @@ namespace CareManagment.Tools
         public bool IsValidAddress(Address address)
         {
             JsonAddress AddressDetails = new BLImp().GetAddressDetails(address);
-            return AddressDetails.Description.Contains(address.Street) && AddressDetails.Description.Contains(address.City);
+            return AddressDetails.DisplayName.Contains(address.Street) && AddressDetails.DisplayName.Contains(address.City);
         }
         
 
