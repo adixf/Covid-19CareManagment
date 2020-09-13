@@ -32,7 +32,10 @@ namespace CareManagment
 
             DataContext = new MainWindowVM();
             var v = new BL.BLImp();
-            v.AddDistribution(new Distribution(
+           // var t=v.GetAddressDetails(new Address("בית שמש", "נחל רפאים", 11));
+           //sol MessageBox.Show(t.Result.Description);
+
+           /* v.AddDistribution(new Distribution(
                  new User("209425602", "נעמה", "שנברגר", "0545581921", "rachelibs1212@gmail.com", 
                  new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), 
                  new List<Package>(), DateTime.Now.Date,
@@ -45,7 +48,7 @@ namespace CareManagment
              v.AddDistribution(new Distribution(
        new User("209425602", "יוסף", "גולד", "0545581921", "rachelibs12@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Volunteer), new List<Package>(), DateTime.Now.Date, new User("209425602", "יעקב", "אבינו", "0545581921", "x1234@gmail.com", new Address("bet Shemesh", "shemshon", 11), "1234567g", UserType.Admin), false));
          
-         
+         */
         }
      }
 }

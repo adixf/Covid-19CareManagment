@@ -17,7 +17,7 @@ namespace CareManagment.BL.Interfaces
         List<Person> GetAllPersons(Func<Person, bool> predicate = null);
         List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null);
         List<User> GetAllUsers(Func<User, bool> predicate = null);
-        JsonAddress GetAddressDetails(Address address);
+       Task<JsonAddress> GetAddressDetails(Address address);
         bool ValidUser(string userName, string password);
     }
 }

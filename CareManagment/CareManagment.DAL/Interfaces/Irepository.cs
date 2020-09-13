@@ -19,6 +19,6 @@ namespace CareManagment.DAL.Interfaces
         List<Distribution> GetAllDistribution(Func<Distribution, bool> predicate = null);
         void UpdateDistribution(Distribution distribution);
 
-        JsonAddress GetAddressDetails(Address address);
+        Task<JsonAddress> GetAddressDetails(Address address);
     }
 }

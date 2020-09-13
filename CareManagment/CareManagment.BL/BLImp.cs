@@ -69,7 +69,7 @@ namespace CareManagment.BL
         }
 
 
-        public JsonAddress GetAddressDetails(Address address)
+        public Task<JsonAddress> GetAddressDetails(Address address)
         {
             return IRepository.GetAddressDetails(address);
         }

@@ -12,19 +12,20 @@ namespace CareManagment.DAL
 {
     public class Repository : IRepository
     {
-        public JsonAddress GetAddressDetails(Address address)
+        public async Task<JsonAddress> GetAddressDetails(Address address)
         {
+           
             WebRequest webRequest = new WebRequest();
             Object o = new object();
-            var addressRequests = address.Street + " " + address.BuildingNumber + " " + address.City;
+            var addressRequests = address.Street + " " + address.BuildingNumber.ToString() + " " + address.City;
             var url = @"https://eu1.locationiq.com/v1/search.php?key=e60fc76d273537&accept-language=he&q=" + addressRequests + "&format=json";
-            var requests = webRequest.PostCallAPI(url, o);
+            var requests = await webRequest.PostCallAPI(url, o);
             var parseJson = JArray.Parse(requests.ToString());
-            var Jaddress = new JsonAddress();
-            Jaddress.Latitude = parseJson[0]["lat"].ToString();
-            Jaddress.Longitude = parseJson[0]["lon"].ToString();
-            Jaddress.Description = parseJson[0]["display_name"].ToString();
-            return Jaddress;
+            JsonAddress jaddress = new JsonAddress();
+            jaddress.Latitude= parseJson[0]["lat"].ToString();
+            jaddress.Longitude= parseJson[0]["lon"].ToString();
+            jaddress.Description= parseJson[0]["display_name"].ToString();
+            return jaddress;
         }
     
 

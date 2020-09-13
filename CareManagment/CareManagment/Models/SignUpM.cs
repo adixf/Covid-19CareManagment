@@ -24,8 +24,8 @@ namespace CareManagment.Models
                 throw new Exception("אנא מלא את כל השדות");
             if (BL.GetAllUsers(x => x.MailAddress == user.MailAddress).Count != 0)
                 throw new Exception("המשתמש כבר קיים במערכת");
-            if (!new Tools.VerifyAddress().IsValidAddress(user.Address))
-                throw new Exception("הכתובת שהזנת לא קיימת");
+            /*if (!new Tools.VerifyAddress().IsValidAddress(user.Address))
+                throw new Exception("הכתובת שהזנת לא קיימת");*/
             BL.AddPerson(user);
         }
 

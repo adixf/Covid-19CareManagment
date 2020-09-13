@@ -13,12 +13,13 @@ namespace CareManagment.DAL
 
         public async Task<object> PostCallAPI(string url, object jsonObject)
         {
+          
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
                     var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(url, content);
+                    var response = await client.PostAsync(url, content).ConfigureAwait(false);
                     if (response != null)
                     {
                         var jsonString = await response.Content.ReadAsStringAsync();

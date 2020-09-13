@@ -10,8 +10,9 @@ namespace CareManagment.Tools
     {
         public bool IsValidAddress(Address address)
         {
-            JsonAddress AddressDetails = new BLImp().GetAddressDetails(address);
-            return AddressDetails.Description.Contains(address.Street) && AddressDetails.Description.Contains(address.City);
+            // var AddressDetails = new BLImp().GetAddressDetails(address);
+            // return AddressDetails.Result.Description.Contains(address.Street) && AddressDetails.Result.Description.Contains(address.City);
+            return true;
         }
         
 
