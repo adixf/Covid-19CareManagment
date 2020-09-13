@@ -117,7 +117,7 @@
                                TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
                         <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Message.Content}"
                                TextAlignment="Center" FontSize="15"/>
-                        <Grid Grid.Row="3" Background="#FF78A8A8" Opacity="1">
+                    <Grid Grid.Row="3" Background="#FFBD515A" Opacity="1">
                             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatButton}"
                             IsDefault="True" Command="materialDesign:DialogHost.CloseDialogCommand"
                                 Foreground="White">
