@@ -23,7 +23,8 @@ namespace CareManagment.DAL
                     if (response != null)
                     {
                         var jsonString = await response.Content.ReadAsStringAsync();
-                        return JsonConvert.DeserializeObject<object>(jsonString);
+                        var x =  JsonConvert.DeserializeObject<object>(jsonString);
+                        return x;
                     }
                 }
             }

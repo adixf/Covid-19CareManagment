@@ -152,11 +152,11 @@ namespace CareManagment.ViewModels
                 User user = new User(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)), Password, userType);
                 SignUpModel.SignUp(user);
 
-                Message = new Message("ברוך הבא!", "נוספת למערכת בהצלחה", true);
+                Message = new Message("ברוך הבא!", "נוספת למערכת בהצלחה", true, false);
             }
             catch(Exception e)
             {
-                Message = new Message("משהו השתבש.", e.Message, true);
+                Message = new Message("משהו השתבש.", e.Message, false, true);
             }
            
         }

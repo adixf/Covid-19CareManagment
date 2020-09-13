@@ -1,5 +1,6 @@
 ﻿using CareManagment.DAL.Interfaces;
 using CareManagment.DP;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,20 +13,28 @@ namespace CareManagment.DAL
 {
     public class Repository : IRepository
     {
-        public async Task<JsonAddress> GetAddressDetails(Address address)
+       
+        public JsonAddress GetAddressDetails(Address address)
         {
-           
-            WebRequest webRequest = new WebRequest();
-            Object o = new object();
-            var addressRequests = address.Street + " " + address.BuildingNumber.ToString() + " " + address.City;
-            var url = @"https://eu1.locationiq.com/v1/search.php?key=e60fc76d273537&accept-language=he&q=" + addressRequests + "&format=json";
-            var requests = await webRequest.PostCallAPI(url, o);
-            var parseJson = JArray.Parse(requests.ToString());
-            JsonAddress jaddress = new JsonAddress();
-            jaddress.Latitude= parseJson[0]["lat"].ToString();
-            jaddress.Longitude= parseJson[0]["lon"].ToString();
-            jaddress.Description= parseJson[0]["display_name"].ToString();
-            return jaddress;
+            var addressDetails = address.Street + " " + address.BuildingNumber + " " + address.City;
+            var client = new RestSharp.RestClient("https://eu1.locationiq.com/");
+            var request = new RestSharp.RestRequest("v1/search.php",RestSharp.Method.GET);
+            request.AddParameter("key", "c24325218ea6eb");
+            request.AddParameter("accept-language", "he");
+            request.AddParameter("q", addressDetails);
+            request.AddParameter("format", "json");
+            var res = client.Execute(request);
+            if(res.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = JsonConvert.DeserializeObject<object>(res.Content);
+                var parsedJson = JArray.Parse(content.ToString());
+                var Jaddress = new JsonAddress();
+                Jaddress.Latitude = parsedJson[0]["lat"].ToString();
+                Jaddress.Longitude = parsedJson[0]["lon"].ToString();
+                Jaddress.DisplayName = parsedJson[0]["display_name"].ToString();
+                return Jaddress;
+            }
+            return null;
         }
     
 

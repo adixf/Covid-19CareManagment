@@ -7,67 +7,21 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid >
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="/CareManagment;component/Images/top-bg.jpg" Opacity="0.5"></ImageBrush>
+        </Grid.Background>-->
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <materialDesign:Transitioner Grid.Column="1" SelectedIndex="0"  AutoApplyTransitionOrigins="True">
-            <materialDesign:Transitioner.InputBindings>
-                <KeyBinding Key="Left" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" />
-                <KeyBinding Key="Right" Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" />
-            </materialDesign:Transitioner.InputBindings>
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:SlideWipe Direction="Right"/>
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:SlideWipe Direction="Left" />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <Grid>
-                    <Image Source="/CareManagment;component/Images/transition1.jpg"></Image>
-                    <Button 
-                    Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
-                    HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
-                        <materialDesign:PackIcon Kind="StepBackward"/>
-                    </Button>
-                    <Button 
-                    Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
-                    HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}">
-                        <materialDesign:PackIcon Kind="StepForward"/>
-                    </Button>
-                </Grid>
-            </materialDesign:TransitionerSlide>
-
-
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:SlideWipe Direction="Right"/>
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:SlideWipe Direction="Left" />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <Grid>
-                    <Image Source="/CareManagment;component/Images/transition2.jpeg"></Image>
-                    <Button 
-                    Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
-                    HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
-                        <materialDesign:PackIcon Kind="StepBackward"/>
-                    </Button>
-                    <Button 
-                    Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
-                    HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}">
-                        <materialDesign:PackIcon Kind="StepForward"/>
-                    </Button>
-                </Grid>
-            </materialDesign:TransitionerSlide>
-
-
-        </materialDesign:Transitioner>
+        <Image Grid.Row="0" Source="/CareManagment;component/Images/aboutus1.jpg"></Image>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="יד ביד - איתכם תמיד ביחד" HorizontalAlignment="Center" FontSize="30" Foreground="#FFD17B7C" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="אנחנו ביד ויד פועלים יחד עם אלפי מתנדבים ברחבי הארץ" HorizontalAlignment="Center" FontSize="25" Foreground="Black" ></TextBlock>
+            <TextBlock Text="עוד שורה חסרת משמעות כאן אוקיי יופי" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
+            <TextBlock Text="ועוד אחת כאן ממש מעניין פה" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
+            <TextBlock Text="ועוד אחת כאן אתם לא תאמינו מה יבוא אחרי זה" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
+        </StackPanel>
     </Grid>
 </UserControl>
