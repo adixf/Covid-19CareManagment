@@ -17,6 +17,7 @@ namespace CareManagment.DAL.Interfaces
         List<Package> GetAllPackages(Func<Package, bool> predicate = null);
         List<User> GetAllUsers(Func<User, bool> predicate = null);
         List<Distribution> GetAllDistribution(Func<Distribution, bool> predicate = null);
+        List<Recipient> GetAllRecipient(Func<Recipient, bool> predicate = null);
         void UpdateDistribution(Distribution distribution);
 
         JsonAddress GetAddressDetails(Address address);

@@ -49,7 +49,8 @@
             <TextBlock Grid.Row="0" Foreground="White" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Text="בחר תאריך"></TextBlock>
             <materialDesign:Card Grid.Row="1" Grid.Column="2" UniformCornerRadius="20">
                 <DatePicker FlowDirection="LeftToRight" HorizontalAlignment="Center" Language="he-IL" Foreground="Black"
-                    materialDesign:HintAssist.Hint="    00/00/00    " FontSize="20" HorizontalContentAlignment="Center"/>
+                    materialDesign:HintAssist.Hint="    00/00/00    " FontSize="20" HorizontalContentAlignment="Center"
+                            SelectedDate="{Binding DistributionDate}"/>
             </materialDesign:Card>
 
             <!--- recipients view -->
@@ -77,14 +78,20 @@
                                 <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="{Binding LastName}"></TextBlock>
                                 <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding Address}"></TextBlock>
                                 <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
-                                <ComboBox Grid.Column="1">
-                                    <ComboBoxItem>מזון</ComboBoxItem>
-                                    <ComboBoxItem>תרופות</ComboBoxItem>
-                                    <ComboBoxItem>בגדים</ComboBoxItem>
-                                    <ComboBoxItem>משחקים</ComboBoxItem>
+                                <ComboBox Name="PkgTypeCB" Grid.Column="1" >
+                                    <ComboBoxItem FlowDirection="RightToLeft" IsSelected="True">מזון</ComboBoxItem>
+                                    <ComboBoxItem FlowDirection="RightToLeft">תרופות</ComboBoxItem>
+                                    <ComboBoxItem FlowDirection="RightToLeft">ביגוד</ComboBoxItem>
+                                    <ComboBoxItem FlowDirection="RightToLeft">משחקים</ComboBoxItem>
                                 </ComboBox>
                                 <ToggleButton Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" 
-                                              Background="#FFC66465" Command="{Binding AddRecipient}">
+                                              Background="#FFC66465" Command="{Binding DataContext.AddPackageCommand, RelativeSource={RelativeSource AncestorType=ListView}}">
+                                    <ToggleButton.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiParameterConverter}">
+                                            <Binding Path="PersonId" />
+                                            <Binding Path="SelectedItem" ElementName="PkgTypeCB"/>
+                                        </MultiBinding>
+                                    </ToggleButton.CommandParameter>
                                     <ToggleButton.Style>
                                         <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
                                             <Style.Triggers>
@@ -110,7 +117,7 @@
 
             <Button Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Content="בקש ביצוע חלוקה" Foreground="White" Background="#FFC66465" materialDesign:ButtonAssist.CornerRadius="15"
-                VerticalContentAlignment="Top" >
+                VerticalContentAlignment="Top" Command="{Binding CreateDistributionsCommand}">
             </Button>
         </Grid>
       
@@ -119,13 +126,13 @@
         <Grid Grid.Column="1" Grid.RowSpan="2" Visibility="{Binding IsDistributionReady, Converter={StaticResource BoolToVisConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="2*"/>
                 <RowDefinition/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="RightToLeft" Text="הנה החלוקות שיצרנו:"></TextBlock>
-            <materialDesign:Card Grid.Row="1" Background="White" UniformCornerRadius="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="RightToLeft" Text="הנה החלוקות שיצרנו:"></TextBlock>
+            <materialDesign:Card Grid.Row="2" Background="White" UniformCornerRadius="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
                 <ListView HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Distributions}">
 
                     <ListView.ItemTemplate>
@@ -134,14 +141,11 @@
                             <Grid Height="30" HorizontalAlignment="Stretch" FlowDirection="RightToLeft">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Id}"></TextBlock>
-                                <TextBlock Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Id}" FontWeight="Bold"></TextBlock>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft">
                                     <TextBlock.Text>
                                         <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
                                             <Binding Path="Volunteer.FirstName"/>
@@ -149,28 +153,15 @@
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
-                                <ComboBox ItemsSource="{Binding Packages}">
-                                    
-                                </ComboBox>
+                                <Button Grid.Column="0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Background="{x:Null}" BorderBrush="LightGray">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>הצג פרטי חלוקה</TextBlock>
+                                        <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
+                                    </StackPanel>
+                                </Button>
                                 <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
                                 
-                                <ToggleButton Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" 
-                                              Background="#FFC66465">
-                                    <ToggleButton.Style>
-                                        <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=checkAll, Path=IsChecked}" Value="True">
-                                                    <Setter Property="IsChecked" Value="True"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding ElementName=checkAll,Path=IsChecked}" Value="False">
-                                                    <Setter Property="IsChecked" Value="False"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ToggleButton.Style>
-                                    <materialDesign:PackIcon Height="24" Width="24"  Kind="Check" Foreground="Black">
-                                    </materialDesign:PackIcon>
-                                </ToggleButton>
+                                         
 
                             </Grid>
 
@@ -178,12 +169,33 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </materialDesign:Card>
-            <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Content="אשר" Foreground="White" Background="#FFC66465" materialDesign:ButtonAssist.CornerRadius="15"
-                VerticalContentAlignment="Top" >
+                VerticalContentAlignment="Top" Command="{Binding AcceptDistributionsCommand}" >
 
             </Button>
         </Grid>
-        
+
+
+        <!-- wait dialog + progress bar -->
+        <materialDesign:DialogHost Grid.ColumnSpan="4" Grid.RowSpan="2" FlowDirection="RightToLeft"
+                                   IsOpen="{Binding IsWorking}">
+
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Height="150" Width="400" Background="white">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="יוצר חלוקות... אנא המתן"
+                               TextAlignment="Center" FontSize="15"/>
+                    <ProgressBar IsIndeterminate="True" Foreground="#FFC66465"></ProgressBar>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+
     </Grid>
+     
 </UserControl>

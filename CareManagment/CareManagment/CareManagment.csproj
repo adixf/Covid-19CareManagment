@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accord, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.2-alpha\lib\net46\Accord.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -84,14 +87,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddPackageCommand.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\CreateDistributionsCommand.cs" />
     <Compile Include="Commands\SaveChangesCommand.cs" />
     <Compile Include="Commands\UpdateCollectionCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\SignUpCommand.cs" />
     <Compile Include="Converters\FullNameConverter.cs" />
+    <Compile Include="Converters\MultiParameterConverter.cs" />
     <Compile Include="Interfaces\IDeliverDistributions.cs" />
     <Compile Include="Interfaces\ISaveChanges.cs" />
+    <Compile Include="Models\AddDistributionM.cs" />
+    <Compile Include="Models\AddRecipientM.cs" />
     <Compile Include="Models\AdminDistributionsM.cs" />
     <Compile Include="Models\LoginM.cs" />
     <Compile Include="Models\SignUpM.cs" />
@@ -100,6 +108,7 @@
     <Compile Include="Tools\VerifyString.cs" />
     <Compile Include="ViewModels\AboutUsVM.cs" />
     <Compile Include="ViewModels\AddDistributionVM.cs" />
+    <Compile Include="ViewModels\AddRecipientVM.cs" />
     <Compile Include="ViewModels\AdminDistributionsVM.cs" />
     <Compile Include="ViewModels\AdminMainVM.cs" />
     <Compile Include="ViewModels\AdminOptionsVM.cs" />
@@ -119,6 +128,9 @@
     </Compile>
     <Compile Include="Views\AddDistributionUC.xaml.cs">
       <DependentUpon>AddDistributionUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddRecipientUC.xaml.cs">
+      <DependentUpon>AddRecipientUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminDistributionsUC.xaml.cs">
       <DependentUpon>AdminDistributionsUC.xaml</DependentUpon>
@@ -184,6 +196,10 @@
     <Page Include="Views\AddDistributionUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddRecipientUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdminDistributionsUC.xaml">
       <SubType>Designer</SubType>
@@ -360,6 +376,8 @@
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.2.0-ci1901\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.2.0-ci1901\build\MaterialDesignThemes.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Accord.3.8.2-alpha\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.2-alpha\build\Accord.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Accord.3.8.2-alpha\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.2-alpha\build\Accord.targets')" />
 </Project>

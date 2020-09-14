@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CareManagment.DP
 {
-    public class Distribution : INotifyPropertyChanged
+    public class Distribution 
     {
 
         public int Id { get; set; }
@@ -47,16 +47,16 @@ namespace CareManagment.DP
             set
             {
                 isDelivered = value;
-                OnPropertyRaised("IsDelivered");
+               // OnPropertyRaised("IsDelivered");
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        public void OnPropertyRaised(string propertyname)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
-        }
+        //public void OnPropertyRaised(string propertyname)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
+        //}
 
 
         public Distribution(User volunteer, List<Package> packages, DateTime date, User admin, bool isDelivered)

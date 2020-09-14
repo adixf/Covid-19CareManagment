@@ -52,6 +52,8 @@
             <DataTemplate DataType="{x:Type ViewModels:StatisticsVM}">
                 <Views:StatisticsUC/>
             </DataTemplate>
+           
+            <Converters:MultiParameterConverter x:Key="MultiParameterConverter"></Converters:MultiParameterConverter>
             <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
             <Converters:FullNameConverter x:Key="FullNameConverter"/>
             <ResourceDictionary.MergedDictionaries>

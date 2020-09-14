@@ -26,9 +26,11 @@ namespace CareManagment.Models
                 throw new Exception("המשתמש כבר קיים במערכת");
             if (!new Tools.VerifyAddress().IsValidAddress(user.Address))
                 throw new Exception("הכתובת שהזנת לא קיימת");
+            double[] location = new Tools.VerifyAddress().GetLocation(user.Address);
+            user.Address.Lat = location[0];
+            user.Address.Lon = location[1];
             BL.AddPerson(user);
         }
-
         
     }
 }

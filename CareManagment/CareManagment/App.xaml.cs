@@ -23,6 +23,7 @@ namespace CareManagment
         public App()
         {
             Currents = new Currents();
+
         }        
     }
 }
