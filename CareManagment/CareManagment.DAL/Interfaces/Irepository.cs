@@ -13,6 +13,8 @@ namespace CareManagment.DAL.Interfaces
         void AddDistribution(Distribution distribution);
         void AddPackage(Package package);
         void UpdatePerson(Person person);
+        void DeletePerson(Person person);
+        void DeletePackage(Package package);
         List<Person> GetAllPersons(Func<Person, bool> predicate = null);
         List<Package> GetAllPackages(Func<Package, bool> predicate = null);
         List<User> GetAllUsers(Func<User, bool> predicate = null);
@@ -20,6 +22,6 @@ namespace CareManagment.DAL.Interfaces
         List<Recipient> GetAllRecipient(Func<Recipient, bool> predicate = null);
         void UpdateDistribution(Distribution distribution);
 
-        JsonAddress GetAddressDetails(Address address);
+       JsonAddress GetAddressDetails(Address address);
     }
 }
