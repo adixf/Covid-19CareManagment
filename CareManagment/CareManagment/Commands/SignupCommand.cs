@@ -1,4 +1,5 @@
-﻿using CareManagment.ViewModels;
+﻿using CareManagment.Interfaces;
+using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace CareManagment.Commands
 {
     public class SignUpCommand : ICommand
     {
-        public SignUpVM CurrentVM { get; set; }
+        public ISignUp CurrentVM { get; set; }
 
-        public SignUpCommand(SignUpVM SignUpVM)
+        public SignUpCommand(ISignUp SignUpVM)
         {
             CurrentVM = SignUpVM;
         }

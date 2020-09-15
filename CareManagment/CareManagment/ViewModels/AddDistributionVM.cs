@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace CareManagment.ViewModels
 {
@@ -19,7 +20,16 @@ namespace CareManagment.ViewModels
         public DateTime DistributionDate { get; set; }
         public ObservableCollection<Recipient> Recipients { get; set; }
         public List<Package> Packages { get; set; }
-        public ObservableCollection<Distribution> Distributions{ get; set; }
+        private ObservableCollection<Distribution> distributions;
+        public ObservableCollection<Distribution> Distributions
+        {
+            get { return distributions; }
+            set
+            {
+                distributions = value;
+                OnPropertyRaised("Distributions");
+            }
+        }
 
         private bool isDistributionReady;
         public bool IsDistributionReady
@@ -60,11 +70,12 @@ namespace CareManagment.ViewModels
             Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
             Packages = new List<Package>();
             IsDistributionReady = false;
+            Distributions = new ObservableCollection<Distribution>();
         }
 
-        public void AddPackage(string Id, String Type)
+        public void AddPackage(string MailAddress, String Type)
         {
-            Recipient recipient = Recipients.First(x => x.PersonId == Id);
+            Recipient recipient = Recipients.First(x => x.MailAddress == MailAddress);
             Package package = Packages.Find(x => x.Recipient == recipient);
 
             if (package != null)
@@ -81,7 +92,7 @@ namespace CareManagment.ViewModels
                 };
                 Packages.Add(Package);
             }
-             
+
         }
 
         public void CreateDistributions()
@@ -90,27 +101,35 @@ namespace CareManagment.ViewModels
             {
                 // divide packages into distributions
                 List<Package>[] DividedPackages = AddDistributionM.DividePackages(Packages);
-                Distributions = new ObservableCollection<Distribution>();
-                foreach (var pkgGroup in DividedPackages)
-                {
-                    Distributions.Add(new Distribution()
-                    {
-                        Date = DistributionDate,
-                        Packages = new List<Package>(pkgGroup),
-                        Admin = ((App)Application.Current).Currents.LoggedUser
-                    });
-                }
 
-                // find closest volunteer for each distribution
-                foreach (Distribution d in Distributions)
-                {
-                    d.Volunteer = AddDistributionM.FindClosestVolunteer(d.Packages[0].Recipient.Address);
-                }
-              
+                Application.Current.Dispatcher.BeginInvoke(
+                    new Action(() => { AddDistributions(DividedPackages); }));
+
             }
-           
+            catch (Exception e)
+            {
+                // TODO open dialog
+            }
         }
-     
-   
+
+        private void AddDistributions(List<Package>[] DividedPackages)
+        {
+            foreach (var pkgGroup in DividedPackages)
+            {
+                Distributions.Add(new Distribution()
+                {
+                    Date = DistributionDate,
+                    Packages = new List<Package>(pkgGroup),
+                    Admin = ((App)Application.Current).Currents.LoggedUser
+                });
+            }
+
+            // find closest volunteer for each distribution
+            foreach (Distribution d in Distributions)
+            {
+                d.Volunteer = AddDistributionM.FindClosestVolunteer(d.Packages[0].Recipient.Address);
+            }
+
+        }
     }
 }

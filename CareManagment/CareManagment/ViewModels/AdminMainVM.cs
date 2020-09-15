@@ -72,6 +72,14 @@ namespace CareManagment.ViewModels
             }
         }
 
+        public ICommand DisplayAddRecipientView
+        {
+            get
+            {
+                return new BaseCommand(delegate () { CurrentAdminVM = new AddRecipientVM(); });
+            }
+        }
+
         public ICommand DisplayOptionsView
         {
             get

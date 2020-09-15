@@ -98,10 +98,12 @@
     <Compile Include="Converters\MultiParameterConverter.cs" />
     <Compile Include="Interfaces\IDeliverDistributions.cs" />
     <Compile Include="Interfaces\ISaveChanges.cs" />
+    <Compile Include="Interfaces\ISignUp.cs" />
     <Compile Include="Models\AddDistributionM.cs" />
     <Compile Include="Models\AddRecipientM.cs" />
     <Compile Include="Models\AdminDistributionsM.cs" />
     <Compile Include="Models\LoginM.cs" />
+    <Compile Include="Models\RecipientViewM.cs" />
     <Compile Include="Models\SignUpM.cs" />
     <Compile Include="Tools\Currents.cs" />
     <Compile Include="Tools\VerifyAddress.cs" />

@@ -85,13 +85,13 @@
                     <materialDesign:PackIcon Kind="KeyVariant"></materialDesign:PackIcon>
                 </StackPanel>
             </Button>
-            <materialDesign:Card Background="White" Grid.Row="3" Margin="10" UniformCornerRadius="20">
+            <materialDesign:Card Background="LightGray" Grid.Row="3" Margin="10" UniformCornerRadius="20">
                 <ListView Name="oldDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                           ItemsSource="{Binding OldDistributions}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth4" CornerRadius="15" BorderThickness="2" BorderBrush="LightGray" >
-                                <Grid HorizontalAlignment="Stretch">
+                                <Grid HorizontalAlignment="Stretch" Background="White">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="2*"/>

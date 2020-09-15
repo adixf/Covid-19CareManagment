@@ -88,7 +88,7 @@
                                               Background="#FFC66465" Command="{Binding DataContext.AddPackageCommand, RelativeSource={RelativeSource AncestorType=ListView}}">
                                     <ToggleButton.CommandParameter>
                                         <MultiBinding Converter="{StaticResource MultiParameterConverter}">
-                                            <Binding Path="PersonId" />
+                                            <Binding Path="MailAddress" />
                                             <Binding Path="SelectedItem" ElementName="PkgTypeCB"/>
                                         </MultiBinding>
                                     </ToggleButton.CommandParameter>

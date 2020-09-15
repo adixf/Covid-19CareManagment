@@ -52,7 +52,9 @@
             <DataTemplate DataType="{x:Type ViewModels:StatisticsVM}">
                 <Views:StatisticsUC/>
             </DataTemplate>
-           
+            <DataTemplate DataType="{x:Type ViewModels:AddRecipientVM}">
+                <Views:AddRecipientUC/>
+            </DataTemplate>
             <Converters:MultiParameterConverter x:Key="MultiParameterConverter"></Converters:MultiParameterConverter>
             <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
             <Converters:FullNameConverter x:Key="FullNameConverter"/>

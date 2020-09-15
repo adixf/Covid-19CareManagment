@@ -1,4 +1,5 @@
 ﻿using CareManagment.DP;
+using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,7 +31,7 @@ namespace CareManagment.Views
 
             
            
-            DataContext = this;
+            DataContext = new RecipientsViewVM();
         }
     }
 }

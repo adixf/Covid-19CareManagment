@@ -15,10 +15,11 @@
         <Button Grid.Row="0" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}">
             <materialDesign:PackIcon Kind="ArrowForward" />
         </Button>
+        <Button Grid.Row="0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DisplayAddRecipientView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"></Button>
         <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="נמענים" FontSize="25" FontWeight="Bold"></TextBlock>
         <materialDesign:Card Grid.Row="1" Margin="10">
-            <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding Volunteers}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" 
+            <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding Recipients}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" 
            FlowDirection="RightToLeft" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="שם פרטי" Binding="{Binding FirstName}"/>

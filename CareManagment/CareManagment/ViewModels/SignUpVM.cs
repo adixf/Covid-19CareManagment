@@ -1,6 +1,7 @@
 ﻿using CareManagment.Commands;
 using CareManagment.DP;
 using CareManagment.DP.Types;
+using CareManagment.Interfaces;
 using CareManagment.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace CareManagment.ViewModels
 {
-    public class SignUpVM : BaseViewModel
+    public class SignUpVM : BaseViewModel, ISignUp
     {
         #region user properties
         private string firstName;

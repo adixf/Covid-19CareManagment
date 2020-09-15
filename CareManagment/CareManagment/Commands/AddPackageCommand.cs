@@ -30,9 +30,9 @@ namespace CareManagment.Commands
 
         public void Execute(object parameter)
         {
-            string Id = ((object[])parameter)[0].ToString();
+            string MailAddress = ((object[])parameter)[0].ToString();
             string Type = ((object[])parameter)[1].ToString();
-            CurrentVM.AddPackage(Id, Type);
+            CurrentVM.AddPackage(MailAddress, Type);
         }
     }
 }
