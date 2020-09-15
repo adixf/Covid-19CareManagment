@@ -184,7 +184,7 @@ namespace CareManagment.DAL
                 {
                     result = context.Persons.OfType<Recipient>().Where(predicate).ToList();
                 }
-
+                sol
             }
             return result;
 >>>>>>> 214fb47499082982f893f8909674caf843874854
