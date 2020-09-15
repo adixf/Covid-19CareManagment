@@ -11,20 +11,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CareManagment.Views
 {
     /// <summary>
-    /// Interaction logic for DonationUC.xaml
+    /// Interaction logic for PdfUC.xaml
     /// </summary>
-    public partial class DonationUC : UserControl
+    public partial class PdfUC : Window
     {
-        public DonationUC()
+        public PdfUC()
         {
             InitializeComponent();
-            DataContext = new DonationVM();
+            DataContext = new PdfVM();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.IsEnabled = false;
+            PrintDialog pdf = new PrintDialog();
+            if (pdf.ShowDialog() == true)
+            {
+                pdf.PrintVisual(babe,"file");
+            }
         }
     }
 }

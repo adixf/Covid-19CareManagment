@@ -4,6 +4,7 @@ using CareManagment.DAL.Interfaces;
 using CareManagment.DP;
 using System;
 using System.Collections.Generic;
+using Accord.MachineLearning;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,9 +70,15 @@ namespace CareManagment.BL
         }
 
 
-        public Task<JsonAddress> GetAddressDetails(Address address)
+        public JsonAddress GetAddressDetails(Address address)
         {
             return IRepository.GetAddressDetails(address);
+            
+        }
+
+        public void DeletePerson(Person person)
+        {
+            IRepository.DeletePerson(person);
         }
     }
 }

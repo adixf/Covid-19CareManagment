@@ -63,12 +63,19 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestClient.Net.Abstractions, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestClient.Net.Abstractions.4.1.0\lib\net45\RestClient.Net.Abstractions.dll</HintPath>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharpSigned.105.2.3\lib\net46\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
     </Reference>
@@ -103,10 +110,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\DonationCommand.cs" />
+    <Compile Include="Commands\PdfCommand.cs" />
     <Compile Include="Commands\SaveChangesCommand.cs" />
     <Compile Include="Commands\UpdateCollectionCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\SignUpCommand.cs" />
+    <Compile Include="Converters\ButtonToTextConverter.cs" />
     <Compile Include="Converters\FullNameConverter.cs" />
     <Compile Include="Interfaces\IDeliverDistributions.cs" />
     <Compile Include="Interfaces\ISaveChanges.cs" />
@@ -114,6 +124,7 @@
     <Compile Include="Models\LoginM.cs" />
     <Compile Include="Models\SignUpM.cs" />
     <Compile Include="Tools\Currents.cs" />
+    <Compile Include="Tools\MailSender.cs" />
     <Compile Include="Tools\VerifyAddress.cs" />
     <Compile Include="Tools\VerifyString.cs" />
     <Compile Include="ViewModels\AboutUsVM.cs" />
@@ -126,6 +137,7 @@
     <Compile Include="ViewModels\DonationVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
+    <Compile Include="ViewModels\PdfVM.cs" />
     <Compile Include="ViewModels\RecipientsViewVM.cs" />
     <Compile Include="ViewModels\SignUpVM.cs" />
     <Compile Include="ViewModels\StatisticsVM.cs" />
@@ -161,6 +173,9 @@
     </Compile>
     <Compile Include="Views\MapUC.xaml.cs">
       <DependentUpon>MapUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PdfUC.xaml.cs">
+      <DependentUpon>PdfUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RecipientsViewUC.xaml.cs">
       <DependentUpon>RecipientsViewUC.xaml</DependentUpon>
@@ -234,6 +249,10 @@
     <Page Include="Views\MapUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PdfUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RecipientsViewUC.xaml">
       <SubType>Designer</SubType>

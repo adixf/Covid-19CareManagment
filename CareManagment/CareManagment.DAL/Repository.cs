@@ -157,6 +157,18 @@ namespace CareManagment.DAL
                 context.SaveChanges();
             }
         }
+
+        public void DeletePerson(Person p)
+        {
+            var context = new CareManagmentDb();
+            context.Entry(p).State = EntityState.Deleted;
+            context.SaveChanges();
+        }
+
+        public void DeletePackage(Package package)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
