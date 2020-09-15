@@ -1,4 +1,4 @@
 ﻿public enum PkgType
 {
-    Food, Medicine, Games, Clothes
+    מזון, תרופות, משחקים, ביגוד
 }

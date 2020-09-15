@@ -1,5 +1,4 @@
 ﻿using CareManagment.Commands;
-using CareManagment.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +15,7 @@ namespace CareManagment.ViewModels
        
         public MainWindowVM()
         {
-            ((App)Application.Current).Currents.CurrentVM = new PdfVM();
+            ((App)Application.Current).Currents.CurrentVM = new LoginVM();
         }
         
     }

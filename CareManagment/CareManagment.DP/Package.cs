@@ -29,7 +29,7 @@ namespace CareManagment.DP
         private Distribution distribution;
         public Distribution Distribution
         {
-            get { return Distribution; }
+            get { return distribution; }
             set
             {
                 distribution = value;
