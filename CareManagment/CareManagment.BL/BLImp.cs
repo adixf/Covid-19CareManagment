@@ -189,6 +189,11 @@ namespace CareManagment.BL
             return Math.PI * angle / 180.0;
         }
 
+        public void DeletePerson(Person person)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
     }

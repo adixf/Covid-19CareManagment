@@ -29,13 +29,13 @@ namespace CareManagment.Models
             /*if (!new Tools.VerifyAddress().IsValidAddress(user.Address))
                 throw new Exception("הכתובת שהזנת לא קיימת");*/
             BL.AddPerson(user);
-            MailSender mailSender = new MailSender();
-            string to = user.MailAddress;
-            string subject = "ברוך הבא לעמותת יד ביד";
-            string body = 
-                string.Format("לכבוד {0} ההרשמה נקלטה במערכת בהצלחה\n"+" {1}:הסיסמה למערכת היא", user.FirstName,user.Password);
-            Thread thread = new Thread(() => mailSender.SendMail(to, subject, body));
-            thread.Start();
+            //MailSender mailSender = new MailSender();
+            //string to = user.MailAddress;
+            //string subject = "ברוך הבא לעמותת יד ביד";
+            //string body = 
+            //    string.Format("לכבוד {0} ההרשמה נקלטה במערכת בהצלחה\n"+" {1}:הסיסמה למערכת היא", user.FirstName,user.Password);
+            //Thread thread = new Thread(() => mailSender.SendMail(to, subject, body));
+            //thread.Start();
         }
 
         
