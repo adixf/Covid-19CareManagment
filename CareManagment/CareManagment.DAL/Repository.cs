@@ -74,10 +74,10 @@ namespace CareManagment.DAL
             using (var context = new CareManagmentDb())
             {
                 if (predicate == null)
-                    result = context.Persons.ToList();
+                    result = context.Persons.Include(p => p.Address).ToList();
                 else
                 {
-                    result = context.Persons.OfType<Person>().Where(predicate).ToList();
+                    result = context.Persons.Include(p => p.Address).OfType<Person>().Where(predicate).ToList();
                 }
             }
             return result;
@@ -158,6 +158,7 @@ namespace CareManagment.DAL
             }
         }
 
+<<<<<<< HEAD
         public void DeletePerson(Person p)
         {
             var context = new CareManagmentDb();
@@ -166,6 +167,30 @@ namespace CareManagment.DAL
         }
 
         public void DeletePackage(Package package)
+        {
+            throw new NotImplementedException();
+=======
+        public List<Recipient> GetAllRecipient(Func<Recipient, bool> predicate = null)
+        {
+            List<Recipient> result = new List<Recipient>();
+            using (var context = new CareManagmentDb())
+            {
+                if (predicate == null)
+                {
+                    result = (from element in context.Persons.OfType<Recipient>()
+                              select element).ToList();
+                }
+                else
+                {
+                    result = context.Persons.OfType<Recipient>().Where(predicate).ToList();
+                }
+
+            }
+            return result;
+>>>>>>> 214fb47499082982f893f8909674caf843874854
+        }
+
+        public List<Recipient> GetAllRecipient(Func<Recipient, bool> predicate = null)
         {
             throw new NotImplementedException();
         }
