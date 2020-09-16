@@ -339,10 +339,6 @@
     <Resource Include="Images\charts.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\box.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\box2.jpg" />
     <Resource Include="Images\volunteer.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -350,18 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\transition1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\transition2.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\2.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\11.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\collage1.jpg" />

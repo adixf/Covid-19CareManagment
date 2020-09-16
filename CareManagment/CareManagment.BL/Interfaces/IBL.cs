@@ -15,20 +15,20 @@ namespace CareManagment.BL.Interfaces
         void AddAdmin(Admin admin);
         void AddRecipient(Recipient recipient);
         void AddPackage(Package package);
+
         //void UpdatePerson(Person person);
         void UpdateDistribution(Distribution distribution);
         //void DeletePerson(Person person);
+
         List<Volunteer> GetAllVolunteers(Func<Volunteer, bool> predicate = null);
         List<Admin> GetAllAdmins(Func<Admin, bool> predicate = null);
         List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null);
-
-
         List<Recipient> GetAllRecipients(Func<Recipient, bool> predicate = null);
+
         JsonAddress GetAddressDetails(Address address);
 
         List<Package>[] DividePackages(List<Package> Packages, int K);
         Volunteer FindClosestVolunteer(List<Volunteer> Volunteers, Address Address);
-
         
     }
 }

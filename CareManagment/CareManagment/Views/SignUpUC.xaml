@@ -227,6 +227,8 @@
 
         </Grid>
         
+        <!-- message dialogs -->
+        
         <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="4" CloseOnClickAway="True" FlowDirection="RightToLeft"
                                    IsOpen="{Binding Message.IsError}">
             <materialDesign:DialogHost.DialogContent>

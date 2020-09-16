@@ -41,7 +41,6 @@ namespace CareManagment.DP
 
         public List<Package> Packages { get; set; }
         public DateTime Date { get; set; }
-
         public bool IsDelivered { get; set; }
         
       

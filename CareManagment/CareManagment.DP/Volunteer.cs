@@ -8,10 +8,18 @@ namespace CareManagment.DP
 {
     public class Volunteer : IUser
     {
+
+        public int VolunteerId { get; set; }
+        public string IdNumber { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string MailAddress { get; set; }
+        public Address Address { get; set; }
+        public string Password { get; set; }
+
         public Volunteer() { }
         
-
-
         public Volunteer(string idNumber, string firstName, string lastName, string phoneNumber, string mailAddress, Address address, string password)
         {
             IdNumber = idNumber;
@@ -24,17 +32,7 @@ namespace CareManagment.DP
 
         }
 
-        public Volunteer(Volunteer volunteer) { }
 
-        public int VolunteerId { get; set; }
-        public string IdNumber { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string MailAddress { get; set; }
-        public Address Address { get; set; }
-        public string Password { get; set; }
-        
         public Address GetAddress()
         {
             return Address;

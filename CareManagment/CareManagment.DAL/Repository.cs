@@ -71,23 +71,12 @@ namespace CareManagment.DAL
                 distribution.Volunteer = null;
                 foreach (Package p in distribution.Packages)
                     p.Recipient = null;
+
                 ctx.Distributions.Add(distribution);
                 ctx.SaveChanges();
             }
         }
-        //public void UpdateUser(Volunteer person)
-        //{
-        //    using (var context = new CareManagmentDb())
-        //    {
-        //        var old = context.Users.Find(person.UserId);
-        //        old.FirstName = person.FirstName;
-        //        old.LastName = person.LastName;
-        //        old.PhoneNumber = person.PhoneNumber;
-        //        old.Address = person.Address;
-        //        old.MailAddress = person.MailAddress;
-        //        context.SaveChanges();
-        //    }
-        //}
+       
 
         public List<Volunteer> GetAllVolunteers(Func<Volunteer, bool> predicate = null)
         {
@@ -200,10 +189,10 @@ namespace CareManagment.DAL
         //    context.SaveChanges();
         //}
 
-        public void DeletePackage(Package package)
-        {
-            throw new NotImplementedException();
-        }
+        //public void DeletePackage(Package package)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
     
 

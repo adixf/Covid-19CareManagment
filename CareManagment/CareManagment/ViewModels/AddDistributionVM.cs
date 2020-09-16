@@ -1,5 +1,6 @@
 ﻿using CareManagment.Commands;
 using CareManagment.DP;
+using CareManagment.DP.Types;
 using CareManagment.Models;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,8 @@ namespace CareManagment.ViewModels
                 OnPropertyRaised("Packages");
             }
         }
+
+
         private ObservableCollection<Distribution> distributions;
         public ObservableCollection<Distribution> Distributions
         {
@@ -63,6 +66,7 @@ namespace CareManagment.ViewModels
         }
 
         public ObservableCollection<string> Cities { get; set; }
+
         private string selectedCity;
         public string SelectedCity
         {
@@ -114,14 +118,7 @@ namespace CareManagment.ViewModels
         public AddDistributionVM()
         {
             AddDistributionM = new AddDistributionM();
-            Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);          
-            Packages = new ObservableCollection<Package>();
-            foreach(Recipient recipient in Recipients)
-                Packages.Add(new Package()
-                {
-                    Contents = PkgType.מזון, // initial package type
-                    Recipient = recipient
-                });
+            Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);                     
 
             Distributions = new ObservableCollection<Distribution>();
             DistributionDate = DateTime.Now.Date;
@@ -129,6 +126,7 @@ namespace CareManagment.ViewModels
             GetAllCities();
             SelectedCity = Cities.First(x=> x.Equals("כל הארץ"));
         }
+
 
         private void GetAllCities()
         {
@@ -142,12 +140,11 @@ namespace CareManagment.ViewModels
             Cities.Add("כל הארץ");
         }
        
+
         public void CreateDistributions()
         {
             try
             {
-                
-
                 // divide packages into distributions
                 List<Package>[] DividedPackages = AddDistributionM.DividePackages(Packages.ToList());
 
@@ -157,24 +154,30 @@ namespace CareManagment.ViewModels
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                // TODO open dialog
+                Message = new Message("משהו השתבש.", e.Message, false, true);
             }
         }
 
         private void AddDistributions(List<Package>[] DividedPackages)
         {
-            foreach (var pkgGroup in DividedPackages)
+            try
             {
-                Distributions.Add(new Distribution()
+                foreach (var pkgGroup in DividedPackages)
                 {
-                    Date = DistributionDate,
-                    Packages = pkgGroup,
-                    Admin = ((App)Application.Current).Currents.LoggedUser as Admin
-                });
-            }
+                    Distributions.Add(new Distribution()
+                    {
+                        Date = DistributionDate,
+                        Packages = pkgGroup,
+                        Admin = ((App)Application.Current).Currents.LoggedUser as Admin
+                    });
+                }
 
-            AssignVolunteers();
+                AssignVolunteers();
+            }
+            catch (Exception e)
+            {
+                Message = new Message("משהו השתבש.", e.Message, false, true);
+            }  
 
         }
 
@@ -192,7 +195,15 @@ namespace CareManagment.ViewModels
 
         private void AcceptDistributions()
         {
-            AddDistributionM.AddDistributions(new List<Distribution>(Distributions));
+            try
+            {
+                AddDistributionM.AddDistributions(new List<Distribution>(Distributions));
+            }
+            catch (Exception e)
+            {
+                Message = new Message("משהו השתבש.", e.Message, false, true);
+            }
+           
         }
 
     }

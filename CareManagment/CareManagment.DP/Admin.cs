@@ -8,6 +8,16 @@ namespace CareManagment.DP
 {
     public class Admin : IUser
     {
+        public int AdminId { get; set; }
+        public string IdNumber { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string MailAddress { get; set; }
+        public Address Address { get; set; }
+        public string Password { get; set; }
+
+
         public Admin() { }
 
         public Admin(string idNumber, string firstName, string lastName, string phoneNumber, string mailAddress, Address address, string password)
@@ -23,15 +33,6 @@ namespace CareManagment.DP
         }
         public Admin(Admin admin) { }
 
-
-        public int AdminId { get; set; }
-        public string IdNumber { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string MailAddress { get; set; }
-        public Address Address { get; set; }
-        public string Password { get; set; }
 
         public Address GetAddress()
         {

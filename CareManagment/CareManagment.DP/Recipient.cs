@@ -15,10 +15,9 @@ namespace CareManagment.DP
         public string PhoneNumber { get; set; }
         public string MailAddress { get; set; }
         public Address Address { get; set; }
-        public Recipient()
-        {
 
-        }
+        public Recipient() { }
+
         public Recipient(string idNumber, string firstName, string lastName, string phoneNumber, string mailAddress, Address address)
         {
             IdNumber = idNumber;

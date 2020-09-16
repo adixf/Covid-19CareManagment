@@ -12,7 +12,6 @@ namespace CareManagment.DP
         public PkgType Contents { get; set; }
         
 
-
         private Recipient recipient;
         public Recipient Recipient
         {
@@ -33,7 +32,7 @@ namespace CareManagment.DP
             set
             {
                 distribution = value;
-                DistributionId = distribution.DistributionId;
+                if(value!=null) DistributionId = distribution.DistributionId;
             }
 
         }

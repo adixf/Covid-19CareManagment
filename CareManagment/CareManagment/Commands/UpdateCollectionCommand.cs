@@ -45,7 +45,7 @@ namespace CareManagment.Commands
         private void Wait(object sender, DoWorkEventArgs e)
         {
             e.Result = e.Argument;
-            Thread.Sleep(300);
+            Thread.Sleep(250);
         }
 
         private void DoneWaiting(object sender, RunWorkerCompletedEventArgs e)
