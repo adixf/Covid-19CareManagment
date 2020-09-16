@@ -47,7 +47,7 @@ namespace CareManagment.ViewModels
             int Id = int.Parse(o.ToString());
             List<Distribution> AllDistributions = new List<Distribution>(OldDistributions);
             AllDistributions.AddRange(NewDistributions);
-            Distribution distribution = AllDistributions.Find(x => x.Id == Id);
+            Distribution distribution = AllDistributions.Find(x => x.DistributionId == Id);
             DistributionsToUpdate.Add(distribution);
             if (distribution.IsDelivered)
             {

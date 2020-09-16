@@ -14,25 +14,36 @@ namespace CareManagment.Models
     {
         public IBL BL { get; set; }
 
-        public ObservableCollection<User> Users { get; set; }
+        public List<Volunteer> Volunteers { get; set; }
+        public List<Admin> Admins { get; set; }
 
         public LoginM()
         {
             BL= new BLImp();
-            Users = new ObservableCollection<User>(BL.GetAllUsers());
+            Volunteers = BL.GetAllVolunteers();
+            Admins = BL.GetAllAdmins();
         }
 
         public bool ValidUser(string email, string password)
         {
-            foreach (var user in Users)
+            foreach (var user in Volunteers)
+                if (user.MailAddress == email && user.Password == password)
+                    return true;
+            foreach (var user in Admins)
                 if (user.MailAddress == email && user.Password == password)
                     return true;
             return false;
         }
 
-        public User GetUser(string email)
+        public IUser GetUser(string email)
         {
-            return Users.First(x => x.MailAddress == email);
+            foreach (var user in Volunteers)
+                if (user.MailAddress == email)
+                    return user;
+            foreach (var user in Admins)
+                if (user.MailAddress == email)
+                    return user;
+            return Admins.First();
         }
     }
 

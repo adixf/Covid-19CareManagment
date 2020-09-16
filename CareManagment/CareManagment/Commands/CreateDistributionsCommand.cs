@@ -28,7 +28,7 @@ namespace CareManagment.Commands
 
         public bool CanExecute(object parameter)
         {
-            return CurrentVM.Packages.Count != 0;
+            return true;
         }
 
         public void Execute(object parameter)

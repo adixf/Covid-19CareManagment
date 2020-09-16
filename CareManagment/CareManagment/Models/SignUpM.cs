@@ -20,15 +20,21 @@ namespace CareManagment.Models
             BL = new BLImp();
         }
 
-        public void SignUp(User user)
+        public void SignUp(IUser user, UserType userType)
         {
-            if (new Tools.VerifyString().ArePropertiesNull<User>(user))
+            if (new Tools.VerifyString().ArePropertiesNull(user))
                 throw new Exception("אנא מלא את כל השדות");
-            if (BL.GetAllUsers(x => x.MailAddress == user.MailAddress).Count != 0)
+            if (BL.GetAllAdmins(x => x.MailAddress == user.GetMailAddress()).Count != 0 || BL.GetAllVolunteers(x => x.MailAddress == user.GetMailAddress()).Count != 0)
                 throw new Exception("המשתמש כבר קיים במערכת");
-            /*if (!new Tools.VerifyAddress().IsValidAddress(user.Address))
-                throw new Exception("הכתובת שהזנת לא קיימת");*/
-            BL.AddPerson(user);
+            if (!new Tools.VerifyAddress().IsValidAddress(user.GetAddress()))
+                throw new Exception("הכתובת שהזנת לא קיימת");
+            double[] location = new Tools.VerifyAddress().GetLocation(user.GetAddress());
+            user.SetAddress(location[0], location[1]);
+            if (userType == UserType.Admin)
+                BL.AddAdmin(user as Admin);
+            else BL.AddVolunteer(user as Volunteer);
+           
+            // TODO send mail
             //MailSender mailSender = new MailSender();
             //string to = user.MailAddress;
             //string subject = "ברוך הבא לעמותת יד ביד";

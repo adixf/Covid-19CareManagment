@@ -15,30 +15,32 @@ namespace CareManagment.DAL
         {
 
         }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Volunteer> Volunteers { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Recipient> Recipients { get; set; }
         public DbSet<Distribution> Distributions { get; set; }
         public DbSet<Package> Packages { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
 
-            modelBuilder.Entity<Package>()
-           .HasOptional<Recipient>(s => s.Recipient)
-           .WithMany()
-           .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Distribution>()
-          .HasOptional<User>(s => s.Volunteer)
-          .WithMany()
-          .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Distribution>()
-          .HasOptional<User>(s => s.Admin)
-          .WithMany()
-          .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Package>().Property(p => p.RecipientId).IsOptional();
-            modelBuilder.Entity<Distribution>().Property(p => p.AdminId).IsOptional();
-            modelBuilder.Entity<Distribution>().Property(p => p.VolunteerId).IsOptional();
+        //    modelBuilder.Entity<Package>()
+        //   .HasOptional<Recipient>(s => s.Recipient)
+        //   .WithMany()
+        //   .WillCascadeOnDelete(false);
+        //    modelBuilder.Entity<Distribution>()
+        //  .HasOptional<User>(s => s.Volunteer)
+        //  .WithMany()
+        //  .WillCascadeOnDelete(false);
+        //    modelBuilder.Entity<Distribution>()
+        //  .HasOptional<User>(s => s.Admin)
+        //  .WithMany()
+        //  .WillCascadeOnDelete(false);
+        //    modelBuilder.Entity<Package>().Property(p => p.RecipientId).IsOptional();
+        //    modelBuilder.Entity<Distribution>().Property(p => p.AdminId).IsOptional();
+        //    modelBuilder.Entity<Distribution>().Property(p => p.VolunteerId).IsOptional();
 
-        }
+        //}
 
     }
 }

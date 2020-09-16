@@ -6,18 +6,27 @@ using System.Threading.Tasks;
 
 namespace CareManagment.DP
 {
-    public class Recipient :Person
+    public class Recipient
     {
-        //  public ICollection<Package> Packages { get; set; }
-
-        public Recipient(string personId, string firstName, string lastName, string phoneNumber, string mailAddress, Address address):
-            base(personId,firstName,lastName,phoneNumber,mailAddress,address)
-        {
-           
-        }
+        public int RecipientId { get; set; }
+        public string IdNumber { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string MailAddress { get; set; }
+        public Address Address { get; set; }
         public Recipient()
         {
 
+        }
+        public Recipient(string idNumber, string firstName, string lastName, string phoneNumber, string mailAddress, Address address)
+        {
+            IdNumber = idNumber;
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            MailAddress = mailAddress;
+            Address = address;
         }
     }
 }

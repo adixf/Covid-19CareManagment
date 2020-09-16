@@ -139,19 +139,24 @@ namespace CareManagment.ViewModels
         
         public void SignUp()
         {
-            UserType userType;
-            if (IsAdmin)
-                userType = UserType.Admin;
-            else
-                userType = UserType.Volunteer;
-         
+            
             try
             {
                 if (PersonId == null || FirstName == null || LastName == null || PhoneNumber == null || MailAddress == null || City == null || StreetName == null || buildingNumber == null || Password == null)
                     throw new Exception("אנא מלא את כל השדות");
+                IUser user;
 
-                User user = new User(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)), Password, userType);
-                SignUpModel.SignUp(user);
+                if (IsVolunteer)
+                {
+                    user = new Volunteer(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)), Password);
+                    SignUpModel.SignUp(user, UserType.Volunteer);
+                }
+                   
+                else
+                {
+                    user = new Admin(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)), Password);
+                    SignUpModel.SignUp(user, UserType.Admin);
+                }              
 
                 Message = new Message("ברוך הבא!", "נוספת למערכת בהצלחה", true, false);
             }

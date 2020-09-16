@@ -30,8 +30,8 @@ namespace CareManagment.Models
         {
             BL = new BLImp();
 
-            OldDistributions = new List<Distribution>(BL.GetAllDistributions(x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && x.IsDelivered).ToList());
-            NewDistributions = new List<Distribution>(BL.GetAllDistributions(x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.MailAddress) && !x.IsDelivered).ToList());
+            OldDistributions = new List<Distribution>(BL.GetAllDistributions(x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.GetMailAddress()) && x.IsDelivered).ToList());
+            NewDistributions = new List<Distribution>(BL.GetAllDistributions(x => (x.Admin.MailAddress == ((App)Application.Current).Currents.LoggedUser.GetMailAddress()) && !x.IsDelivered).ToList());
                 
         }   
 

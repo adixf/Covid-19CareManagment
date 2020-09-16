@@ -56,21 +56,26 @@
             <!--- recipients view -->
 
             <TextBlock Grid.Row="2" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="בחר נמענים"></TextBlock>
-            <CheckBox Name="checkAll" Grid.Row="2" Style="{StaticResource MaterialDesignFilterChipCheckBox}" Content="בחר הכל"
-                   HorizontalAlignment="Left" Foreground="White" FontSize="14" Background="White"></CheckBox>
+          
+            <Border Width="100" Margin="0 10" Grid.Row="2" HorizontalAlignment="Left" CornerRadius="20" Background="Transparent"
+                    BorderThickness="2" BorderBrush="White">
+                <ComboBox Margin="5 0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FlowDirection="RightToLeft"
+                         
+                      ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity}">
+            </ComboBox>
+            </Border>
             <materialDesign:Card Grid.Row="3" Grid.Column="2" UniformCornerRadius="20">
                 <ListView Name="packagesList" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" SelectionMode="Multiple"
-                      ItemsSource="{Binding Recipients}" >
+                      ItemsSource="{Binding Recipients, Mode=OneWay}" >
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            
-                                <Grid Height="30" HorizontalAlignment="Stretch">
+                            <Grid Height="30" HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
@@ -78,30 +83,31 @@
                                 <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="{Binding LastName}"></TextBlock>
                                 <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding Address}"></TextBlock>
                                 <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
-                                <ComboBox Name="PkgTypeCB" Grid.Column="1" >
+                                <ComboBox HorizontalAlignment="Stretch" Name="PkgTypeCB" Grid.Column="1" FlowDirection="RightToLeft">
                                     <ComboBoxItem FlowDirection="RightToLeft" IsSelected="True">מזון</ComboBoxItem>
                                     <ComboBoxItem FlowDirection="RightToLeft">תרופות</ComboBoxItem>
                                     <ComboBoxItem FlowDirection="RightToLeft">ביגוד</ComboBoxItem>
                                     <ComboBoxItem FlowDirection="RightToLeft">משחקים</ComboBoxItem>
                                 </ComboBox>
                                 <ToggleButton Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" 
-                                              Background="#FFC66465" Command="{Binding DataContext.AddPackageCommand, RelativeSource={RelativeSource AncestorType=ListView}}">
-                                    <ToggleButton.CommandParameter>
+                                              Background="#FFC66465" IsChecked="True"
+                                              Command="{Binding DataContext.AddPackageCommand, RelativeSource={RelativeSource AncestorType=ListView}}">
+                                    <!--<ToggleButton.CommandParameter>
                                         <MultiBinding Converter="{StaticResource MultiParameterConverter}">
                                             <Binding Path="MailAddress" />
                                             <Binding Path="SelectedItem" ElementName="PkgTypeCB"/>
                                         </MultiBinding>
-                                    </ToggleButton.CommandParameter>
+                                    </ToggleButton.CommandParameter>-->
                                     <ToggleButton.Style>
                                         <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignFlatPrimaryToggleButton}">
-                                            <Style.Triggers>
+                                            <!--<Style.Triggers>
                                                 <DataTrigger Binding="{Binding ElementName=checkAll, Path=IsChecked}" Value="True">
                                                     <Setter Property="IsChecked" Value="True"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding ElementName=checkAll,Path=IsChecked}" Value="False">
                                                     <Setter Property="IsChecked" Value="False"/>
                                                 </DataTrigger>
-                                            </Style.Triggers>
+                                            </Style.Triggers>-->
                                         </Style>
                                     </ToggleButton.Style>
                                     <materialDesign:PackIcon Height="24" Width="24"  Kind="Check" Foreground="Black">
@@ -160,9 +166,7 @@
                                     </StackPanel>
                                 </Button>
                                 <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
-                                
-                                         
-
+                                                                        
                             </Grid>
 
                         </DataTemplate>

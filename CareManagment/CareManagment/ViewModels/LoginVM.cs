@@ -1,4 +1,5 @@
 ﻿using CareManagment.Commands;
+using CareManagment.DP;
 using CareManagment.DP.Types;
 using CareManagment.Models;
 using System;
@@ -48,7 +49,7 @@ namespace CareManagment.ViewModels
             if (ValidUser(Email, Password))
             {
                 ((App)Application.Current).Currents.LoggedUser = CurrentModel.GetUser(Email);
-                if (((App)Application.Current).Currents.LoggedUser.UserType == UserType.Admin)
+                if (((App)Application.Current).Currents.LoggedUser is Admin)
                     ((App)Application.Current).Currents.CurrentVM = new AdminMainVM();
                 else
                     ((App)Application.Current).Currents.CurrentVM = new VolunteerMainVM();

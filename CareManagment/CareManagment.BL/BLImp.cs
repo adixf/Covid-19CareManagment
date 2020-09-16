@@ -23,9 +23,17 @@ namespace CareManagment.BL
 
         #region update db
 
-        public void AddPerson(Person person)
+        public void AddVolunteer(Volunteer volunteer)
         {
-            IRepository.AddPerson(person);
+            IRepository.AddVolunteer(volunteer);
+        }
+        public void AddAdmin(Admin admin)
+        {
+            IRepository.AddAdmin(admin);
+        }
+        public void AddRecipient(Recipient recipient)
+        {
+            IRepository.AddRecipient(recipient);
         }
 
         public void AddDistribution(Distribution distribution)
@@ -46,42 +54,47 @@ namespace CareManagment.BL
         {
             IRepository.AddPackage(package);
         }
-        public void UpdatePerson(Person person)
-        {
-            IRepository.UpdatePerson(person);
-        }
-        
+        //public void UpdatePerson(Person person)
+        //{
+        //    IRepository.UpdatePerson(person);
+        //}
+
+        //public void DeletePerson(Person person)
+        //{
+        //    IRepository.DeletePerson(person);
+        //}
+
+
         #endregion
 
 
         #region fetch from db
 
-        public List<Person> GetAllPersons(Func<Person, bool> predicate = null)
+        public List<Recipient> GetAllRecipients(Func<Recipient, bool> predicate = null)
         {
-           return IRepository.GetAllPersons(predicate);
+           return IRepository.GetAllRecipients(predicate);
         }
-        public List<User> GetAllUsers(Func<User, bool> predicate = null)
+        public List<Volunteer> GetAllVolunteers(Func<Volunteer, bool> predicate = null)
         {
-            return IRepository.GetAllUsers(predicate);
+            return IRepository.GetAllVolunteers(predicate);
         }
+
+        public List<Admin> GetAllAdmins(Func<Admin, bool> predicate = null)
+        {
+            return IRepository.GetAllAdmins(predicate);
+        }
+
+
         public List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null)
         {
-            return IRepository.GetAllDistribution(predicate);
+            return IRepository.GetAllDistributions(predicate);
         }
+
         public JsonAddress GetAddressDetails(Address address)
         {
             return IRepository.GetAddressDetails(address);
         }
 
-        public List<Recipient> GetAllRecipients(Func<Recipient, bool> predicate = null)
-        {
-            return IRepository.GetAllRecipient(predicate);
-        }
-
-        public List<User> GetAllVolunteers()
-        {
-            return GetAllUsers(x => x.UserType == UserType.Volunteer);
-        }
         #endregion
 
 
@@ -96,8 +109,8 @@ namespace CareManagment.BL
             {
                 Locations[i] = new double[2];
                 Locations[i][0] = p.Recipient.Address.Lat;
-                Locations[i][1] = p.Recipient.Address.Lon;
-                
+                Locations[i][1] = p.Recipient.Address.Lat;
+
                 i++;
             }
 
@@ -122,7 +135,7 @@ namespace CareManagment.BL
 
         }
 
-        public User FindClosestVolunteer(Address address)
+        public Volunteer FindClosestVolunteer(List<Volunteer> Volunteers, Address address)
         {
            
             double lat1 = address.Lat;
@@ -130,10 +143,8 @@ namespace CareManagment.BL
             
             double lat2, lon2, MinDistance;
 
-            List<User> Volunteers = GetAllVolunteers();
-
             // initial distance
-            User ClosestVolunteer = Volunteers[0];
+            Volunteer ClosestVolunteer = Volunteers[0];
             
             lat2 = ClosestVolunteer.Address.Lat;
             lon2 = ClosestVolunteer.Address.Lon;
@@ -141,7 +152,7 @@ namespace CareManagment.BL
             MinDistance = HarvestineDistance(lat1, lon1, lat2, lon2);
 
             // find minimum distance
-            foreach (User v in Volunteers)
+            foreach (Volunteer v in Volunteers)
             {
                 lat2 = v.Address.Lat;
                 lon2 = v.Address.Lon;
@@ -189,12 +200,7 @@ namespace CareManagment.BL
             return Math.PI * angle / 180.0;
         }
 
-        public void DeletePerson(Person person)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         #endregion
-
     }
 }

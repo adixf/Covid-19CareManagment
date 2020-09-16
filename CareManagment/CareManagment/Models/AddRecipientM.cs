@@ -29,7 +29,7 @@ namespace CareManagment.Models
             double[] location = new Tools.VerifyAddress().GetLocation(recipient.Address);
             recipient.Address.Lat = location[0];
             recipient.Address.Lon = location[1];
-            BL.AddPerson(recipient);
+            BL.AddRecipient(recipient);
         }
     }
 }

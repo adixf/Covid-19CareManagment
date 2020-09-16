@@ -11,7 +11,7 @@ namespace CareManagment.DP
         public string DisplayName { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
-        public string Id { get; set; }
+        public string AddressId { get; set; }
         
     }
 }

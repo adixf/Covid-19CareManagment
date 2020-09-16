@@ -25,8 +25,8 @@ namespace CareManagment.Tools
                 OnPropertyRaised("CurrentVM");
             }
         }
-        private User loggedUser;
-        public User LoggedUser
+        private IUser loggedUser;
+        public IUser LoggedUser
         {
             get { return loggedUser; }
             set

@@ -10,29 +10,31 @@ namespace CareManagment.DP
     public class Distribution 
     {
 
-        public int Id { get; set; }
+        public int DistributionId { get; set; }
 
-        private User volunteer;
-        public User Volunteer
+        private Volunteer volunteer;
+        public Volunteer Volunteer
         {
             get { return volunteer; }
             set
             {
                 volunteer = value;
-                VolunteerId = volunteer.Id;
+                if(value!=null)
+                    VolunteerId = volunteer.VolunteerId;
             }
         }
+
         public int VolunteerId { get; set; }
 
-        private User admin;
-
-        public User Admin
+        private Admin admin;
+        public Admin Admin
         {
             get { return admin; }
             set
             {
                 admin = value;
-                AdminId = admin.Id;
+                if(value!=null)
+                    AdminId = admin.AdminId;
             }
         }
         public int AdminId { get; set; }
@@ -40,30 +42,14 @@ namespace CareManagment.DP
         public List<Package> Packages { get; set; }
         public DateTime Date { get; set; }
 
-        private bool isDelivered;
-        public bool IsDelivered
+        public bool IsDelivered { get; set; }
+        
+      
+        public Distribution(Volunteer volunteer, List<Package> packages, DateTime date, Volunteer admin, bool isDelivered)
         {
-            get { return isDelivered; }
-            set
-            {
-                isDelivered = value;
-               // OnPropertyRaised("IsDelivered");
-            }
-        }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //public void OnPropertyRaised(string propertyname)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
-        //}
-
-
-        public Distribution(User volunteer, List<Package> packages, DateTime date, User admin, bool isDelivered)
-        {
-            Admin = new User(admin.PersonId,admin.FirstName,admin.LastName,admin.PhoneNumber,admin.MailAddress,admin.Address,admin.Password,admin.UserType);
+            Admin = new Admin(admin.IdNumber,admin.FirstName,admin.LastName,admin.PhoneNumber,admin.MailAddress,admin.Address,admin.Password);
             Packages = new List<Package>();
-            Volunteer = new User(volunteer.PersonId, volunteer.FirstName, volunteer.LastName, volunteer.PhoneNumber, volunteer.MailAddress, volunteer.Address, volunteer.Password, volunteer.UserType);
+            Volunteer = new Volunteer(volunteer.IdNumber, volunteer.FirstName, volunteer.LastName, volunteer.PhoneNumber, volunteer.MailAddress, volunteer.Address, volunteer.Password);
             Date = date;
             IsDelivered = isDelivered;
         }

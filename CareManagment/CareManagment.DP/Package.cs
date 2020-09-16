@@ -8,7 +8,7 @@ namespace CareManagment.DP
 {
     public class Package
     {
-        public int Id { get; set; }
+        public int PackageId { get; set; }
         public PkgType Contents { get; set; }
         
 
@@ -20,7 +20,7 @@ namespace CareManagment.DP
             set
             {
                 recipient = value;
-                RecipientId = recipient.Id;
+                if(value!=null) RecipientId = recipient.RecipientId;
             }
         }
         public int RecipientId { get; set; }
@@ -33,7 +33,7 @@ namespace CareManagment.DP
             set
             {
                 distribution = value;
-                DistributionId = distribution.Id;
+                DistributionId = distribution.DistributionId;
             }
 
         }

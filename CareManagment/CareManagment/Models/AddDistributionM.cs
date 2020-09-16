@@ -21,7 +21,7 @@ namespace CareManagment.Models
         {
             BL = new BLImp();
            
-            Recipients = new List<Recipient>(BL.GetAllRecipients());
+            Recipients = BL.GetAllRecipients();
         }
 
 
@@ -34,14 +34,19 @@ namespace CareManagment.Models
             return BL.DividePackages(Packages, K);               
         }
 
-        public User FindClosestVolunteer(Address address)
+        public Volunteer FindClosestVolunteer(List<Volunteer> Volunteers, Address address)
         {
-            return BL.FindClosestVolunteer(address);
+            return BL.FindClosestVolunteer(Volunteers, address);
         }
 
         public void AddDistributions(List<Distribution> distributions)
         {
             BL.AddDistributions(distributions);
+        }
+
+        public List<Volunteer> GetAllVolunteers()
+        {
+            return BL.GetAllVolunteers();
         }
 
     }

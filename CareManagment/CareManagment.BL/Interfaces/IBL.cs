@@ -11,20 +11,23 @@ namespace CareManagment.BL.Interfaces
     {
         void AddDistribution(Distribution distribution);
         void AddDistributions(List<Distribution> distributions);
-        void AddPerson(Person person);
+        void AddVolunteer(Volunteer volunteer);
+        void AddAdmin(Admin admin);
+        void AddRecipient(Recipient recipient);
         void AddPackage(Package package);
-        void UpdatePerson(Person person);
+        //void UpdatePerson(Person person);
         void UpdateDistribution(Distribution distribution);
-        void DeletePerson(Person person);
-        List<Person> GetAllPersons(Func<Person, bool> predicate = null);
+        //void DeletePerson(Person person);
+        List<Volunteer> GetAllVolunteers(Func<Volunteer, bool> predicate = null);
+        List<Admin> GetAllAdmins(Func<Admin, bool> predicate = null);
         List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null);
-        List<User> GetAllUsers(Func<User, bool> predicate = null);
-        List<User> GetAllVolunteers();
+
+
         List<Recipient> GetAllRecipients(Func<Recipient, bool> predicate = null);
         JsonAddress GetAddressDetails(Address address);
 
         List<Package>[] DividePackages(List<Package> Packages, int K);
-        User FindClosestVolunteer(Address address);
+        Volunteer FindClosestVolunteer(List<Volunteer> Volunteers, Address Address);
 
         
     }
