@@ -28,11 +28,29 @@ namespace CareManagment.ViewModels
             set
             {               
                 recipients = value;
+                Packages = new ObservableCollection<Package>();
+                foreach(Recipient recipient in recipients)
+                    Packages.Add(new Package()
+                    {
+                        Contents = PkgType.מזון, // initial package type
+                        Recipient = recipient
+                    });
                 OnPropertyRaised("Recipients");
             }
         }
 
-        public List<Package> Packages { get; set; }
+       
+
+        private ObservableCollection<Package> packages;
+        public ObservableCollection<Package> Packages
+        {
+            get { return packages; }
+            set
+            {
+                packages = value;
+                OnPropertyRaised("Packages");
+            }
+        }
         private ObservableCollection<Distribution> distributions;
         public ObservableCollection<Distribution> Distributions
         {
@@ -82,24 +100,30 @@ namespace CareManagment.ViewModels
                 OnPropertyRaised("IsWorking");
             }
         }
-
-       
+      
         public ICommand CreateDistributionsCommand { get { return new CreateDistributionsCommand(this); } }
         public ICommand AcceptDistributionsCommand
         {
             get
             {
-                return new BaseCommand(delegate () { AddDistributionM.AddDistributions(new List<Distribution>(Distributions)); });
+                return new BaseCommand(delegate () { AcceptDistributions(); });
             }
         }
 
+        
         public AddDistributionVM()
         {
             AddDistributionM = new AddDistributionM();
+            Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);          
+            Packages = new ObservableCollection<Package>();
+            foreach(Recipient recipient in Recipients)
+                Packages.Add(new Package()
+                {
+                    Contents = PkgType.מזון, // initial package type
+                    Recipient = recipient
+                });
 
-            Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
             Distributions = new ObservableCollection<Distribution>();
-            Packages = new List<Package>();
             DistributionDate = DateTime.Now.Date;
            
             GetAllCities();
@@ -122,15 +146,10 @@ namespace CareManagment.ViewModels
         {
             try
             {
-                foreach (Recipient recipient in Recipients)
-                    Packages.Add(new Package()
-                    {
-                        Contents = PkgType.מזון, // TODO fix type
-                        Recipient = recipient
-                    });
+                
 
                 // divide packages into distributions
-                List<Package>[] DividedPackages = AddDistributionM.DividePackages(Packages);
+                List<Package>[] DividedPackages = AddDistributionM.DividePackages(Packages.ToList());
 
                 Application.Current.Dispatcher.BeginInvoke(
                     new Action(() => { AddDistributions(DividedPackages); }));
@@ -170,5 +189,11 @@ namespace CareManagment.ViewModels
                 volunteers.Remove(closestVolunteer);
             }
         }
+
+        private void AcceptDistributions()
+        {
+            AddDistributionM.AddDistributions(new List<Distribution>(Distributions));
+        }
+
     }
 }

@@ -95,6 +95,7 @@
     <Compile Include="Commands\SignUpCommand.cs" />
     <Compile Include="Converters\FullNameConverter.cs" />
     <Compile Include="Converters\MultiParameterConverter.cs" />
+    <Compile Include="Converters\StringToPkgTypeConverter.cs" />
     <Compile Include="Interfaces\IDeliverDistributions.cs" />
     <Compile Include="Interfaces\ISaveChanges.cs" />
     <Compile Include="Interfaces\ISignUp.cs" />
