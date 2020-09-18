@@ -69,7 +69,7 @@
             </ComboBox>
             </Border>
             <materialDesign:Card Grid.Row="3" Grid.Column="2" UniformCornerRadius="20">
-                <ListView Name="packagesList" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" SelectionMode="Multiple"
+                <ListView HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" SelectionMode="Multiple"
                       ItemsSource="{Binding Packages, Mode=OneWay}" >
 
                     <ListView.ItemTemplate>
@@ -101,9 +101,7 @@
                                     <ComboBoxItem HorizontalAlignment="Stretch">ביגוד</ComboBoxItem>
                                     <ComboBoxItem HorizontalAlignment="Stretch">משחקים</ComboBoxItem>
                                 </ComboBox>
-                                
-                               
-
+                                                              
                             </Grid>
 
                         </DataTemplate>
@@ -113,7 +111,7 @@
 
             <Button Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Content="בקש ביצוע חלוקה" Foreground="White" Background="#FFC66465" materialDesign:ButtonAssist.CornerRadius="15"
-                VerticalContentAlignment="Top" Command="{Binding CreateDistributionsCommand}">
+                VerticalContentAlignment="Top"  Command="{Binding CreateDistributionsCommand}">
             </Button>
         </Grid>
       
@@ -139,16 +137,20 @@
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}"></TextBlock>
 
-                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                                <!--<TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft">
                                     <TextBlock.Text>
                                         <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
                                             <Binding Path="Volunteer.FirstName"/>
                                             <Binding Path="Volunteer.LastName"/>
                                         </MultiBinding>
                                     </TextBlock.Text>
-                                </TextBlock>
-                                <Button Margin="10 0" Grid.Column="0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Background="{x:Null}" BorderBrush="LightGray">
+                                </TextBlock>-->
+                                <Button Margin="10 0" Grid.Column="0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Background="{x:Null}" BorderBrush="LightGray"
+                                        Command="{Binding DataContext.DisplayDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        CommandParameter="{Binding DistributionId}">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>הצג פרטי חלוקה</TextBlock>
                                         <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
@@ -187,7 +189,21 @@
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
+        
+        <!-- distribution details dialog -->
 
+        <materialDesign:DialogHost Grid.ColumnSpan="5" Grid.RowSpan="2" CloseOnClickAway="True" FlowDirection="RightToLeft"
+                                   IsOpen="{Binding IsDisplayingDetails}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Height="600" Width="800">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="9*"/>
+                    </Grid.RowDefinitions>
+                    <local:DistributionDetailsUC Grid.Row="1" DataContext="{Binding CurrentDetailsDisplay}"></local:DistributionDetailsUC>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
 
         <!-- message dialogs -->
         

@@ -89,6 +89,8 @@
     </ApplicationDefinition>
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\CreateDistributionsCommand.cs" />
+    <Compile Include="Commands\DisplayDistributionDetailsCommand.cs" />
+    <Compile Include="Commands\DisplayLocationCommand.cs" />
     <Compile Include="Commands\SaveChangesCommand.cs" />
     <Compile Include="Commands\UpdateCollectionCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Models\AddDistributionM.cs" />
     <Compile Include="Models\AddRecipientM.cs" />
     <Compile Include="Models\AdminDistributionsM.cs" />
+    <Compile Include="Models\DistributionDetailsM.cs" />
     <Compile Include="Models\LoginM.cs" />
     <Compile Include="Models\RecipientViewM.cs" />
     <Compile Include="Models\SignUpM.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="ViewModels\AdminOptionsVM.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ContactUsVM.cs" />
+    <Compile Include="ViewModels\DistributionDetailsVM.cs" />
     <Compile Include="ViewModels\DonationVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
@@ -352,6 +356,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\aboutus1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\donation-hands.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\donation-hands2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hh.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0-ci1901\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0-ci1901\build\MaterialDesignThemes.targets')" />

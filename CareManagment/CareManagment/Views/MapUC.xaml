@@ -8,7 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <m:Map Culture="he" CredentialsProvider="AhCDEHftaOj6EV613njroTC61Gy5dFYiQr8Aq5_XyrVvtsu_aRz12GIeoqoa06xs"
-                   Mode="Road" ZoomLevel="16" Center="31.7876803 ,35.1752327"/>
+       
     </Grid>
 </UserControl>

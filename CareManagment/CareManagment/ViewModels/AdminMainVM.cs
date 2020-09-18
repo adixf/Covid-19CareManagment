@@ -68,7 +68,7 @@ namespace CareManagment.ViewModels
         {
             get
             {
-                return new BaseCommand(delegate () { CurrentAdminVM = new AddDistributionVM();});
+                return new BaseCommand(delegate () { CurrentAdminVM = new AddDistributionVM(); });
             }
         }
 
@@ -87,6 +87,7 @@ namespace CareManagment.ViewModels
                 return new BaseCommand(delegate () { CurrentAdminVM = new AdminOptionsVM(); });
             }
         }
+     
 
         public ICommand SignOut
         {
@@ -99,7 +100,7 @@ namespace CareManagment.ViewModels
                 });
             }
         }
-      
+
         #endregion
     }
 }

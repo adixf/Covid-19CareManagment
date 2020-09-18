@@ -24,7 +24,9 @@ namespace CareManagment.Views
         public AdminDistributionsUC()
         {
             InitializeComponent();
-            DataContext = new AdminDistributionsVM();
+
+            AdminDistributionsVM VM = new AdminDistributionsVM();
+            DataContext = VM;
         }
     }
 }

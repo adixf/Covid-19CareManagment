@@ -36,14 +36,14 @@ namespace CareManagment.Commands
             }
             else
             {
-                bool result = this.canExecuteEvaluator.Invoke();
+                bool result = canExecuteEvaluator.Invoke();
                 return result;
             }
         }
 
         public void Execute(object parameter)
         {
-            this.methodToExecute.Invoke();
+            methodToExecute.Invoke();
         }
 
     }

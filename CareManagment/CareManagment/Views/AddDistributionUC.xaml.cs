@@ -27,7 +27,9 @@ namespace CareManagment.Views
         {
             InitializeComponent();
 
-            DataContext = new AddDistributionVM();
+            AddDistributionVM VM = new AddDistributionVM();
+            DataContext = VM;
+
         }
     }
 }

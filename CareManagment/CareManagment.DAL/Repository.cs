@@ -67,16 +67,26 @@ namespace CareManagment.DAL
         {
             using (var ctx = new CareManagmentDb())
             {
-                distribution.Admin = null;
-                distribution.Volunteer = null;
+                //distribution.Admin = null;
+                //distribution.Volunteer = null;
                 foreach (Package p in distribution.Packages)
                     p.Recipient = null;
 
                 ctx.Distributions.Add(distribution);
                 ctx.SaveChanges();
+
+               
             }
         }
        
+        public void AddPackage(Package package)
+        {
+            using (var ctx = new CareManagmentDb())
+            {
+                ctx.Packages.Add(package);
+                ctx.SaveChanges();
+            }
+        }
 
         public List<Volunteer> GetAllVolunteers(Func<Volunteer, bool> predicate = null)
         {
@@ -146,34 +156,25 @@ namespace CareManagment.DAL
             {
                 if (predicate == null)
                 {
-                    result = (from element in context.Packages.Include(s => s.Recipient).Include(s => s.Distribution).OfType<Package>()
+                    result = (from element in context.Packages.Include(s => s.Recipient).OfType<Package>()
                               select element).ToList();
                 }
                 else
                 {
-                    result = context.Packages.Include(s => s.Recipient).Include(s => s.Distribution).Where(predicate).ToList();
+                    result = context.Packages.Include(s => s.Recipient).Where(predicate).ToList();
                 }
 
             }
             return result;
-        }
-
-        public void AddPackage(Package package)
-        {
-            using (var ctx = new CareManagmentDb())
-            {
-                ctx.Packages.Add(package);
-                ctx.SaveChanges();
-            }
-        }
+        }   
 
         public void UpdateDistribution(Distribution distribution)
         {
             using (var context = new CareManagmentDb())
             {
                 var old = context.Distributions.Find(distribution.DistributionId);
-                old.Admin = distribution.Admin;
-                old.Volunteer = distribution.Volunteer;
+                old.AdminId = distribution.AdminId;
+                old.VolunteerId = distribution.VolunteerId;
                 old.IsDelivered = distribution.IsDelivered;
                 old.Packages = distribution.Packages;
                 old.Date = distribution.Date;

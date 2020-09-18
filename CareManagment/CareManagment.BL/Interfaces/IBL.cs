@@ -24,6 +24,7 @@ namespace CareManagment.BL.Interfaces
         List<Admin> GetAllAdmins(Func<Admin, bool> predicate = null);
         List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null);
         List<Recipient> GetAllRecipients(Func<Recipient, bool> predicate = null);
+        List<Package> GetAllPackages(Func<Package, bool> predicate = null);
 
         JsonAddress GetAddressDetails(Address address);
 

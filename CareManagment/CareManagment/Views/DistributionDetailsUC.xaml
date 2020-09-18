@@ -5,13 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CareManagment.Views"
+             xmlns:Tools="clr-namespace:CareManagment.Tools"
+             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.Background>
+    <Grid Background="White">
+        <!--<Grid.Background>
             <ImageBrush Opacity="0.8" ImageSource="/CareManagment;component/Images/top-bg.jpg">
             </ImageBrush>
-        </Grid.Background>
+        </Grid.Background>-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
@@ -23,45 +25,79 @@
 
         <!-- top bar -->
 
-        <Button Grid.Row="0" Grid.Column="1" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}">
-            <materialDesign:PackIcon Foreground="White" Kind="ArrowForward" />
-        </Button>
-        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                       Text="24.09.20   חבילות לחלוקה 04423" FontSize="20" Foreground="White">
-        </TextBlock>
-
-
+       
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <!--<Button Margin="20 0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}"
+                    Command="{Binding Path=DataContext.GoBackCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}">
+                <materialDesign:PackIcon Foreground="White" Kind="ArrowForward" />
+            </Button>-->
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="חבילות לחלוקה" FontSize="16" >
+            </TextBlock>
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="{Binding CurrentDistribution.DistributionId}" FontSize="16" >
+            </TextBlock>
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       Text="{Binding CurrentDistribution.Date, StringFormat={}\{0:dd.MM.yyyy\}}" FontSize="16" >
+            </TextBlock>
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        FontSize="15" >
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
+                        <Binding Path="CurrentDistribution.Volunteer.FirstName"/>
+                        <Binding Path="CurrentDistribution.Volunteer.LastName"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+        
 
         <!-- map area -->
         <materialDesign:Card Margin="20" Grid.Row="1" Grid.Column="0" UniformCornerRadius="20">
-            <local:MapUC></local:MapUC>
+            <m:Map Name="Map" Culture="he" CredentialsProvider="AhCDEHftaOj6EV613njroTC61Gy5dFYiQr8Aq5_XyrVvtsu_aRz12GIeoqoa06xs"
+                   Mode="Road" ZoomLevel="16">
+                <Canvas Height="40" Width="40" m:MapLayer.Position="{Binding Location}" m:MapLayer.PositionOrigin="BottomCenter">
+                    <materialDesign:PackIcon Kind="LocationOn" Foreground="DarkRed" Height="40" Width="40" />
+                </Canvas>
+            </m:Map>
         </materialDesign:Card>
 
         <!-- packages list area -->
-        <materialDesign:Card Margin="20" Grid.Row="1" Grid.Column="1" UniformCornerRadius="20">
+        <materialDesign:Card Margin="20" Grid.Row="1" Grid.Column="1" UniformCornerRadius="20" BorderBrush="AliceBlue" BorderThickness="4">
 
-            <ListView Name="packagesList" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <ListView Name="packagesList"  ItemsSource="{Binding Packages}"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
-                            <Grid Height="30" HorizontalAlignment="Stretch">
+                            <Grid Height="30" HorizontalAlignment="Stretch" FlowDirection="RightToLeft">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="סימה וגבריאל לוק"></TextBlock>
-                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="נחל שמשון 8/7"></TextBlock>
-                                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="סוג חבילה: מזון ותרופות"></TextBlock>
-                                <Button Grid.Column="0" Height="25" Width="25" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" 
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Center">
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="נמען:">
+                                            <Binding Path="Recipient.FirstName"/>
+                                            <Binding Path="Recipient.LastName"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Recipient.Address}"></TextBlock>
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="סוג חבילה:"></TextBlock>
+                                <TextBlock Grid.Column="3" HorizontalAlignment="Left" Text="{Binding Contents}"></TextBlock>
+                                <Button Grid.Column="4" HorizontalAlignment="Center" Height="28" Width="28" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" 
+                                        Command="{Binding DataContext.DisplayLocationCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        CommandParameter="{Binding Recipient.Address}"
                                     ToolTip="הראה על המפה">
                                     <materialDesign:PackIcon Kind="Location" Foreground="#FFD17B7C"/>
                                 </Button>
 
                             </Grid>
-                            <Separator/>
+                          
                         </StackPanel>
 
                     </DataTemplate>

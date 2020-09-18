@@ -18,6 +18,8 @@ namespace CareManagment.ViewModels
     {
         public AddDistributionM AddDistributionM { get; set; }
 
+
+
         public DateTime DistributionDate { get; set; }
         private ObservableCollection<Recipient> recipients;
         public ObservableCollection<Recipient> Recipients
@@ -114,7 +116,39 @@ namespace CareManagment.ViewModels
             }
         }
 
-        
+
+        // Distribution Details Managment
+        private DistributionDetailsVM currentDetailsDisplay;
+        public DistributionDetailsVM CurrentDetailsDisplay
+        {
+            get { return currentDetailsDisplay; }
+            set
+            {
+                currentDetailsDisplay = value;
+                OnPropertyRaised("CurrentDetailsDisplay");
+            }
+        }
+
+        private bool isDisplayingDetails;
+        public bool IsDisplayingDetails
+        {
+            get { return isDisplayingDetails; }
+            set
+            {
+                isDisplayingDetails = value;
+                OnPropertyRaised("IsDisplayingDetails");
+            }
+        }
+
+        public ICommand DisplayDetailsCommand { get { return new DisplayDistributionDetailsCommand(this); } }
+
+        public void DisplayDetails(int Id)
+        {
+            CurrentDetailsDisplay = new DistributionDetailsVM(Id);
+            IsDisplayingDetails = true;
+        }
+
+
         public AddDistributionVM()
         {
             AddDistributionM = new AddDistributionM();
@@ -151,6 +185,9 @@ namespace CareManagment.ViewModels
                 Application.Current.Dispatcher.BeginInvoke(
                     new Action(() => { AddDistributions(DividedPackages); }));
 
+                Application.Current.Dispatcher.BeginInvoke(
+                    new Action(() => { AddDistributionM.AddDistributions(new List<Distribution>(Distributions)); }));
+
             }
             catch (Exception e)
             {
@@ -168,7 +205,7 @@ namespace CareManagment.ViewModels
                     {
                         Date = DistributionDate,
                         Packages = pkgGroup,
-                        Admin = ((App)Application.Current).Currents.LoggedUser as Admin
+                        AdminId = (((App)Application.Current).Currents.LoggedUser as Admin).AdminId
                     });
                 }
 
@@ -177,7 +214,7 @@ namespace CareManagment.ViewModels
             catch (Exception e)
             {
                 Message = new Message("משהו השתבש.", e.Message, false, true);
-            }  
+            }
 
         }
 
@@ -188,7 +225,7 @@ namespace CareManagment.ViewModels
             foreach (Distribution d in Distributions)
             {
                 Volunteer closestVolunteer = AddDistributionM.FindClosestVolunteer(volunteers, d.Packages[0].Recipient.Address);
-                d.Volunteer = closestVolunteer;
+                d.VolunteerId = closestVolunteer.VolunteerId;
                 volunteers.Remove(closestVolunteer);
             }
         }
@@ -197,7 +234,9 @@ namespace CareManagment.ViewModels
         {
             try
             {
-                AddDistributionM.AddDistributions(new List<Distribution>(Distributions));
+                // start over
+                Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
+                Distributions = new ObservableCollection<Distribution>();
             }
             catch (Exception e)
             {

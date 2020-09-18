@@ -7,11 +7,20 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        
-    </UserControl.Resources>
-  
+
     <Grid>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>-->
+        <Image Source="/CareManagment;component/Images/hh.jpg" HorizontalAlignment="Stretch" Stretch="Fill">
+        </Image>
+        <materialDesign:Card Margin="30" UniformCornerRadius="20" Opacity="0.8">
+            
+        </materialDesign:Card>
+    </Grid>
+  
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1.5*"/>
@@ -65,5 +74,5 @@
         </Grid>
 
        
-    </Grid>
+    </Grid>-->
 </UserControl>

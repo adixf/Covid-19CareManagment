@@ -27,7 +27,9 @@ namespace CareManagment.Views
         {
             InitializeComponent();
 
-            DataContext = new AdminMainVM();
+            AdminMainVM VM = new AdminMainVM();
+            DataContext = VM;
+            
         }
 
        

@@ -20,6 +20,7 @@ namespace CareManagment.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
+        
 
         public BaseViewModel()
         {

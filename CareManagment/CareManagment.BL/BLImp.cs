@@ -85,6 +85,12 @@ namespace CareManagment.BL
         }
 
 
+        public List<Package> GetAllPackages(Func<Package, bool> predicate = null)
+        {
+            return IRepository.GetAllPackages(predicate);
+        }
+
+
         public List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null)
         {
             return IRepository.GetAllDistributions(predicate);
@@ -200,7 +206,7 @@ namespace CareManagment.BL
             return Math.PI * angle / 180.0;
         }
 
-      
+
         #endregion
     }
 }

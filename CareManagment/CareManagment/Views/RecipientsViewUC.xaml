@@ -15,7 +15,15 @@
         <Button Grid.Row="0" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}">
             <materialDesign:PackIcon Kind="ArrowForward" />
         </Button>
-        <Button Grid.Row="0" HorizontalAlignment="Left" Command="{Binding Path=DataContext.DisplayAddRecipientView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"></Button>
+        
+        <Button Grid.Row="0" Margin="20 0" HorizontalAlignment="Left" Width="150" 
+                Command="{Binding Path=DataContext.DisplayAddRecipientView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="#FFC66465">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="White" Text="הוסף נמען"></TextBlock>
+                <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
+            </StackPanel>
+        </Button>
         <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="נמענים" FontSize="25" FontWeight="Bold"></TextBlock>
         <materialDesign:Card Grid.Row="1" Margin="10">

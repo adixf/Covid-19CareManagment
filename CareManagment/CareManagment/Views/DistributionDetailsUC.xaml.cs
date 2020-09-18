@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CareManagment.ViewModels;
+using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +25,10 @@ namespace CareManagment.Views
         public DistributionDetailsUC()
         {
             InitializeComponent();
-            packagesList.ItemsSource = new List<int> { 8, 9, 0, 9, 8, 8, 0, 9, 0,1,1,1,1,1,1,1 };
+
+            Map.SetView(new Location(31.771959, 35.217018), 12);
         }
+
+        public void SetMapLocation(Location location) { Map.SetView(location, 16); }
     }
 }
