@@ -7,7 +7,8 @@
              xmlns:converters="clr-namespace:CareManagment.Converters"
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="self">
     <UserControl.Resources>
         <converters:StringToPkgTypeConverter x:Key="StringToPkgType" />
     </UserControl.Resources>
@@ -27,18 +28,19 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        
-        <!-- top bar -->
+
+        <!--#region top bar -->
         <Button Grid.Row="0" Grid.Column="4" Command="{Binding Path=DataContext.DisplayDistributionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
                 HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignIconForegroundButton}"
                 materialDesign:RippleAssist.IsDisabled="True" Background="{x:Null}">
             <materialDesign:PackIcon Kind="ArrowForward" Foreground="White"/>
         </Button>
-        
+
         <TextBlock Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="הוספת חלוקה" FontSize="25" FontWeight="Bold" Foreground="White"></TextBlock>
+        <!--#endregion-->
 
-        <!-- right side -->
+        <!--#region right side -->
         <Grid Grid.Column="3" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -47,26 +49,26 @@
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            
 
-            <!-- date picker -->
+
+            <!--#region date picker -->
             <TextBlock Grid.Row="0" Foreground="White" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Text="בחר תאריך"></TextBlock>
             <materialDesign:Card Grid.Row="1" Grid.Column="2" UniformCornerRadius="20">
                 <DatePicker FlowDirection="LeftToRight" HorizontalAlignment="Center" Language="he-IL" Foreground="Black"
                     materialDesign:HintAssist.Hint="    00/00/00    " FontSize="20" HorizontalContentAlignment="Center"
                             SelectedDate="{Binding DistributionDate}"/>
             </materialDesign:Card>
+            <!--#endregion-->
 
-            <!--- recipients view -->
 
             <TextBlock Grid.Row="2" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Text="בחר איזור חלוקה"></TextBlock>
-          
+
             <Border Width="100" Margin="0 10" Grid.Row="2" HorizontalAlignment="Left" CornerRadius="20" Background="Transparent"
                     BorderThickness="2" BorderBrush="White">
                 <ComboBox Margin="5 0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FlowDirection="RightToLeft"
                          
                       ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity}">
-            </ComboBox>
+                </ComboBox>
             </Border>
             <materialDesign:Card Grid.Row="3" Grid.Column="2" UniformCornerRadius="20">
                 <ListView HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" SelectionMode="Multiple"
@@ -83,7 +85,7 @@
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
-                                
+
                                 <materialDesign:PackIcon Height="22" Width="22" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0"
                                                          Kind="HeartOutline" Foreground="#FFC66465">
 
@@ -101,7 +103,7 @@
                                     <ComboBoxItem HorizontalAlignment="Stretch">ביגוד</ComboBoxItem>
                                     <ComboBoxItem HorizontalAlignment="Stretch">משחקים</ComboBoxItem>
                                 </ComboBox>
-                                                              
+
                             </Grid>
 
                         </DataTemplate>
@@ -114,19 +116,22 @@
                 VerticalContentAlignment="Top"  Command="{Binding CreateDistributionsCommand}">
             </Button>
         </Grid>
-      
-        <!-- left grid -->
+
+        <!--#endregion-->
+
+        <!--#region left grid -->
 
         <Grid Grid.Column="1" Grid.RowSpan="2" Visibility="{Binding IsDistributionReady, Converter={StaticResource BoolToVisConverter}}">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="1*"/>
                 <RowDefinition Height="2*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="RightToLeft" Text="הנה החלוקות שיצרנו:"></TextBlock>
-            <materialDesign:Card Grid.Row="2" Background="White" UniformCornerRadius="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="RightToLeft"
+                       Text="הנה החלוקות שיצרנו:"></TextBlock>
+            <materialDesign:Card Grid.Row="1" Background="White" UniformCornerRadius="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
                 <ListView HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Distributions}">
 
                     <ListView.ItemTemplate>
@@ -140,14 +145,7 @@
                                 <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                                            Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}"></TextBlock>
 
-                                <!--<TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft">
-                                    <TextBlock.Text>
-                                        <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
-                                            <Binding Path="Volunteer.FirstName"/>
-                                            <Binding Path="Volunteer.LastName"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>-->
+
                                 <Button Margin="10 0" Grid.Column="0" materialDesign:ShadowAssist.ShadowDepth="Depth1" Background="{x:Null}" BorderBrush="LightGray"
                                         Command="{Binding DataContext.DisplayDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
                                         CommandParameter="{Binding DistributionId}">
@@ -157,22 +155,22 @@
                                     </StackPanel>
                                 </Button>
                                 <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding PhoneNumber}"></TextBlock>
-                                                                        
+
                             </Grid>
 
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </materialDesign:Card>
-            <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Content="אשר" Foreground="White" Background="#FFC66465" materialDesign:ButtonAssist.CornerRadius="15"
-                VerticalContentAlignment="Top" Command="{Binding AcceptDistributionsCommand}" >
 
-            </Button>
+            <materialDesign:Card Margin="0 10" Grid.Row="2" UniformCornerRadius="20">
+            <ContentControl Content="{Binding AreasMap}"></ContentControl>
+            </materialDesign:Card>
+            
         </Grid>
+        <!--#endregion-->
 
-
-        <!-- wait dialog + progress bar -->
+        <!--#region wait dialog + progress bar -->
         <materialDesign:DialogHost Grid.ColumnSpan="4" Grid.RowSpan="2" FlowDirection="RightToLeft"
                                    IsOpen="{Binding IsWorking}">
 
@@ -182,31 +180,40 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="יוצר חלוקות... אנא המתן"
                                TextAlignment="Center" FontSize="15"/>
                     <ProgressBar IsIndeterminate="True" Foreground="#FFC66465"></ProgressBar>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        
-        <!-- distribution details dialog -->
 
-        <materialDesign:DialogHost Grid.ColumnSpan="5" Grid.RowSpan="2" CloseOnClickAway="True" FlowDirection="RightToLeft"
+        <!--#endregion-->
+
+        <!--#region distribution details dialog -->
+
+        <materialDesign:DialogHost CloseOnClickAway="True" Grid.RowSpan="2" Grid.ColumnSpan="5" DialogMargin="0"
                                    IsOpen="{Binding IsDisplayingDetails}">
             <materialDesign:DialogHost.DialogContent>
-                <Grid Height="600" Width="800">
+                <Grid Width="1200" Height="550">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
-                        <RowDefinition Height="9*"/>
+                        <RowDefinition Height="12*"/>
                     </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Margin="10 0" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}"
+                            materialDesign:RippleAssist.IsDisabled="True"
+                            Command="materialDesign:DialogHost.CloseDialogCommand" 
+                            Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
+                    </Button>
                     <local:DistributionDetailsUC Grid.Row="1" DataContext="{Binding CurrentDetailsDisplay}"></local:DistributionDetailsUC>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
-        <!-- message dialogs -->
-        
+        <!--#endregion-->
+
+        <!--#region message dialogs -->
+
         <materialDesign:DialogHost Grid.ColumnSpan="5" Grid.RowSpan="2" CloseOnClickAway="True" FlowDirection="RightToLeft"
                                    IsOpen="{Binding Message.IsError}">
             <materialDesign:DialogHost.DialogContent>
@@ -230,14 +237,14 @@
                                 Foreground="White">
                             אישור
                         </Button>
-                       
+
                     </Grid>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
-      
+        <!--#endregion-->
 
     </Grid>
-     
+
 </UserControl>

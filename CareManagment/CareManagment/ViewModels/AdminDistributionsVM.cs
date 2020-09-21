@@ -1,6 +1,5 @@
 ﻿using CareManagment.Commands;
 using CareManagment.DP;
-using CareManagment.Interfaces;
 using CareManagment.Models;
 using System;
 using System.Collections.Generic;
@@ -12,24 +11,10 @@ using System.Windows.Input;
 
 namespace CareManagment.ViewModels
 {
-    public class AdminDistributionsVM : BaseViewModel, IUpdateCollection
+    public class AdminDistributionsVM : DisplayDistributionsVM
     {
         public AdminDistributionsM AdminDistributionsM { get; set; }
-
-        public List<Distribution> DistributionsToUpdate { set; get; }
-
-        public ObservableCollection<Distribution> NewDistributions { get; set; }
-
-        public ObservableCollection<Distribution> OldDistributions
-        {
-            get;
-            set;
-        }
-        
-
-        public ICommand UpdateCollection { get { return new UpdateCollectionCommand(this); } }
-        public ICommand SaveChangesCommand { get { return new SaveChangesCommand(this); } }
-
+    
 
         public AdminDistributionsVM()
         {
@@ -42,30 +27,14 @@ namespace CareManagment.ViewModels
         }
 
 
-        public void CollectionChanged(Object o)
-        {
-            int Id = int.Parse(o.ToString());
-            List<Distribution> AllDistributions = new List<Distribution>(OldDistributions);
-            AllDistributions.AddRange(NewDistributions);
-            Distribution distribution = AllDistributions.Find(x => x.DistributionId == Id);
-            DistributionsToUpdate.Add(distribution);
-            if (distribution.IsDelivered)
-            {
-                NewDistributions.Remove(distribution);
-                OldDistributions.Add(distribution);
-            }
-            else 
-            {
-                NewDistributions.Add(distribution);
-                OldDistributions.Remove(distribution);
-
-            }
-        }
-        public void SaveChanges()
+        
+        public override void SaveChanges()
         {
             AdminDistributionsM.SaveChanges(DistributionsToUpdate);
             DistributionsToUpdate.Clear();
 
         }
+
+       
     }
 }

@@ -14,17 +14,9 @@ namespace CareManagment.Models
     {
         public IBL BL { get; set; }
 
-        public List<Distribution> OldDistributions
-        {
-            get;
-            set;
-        }
+        public List<Distribution> OldDistributions { get; set; }
 
-        public List<Distribution> NewDistributions
-        {
-            get;
-            set;
-        }
+        public List<Distribution> NewDistributions { get; set; }
 
         public AdminDistributionsM()
         {

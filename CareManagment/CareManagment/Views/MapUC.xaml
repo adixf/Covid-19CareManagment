@@ -1,4 +1,5 @@
 ﻿<UserControl x:Class="CareManagment.Views.MapUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,7 +8,14 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="CustomPushpin" TargetType="m:Pushpin">
+            <materialDesign:PackIcon Kind="LocationOn" Foreground="{TemplateBinding Foreground}" Height="15" Width="15" />
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
-       
+        <m:Map Name="Map" Culture="he" CredentialsProvider="AhCDEHftaOj6EV613njroTC61Gy5dFYiQr8Aq5_XyrVvtsu_aRz12GIeoqoa06xs"
+                   Mode="Road" ZoomLevel="16">
+        </m:Map>
     </Grid>
 </UserControl>

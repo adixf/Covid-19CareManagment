@@ -12,10 +12,10 @@ namespace CareManagment.ViewModels
     class RecipientsViewVM : BaseViewModel
     {
         public ObservableCollection<Recipient> Recipients { get; set; }
-        public RecipientViewM CurrentM { get; set; }
+        public RecipientsViewM CurrentM { get; set; }
         public RecipientsViewVM()
         {
-            CurrentM = new RecipientViewM();
+            CurrentM = new RecipientsViewM();
             Recipients = new ObservableCollection<Recipient>(CurrentM.Recipients);
         }
     }

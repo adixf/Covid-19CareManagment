@@ -31,7 +31,7 @@ namespace CareManagment.ViewModels
 
         public DistributionDetailsM DistributionDetailsM { get; set; }
 
-        public DistributionDetailsUC View { get; set; }
+        public MapUC MapView { get; set; }
 
         public ICommand DisplayLocationCommand { get { return new DisplayLocationCommand(this); } }
 
@@ -42,18 +42,18 @@ namespace CareManagment.ViewModels
             set
             {
                 location = value;
-                View.SetMapLocation(location);
+                MapView.SetMapLocation(location);
                 OnPropertyRaised("Location");
             }
         }
 
         public DistributionDetailsVM(int distributionId)
         {
+            MapView = new MapUC();
             DistributionDetailsM = new DistributionDetailsM();
             CurrentDistribution = DistributionDetailsM.GetDistribution(distributionId);
             Packages = new ObservableCollection<Package>(DistributionDetailsM.GetAllPackages(distributionId));
         }
         
-
     }
 }

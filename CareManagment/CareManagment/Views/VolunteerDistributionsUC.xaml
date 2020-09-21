@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CareManagment.Views.VolunteerDistributionsVM"
+﻿<UserControl x:Class="CareManagment.Views.VolunteerDistributionsUC"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,42 +7,114 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <Grid>
+        <Grid Background="White">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Margin="0,0,40,0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">החלוקות שלך</Label>
-        <materialDesign:Card Grid.Row="1" Margin="10" UniformCornerRadius="20" >
-            <Grid  Background="LightGray" HorizontalAlignment="Stretch">
-                <ListView Name="newDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
 
+         
+            <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="חלוקות חדשות" FontSize="20" ></TextBlock>
+
+            
+            <materialDesign:Card Grid.Row="1" Margin="10" UniformCornerRadius="20" >
+                <Grid  Background="LightGray" HorizontalAlignment="Stretch">
+                    <ListView Name="newDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                              ItemsSource="{Binding NewDistributions}">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="55" CornerRadius="15" BorderThickness="2" BorderBrush="#FFD17B7C" Background="White">
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox VerticalAlignment="Center" Grid.Column="1" Content="החלוקה בוצעה"
+                                              FontWeight="Bold" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}"
+                                                  IsChecked="{Binding IsDelivered, Mode=TwoWay}" Command="{Binding DataContext.UpdateCollection, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding DistributionId}">
+                                        </CheckBox>
+                                        <Button Grid.Column="2" Background="#FFD17B7C"  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                                            <materialDesign:PackIcon Height="20" Width="20" Kind="Printer"></materialDesign:PackIcon>
+                                        </Button>
+                                        <TextBlock Grid.Column="3" FontWeight="Bold" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                                            <TextBlock.Text>
+                                                <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מנהל אחראי:">
+                                                    <Binding Path="Admin.FirstName"/>
+                                                    <Binding Path="Admin.LastName"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+
+                                        <TextBlock Grid.Column="4" Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                                        <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="5" Background="{x:Null}" BorderBrush="LightGray"
+                                                   Command="{Binding DataContext.DisplayDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                   CommandParameter="{Binding DistributionId}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock>הצג פרטי חלוקה</TextBlock>
+                                                <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+
+            </materialDesign:Card>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="חלוקות קודמות" FontSize="20" FontWeight="Bold"></TextBlock>
+            <Button Grid.Row="2" Margin="20 0" HorizontalAlignment="Left" Width="150" Command="{Binding SaveChangesCommand}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="Gray">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Foreground="White" Text="שמור שינויים"></TextBlock>
+                    <materialDesign:PackIcon Kind="KeyVariant"></materialDesign:PackIcon>
+                </StackPanel>
+            </Button>
+            <materialDesign:Card Background="LightGray" Grid.Row="3" Margin="10" UniformCornerRadius="20">
+                <ListView Name="oldDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                          ItemsSource="{Binding OldDistributions}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Height="60" CornerRadius="15" BorderThickness="2" BorderBrush="#FFD17B7C" Background="White">
-                                <Grid HorizontalAlignment="Stretch">
+                            <Border Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth4" CornerRadius="15" BorderThickness="2" BorderBrush="LightGray" Background="White">
+                                <Grid HorizontalAlignment="Stretch" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <CheckBox VerticalAlignment="Center" Grid.Column="1" Content="ביצעתי את החלוקה"
-                                              FontWeight="Bold" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}">
+                                    <CheckBox IsChecked="{Binding IsDelivered}" Foreground="Black" Grid.Column="1" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}" VerticalAlignment="Center"
+                                              Command="{Binding DataContext.UpdateCollection, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding DistributionId}">
+                                        החלוקה בוצעה
                                     </CheckBox>
-                                    <Button Grid.Column="2" Background="#FFD17B7C"  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
-                                        <materialDesign:PackIcon Height="20" Width="20" Kind="Printer"></materialDesign:PackIcon>
-                                    </Button>
-                                    <TextBlock Grid.Column="3" Text="מנהל: אריאל לביא" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBlock Grid.Column="4" Text="24.10.20" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                                        <TextBlock.Text>
+                                            <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
+                                                <Binding Path="Admin.FirstName"/>
+                                                <Binding Path="Admin.LastName"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
 
-                                    <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="5" Background="{x:Null}" BorderBrush="LightGray">
+                                    <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="4" Background="{x:Null}" BorderBrush="LightGray"
+                                            Command="{Binding DataContext.DisplayDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                            CommandParameter="{Binding DistributionId}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock>הצג פרטי חלוקה</TextBlock>
                                             <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
@@ -53,41 +125,31 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </Grid>
+            </materialDesign:Card>
 
-        </materialDesign:Card>
-        <Label Grid.Row="2" Margin="0,0,40,0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">חלוקות קודמות</Label>
-        <materialDesign:Card Background="LightGray" Grid.Row="3" Margin="10" UniformCornerRadius="20">
-            <ListView Name="oldDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Border Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth4" CornerRadius="15" BorderThickness="2" BorderBrush="LightGray" Background="White">
-                            <Grid HorizontalAlignment="Stretch">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-                                <CheckBox IsEnabled="False" IsChecked="True" Foreground="Black" Grid.Column="1" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}" VerticalAlignment="Center">
-                                    ביצעתי את החלוקה
-                                </CheckBox>
-                                <TextBlock Grid.Column="3" Text="24.10.20" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="2" Text="מנהל: אריאל לביא" VerticalAlignment="Center"/>
+        </Grid>
 
-                                <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="4" Background="{x:Null}" BorderBrush="LightGray">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock>הצג פרטי חלוקה</TextBlock>
-                                        <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </materialDesign:Card>
+
+        <!--#region distribution details dialog -->
+
+        <materialDesign:DialogHost CloseOnClickAway="True" Grid.RowSpan="4" DialogMargin="0"
+                                   IsOpen="{Binding IsDisplayingDetails}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="1200" Height="550">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="12*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Margin="10 0" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}"
+                            materialDesign:RippleAssist.IsDisabled="True"
+                            Command="materialDesign:DialogHost.CloseDialogCommand" 
+                            Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
+                    </Button>
+                    <local:DistributionDetailsUC Grid.Row="1" DataContext="{Binding CurrentDetailsDisplay}"></local:DistributionDetailsUC>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+        <!--#endregion-->
     </Grid>
 </UserControl>

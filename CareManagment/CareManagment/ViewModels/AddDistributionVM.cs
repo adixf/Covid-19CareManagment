@@ -2,6 +2,7 @@
 using CareManagment.DP;
 using CareManagment.DP.Types;
 using CareManagment.Models;
+using CareManagment.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,25 +15,23 @@ using System.Windows.Threading;
 
 namespace CareManagment.ViewModels
 {
-    class AddDistributionVM : BaseViewModel
+    class AddDistributionVM : DisplayDistributionsVM
     {
         public AddDistributionM AddDistributionM { get; set; }
 
 
-
         public DateTime DistributionDate { get; set; }
+
         private ObservableCollection<Recipient> recipients;
         public ObservableCollection<Recipient> Recipients
         {
             get
-            {
-                return recipients;
-            }
+            { return recipients; }
             set
-            {               
+            {
                 recipients = value;
                 Packages = new ObservableCollection<Package>();
-                foreach(Recipient recipient in recipients)
+                foreach (Recipient recipient in recipients)
                     Packages.Add(new Package()
                     {
                         Contents = PkgType.מזון, // initial package type
@@ -42,7 +41,7 @@ namespace CareManagment.ViewModels
             }
         }
 
-       
+
 
         private ObservableCollection<Package> packages;
         public ObservableCollection<Package> Packages
@@ -92,6 +91,7 @@ namespace CareManagment.ViewModels
             set
             {
                 isDistributionReady = value;
+
                 OnPropertyRaised("IsDistributionReady");
             }
         }
@@ -106,59 +106,22 @@ namespace CareManagment.ViewModels
                 OnPropertyRaised("IsWorking");
             }
         }
-      
+
         public ICommand CreateDistributionsCommand { get { return new CreateDistributionsCommand(this); } }
-        public ICommand AcceptDistributionsCommand
-        {
-            get
-            {
-                return new BaseCommand(delegate () { AcceptDistributions(); });
-            }
-        }
 
-
-        // Distribution Details Managment
-        private DistributionDetailsVM currentDetailsDisplay;
-        public DistributionDetailsVM CurrentDetailsDisplay
-        {
-            get { return currentDetailsDisplay; }
-            set
-            {
-                currentDetailsDisplay = value;
-                OnPropertyRaised("CurrentDetailsDisplay");
-            }
-        }
-
-        private bool isDisplayingDetails;
-        public bool IsDisplayingDetails
-        {
-            get { return isDisplayingDetails; }
-            set
-            {
-                isDisplayingDetails = value;
-                OnPropertyRaised("IsDisplayingDetails");
-            }
-        }
-
-        public ICommand DisplayDetailsCommand { get { return new DisplayDistributionDetailsCommand(this); } }
-
-        public void DisplayDetails(int Id)
-        {
-            CurrentDetailsDisplay = new DistributionDetailsVM(Id);
-            IsDisplayingDetails = true;
-        }
-
+        public MapUC AreasMap { get; set; }
 
         public AddDistributionVM()
         {
             AddDistributionM = new AddDistributionM();
-            Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);                     
+            Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
 
-            Distributions = new ObservableCollection<Distribution>();
             DistributionDate = DateTime.Now.Date;
-           
+
             GetAllCities();
-            SelectedCity = Cities.First(x=> x.Equals("כל הארץ"));
+            SelectedCity = Cities.First(x => x.Equals("כל הארץ"));
+
+            AreasMap = new MapUC();
         }
 
 
@@ -166,32 +129,61 @@ namespace CareManagment.ViewModels
         {
             // add all cities from recipients to Cities
             Cities = new ObservableCollection<string>();
-            foreach(Recipient r in AddDistributionM.Recipients)
+            foreach (Recipient r in AddDistributionM.Recipients)
             {
                 if (!Cities.Contains(r.Address.City))
                     Cities.Add(r.Address.City);
             }
             Cities.Add("כל הארץ");
         }
-       
+
 
         public void CreateDistributions()
         {
             try
-            {
+            {              
+                Distributions = new ObservableCollection<Distribution>();
+
                 // divide packages into distributions
                 List<Package>[] DividedPackages = AddDistributionM.DividePackages(Packages.ToList());
 
                 Application.Current.Dispatcher.BeginInvoke(
                     new Action(() => { AddDistributions(DividedPackages); }));
 
+                // show areas on map
                 Application.Current.Dispatcher.BeginInvoke(
-                    new Action(() => { AddDistributionM.AddDistributions(new List<Distribution>(Distributions)); }));
+                   new Action(() => { ShowAreasOnMap(); }));
+
+                //  add to database             
+                Application.Current.Dispatcher.BeginInvoke(
+                   new Action(() => { AddDistributionM.AddDistributions(new List<Distribution>(Distributions)); }));
+
+                // finish
+                Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
+                SelectedCity = "כל הארץ";
 
             }
+
             catch (Exception e)
             {
                 Message = new Message("משהו השתבש.", e.Message, false, true);
+            }
+        }
+
+        private void ShowAreasOnMap()
+        {
+
+            AreasMap.Clear();
+            List<Address> Addresses = new List<Address>();
+            foreach (Distribution distribution in Distributions.ToList())
+            {
+                foreach (Package p in distribution.Packages.ToList())
+                {
+                    Addresses.Add(p.Recipient.Address);
+                }
+
+                AreasMap.AddAreas(Addresses);
+                Addresses.Clear();
             }
         }
 
@@ -228,21 +220,6 @@ namespace CareManagment.ViewModels
                 d.VolunteerId = closestVolunteer.VolunteerId;
                 volunteers.Remove(closestVolunteer);
             }
-        }
-
-        private void AcceptDistributions()
-        {
-            try
-            {
-                // start over
-                Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
-                Distributions = new ObservableCollection<Distribution>();
-            }
-            catch (Exception e)
-            {
-                Message = new Message("משהו השתבש.", e.Message, false, true);
-            }
-           
         }
 
     }

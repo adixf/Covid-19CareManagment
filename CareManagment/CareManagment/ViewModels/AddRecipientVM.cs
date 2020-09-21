@@ -1,7 +1,6 @@
 ﻿using CareManagment.Commands;
 using CareManagment.DP;
 using CareManagment.DP.Types;
-using CareManagment.Interfaces;
 using CareManagment.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ using System.Windows.Input;
 
 namespace CareManagment.ViewModels
 {
-    class AddRecipientVM : BaseViewModel, ISignUp
+    class AddRecipientVM : BaseViewModel
     {
         #region user properties
         private string firstName;
@@ -112,7 +111,13 @@ namespace CareManagment.ViewModels
         #endregion
 
         public AddRecipientM AddRecipientM { get; set; }
-        public ICommand AddRecipientCommand { get { return new SignUpCommand(this); } }
+        public ICommand AddRecipientCommand
+        {
+            get
+            {
+                return new BaseCommand(delegate () { SignUp(); });
+            }
+        }
 
         public AddRecipientVM()
         {
@@ -129,7 +134,7 @@ namespace CareManagment.ViewModels
                 Recipient recipient = new Recipient(personId, FirstName, LastName, PhoneNumber, MailAddress, new Address(City, StreetName, int.Parse(BuildingNumber)));
                 AddRecipientM.SignUp(recipient);
 
-                Message = new Message("ברוך הבא!", "נוספת למערכת בהצלחה", true, false);
+                Message = new Message("איזה כיף!", "הנמען נוסף בהצלחה", true, false);
             }
             catch (Exception e)
             {

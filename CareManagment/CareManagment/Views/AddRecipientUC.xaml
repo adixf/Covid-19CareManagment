@@ -7,6 +7,9 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/CareManagment;component/Images/old-ppl.jpg" Opacity="0.3"></ImageBrush>
+    </UserControl.Background>
     <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -14,17 +17,17 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-
-        <TextBlock Style="{StaticResource textFont}" Grid.Row="1" Grid.ColumnSpan="3" Text="הרשמה"  FontSize="35" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
+        <!--<Image Grid.Row="2" Grid.Column="0" Source="/CareManagment;component/Images/old1.jpg"></Image>-->
+        <TextBlock Style="{StaticResource textFont}" Grid.Row="1" Grid.ColumnSpan="3" Text="הכנס פרטי נמען"  FontSize="25" FontWeight="DemiBold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <Grid Grid.Column="1" Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -191,22 +194,15 @@
             </Grid>
 
 
-
-
-            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
-                <RadioButton IsChecked="{Binding IsAdmin}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מנהל" FontSize="16" Foreground="White"/>
-                <RadioButton IsChecked="{Binding IsVolunteer}" BorderBrush="White" Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" Content="אני מתנדב" FontSize="16" Foreground="White"/>
-            </StackPanel>
-
-
-            <Button Grid.Row="7" Background="#FFC66465" BorderThickness="0" Command="{Binding AddRecipientCommand}"
+            <Button Grid.Row="5" Background="#FFC66465" BorderThickness="0" Command="{Binding AddRecipientCommand}"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="הוסף" />
             </Button>
 
         </Grid>
-
+        
+        <!--#region dialog message-->
         <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="4" CloseOnClickAway="True" FlowDirection="RightToLeft"
                                    IsOpen="{Binding Message.IsError}">
             <materialDesign:DialogHost.DialogContent>
@@ -224,13 +220,13 @@
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Message.Content}"
                                TextAlignment="Center" FontSize="15"/>
                     <Grid Grid.Row="3" Background="#FFBD515A" Opacity="1">
-                      
+
                         <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatButton}"
                             IsDefault="True" Command="materialDesign:DialogHost.CloseDialogCommand"
                                 Foreground="White">
                             נסה שוב
                         </Button>
-                       
+
                     </Grid>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
@@ -264,6 +260,8 @@
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
+        
+        <!--#endregion-->
     </Grid>
 
 </UserControl>

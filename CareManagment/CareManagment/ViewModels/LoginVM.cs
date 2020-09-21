@@ -17,7 +17,13 @@ namespace CareManagment.ViewModels
         public LoginM CurrentModel { get; set; }
 
         #region commands
-        public ICommand LoginCommand { get { return new LoginCommand(this); } }
+        public ICommand LoginCommand
+        {
+            get
+            {
+                return new BaseCommand(delegate () { Login(); });
+            }
+        }
 
         public ICommand DisplaySignUpView
         {

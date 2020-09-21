@@ -22,11 +22,11 @@ namespace CareManagment.Models
 
         public void SignUp(IUser user, UserType userType)
         {
-            if (new Tools.VerifyString().ArePropertiesNull(user))
+            if (new VerifyString().ArePropertiesNull(user))
                 throw new Exception("אנא מלא את כל השדות");
             if (BL.GetAllAdmins(x => x.MailAddress == user.GetMailAddress()).Count != 0 || BL.GetAllVolunteers(x => x.MailAddress == user.GetMailAddress()).Count != 0)
                 throw new Exception("המשתמש כבר קיים במערכת");
-            if (!new Tools.VerifyAddress().IsValidAddress(user.GetAddress()))
+            if (!new VerifyAddress().IsValidAddress(user.GetAddress()))
                 throw new Exception("הכתובת שהזנת לא קיימת");
             double[] location = new Tools.VerifyAddress().GetLocation(user.GetAddress());
             user.SetAddress(location[0], location[1]);

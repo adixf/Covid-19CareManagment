@@ -1,5 +1,4 @@
-﻿using CareManagment.Interfaces;
-using CareManagment.ViewModels;
+﻿using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +19,11 @@ namespace CareManagment.Commands
         }
 
         public BackgroundWorker CheckDistributionBW;
-        public IUpdateCollection CurrentVM { get; set; }
+        public DisplayDistributionsVM CurrentVM { get; set; }
 
-        public UpdateCollectionCommand(IUpdateCollection vm)
+        public UpdateCollectionCommand(DisplayDistributionsVM vm)
         {
-            CurrentVM = vm;
-            
+            CurrentVM = vm;           
         }
 
         public bool CanExecute(object parameter)

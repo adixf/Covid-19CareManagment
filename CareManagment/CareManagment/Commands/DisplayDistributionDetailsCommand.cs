@@ -1,4 +1,5 @@
-﻿using CareManagment.ViewModels;
+﻿
+using CareManagment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace CareManagment.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public AddDistributionVM CurrentVM { get; set; }
+        public DisplayDistributionsVM CurrentVM { get; set; }
 
-        public DisplayDistributionDetailsCommand(AddDistributionVM vm)
+        public DisplayDistributionDetailsCommand(DisplayDistributionsVM vm)
         {
             CurrentVM = vm;
         }

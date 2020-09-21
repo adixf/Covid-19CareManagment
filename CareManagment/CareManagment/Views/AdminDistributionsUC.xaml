@@ -9,7 +9,7 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-   
+
     <Grid>
         <Grid Background="White">
 
@@ -20,7 +20,15 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <Button Margin="20 0" HorizontalAlignment="Right" Width="150" Command="{Binding Path=DataContext.DisplayAddDistributionView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
+            <Button Grid.Row="0" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}"
+                Command="{Binding Path=DataContext.DisplayOptionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}">
+                <materialDesign:PackIcon Kind="ArrowForward" />
+            </Button>
+
+            <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="חלוקות חדשות" FontSize="20" FontWeight="Bold"></TextBlock>
+
+            <Button Margin="20 0" HorizontalAlignment="Left" Width="150" Command="{Binding Path=DataContext.DisplayAddDistributionView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="#FFC66465">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Foreground="White" Text="הוסף חלוקה"></TextBlock>
@@ -63,7 +71,9 @@
 
                                         <TextBlock Grid.Column="4" Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                                        <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="5" Background="{x:Null}" BorderBrush="LightGray">
+                                        <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="5" Background="{x:Null}" BorderBrush="LightGray"
+                                                   Command="{Binding DataContext.DisplayDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                   CommandParameter="{Binding DistributionId}">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock>הצג פרטי חלוקה</TextBlock>
                                                 <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
@@ -77,7 +87,8 @@
                 </Grid>
 
             </materialDesign:Card>
-            <Label Grid.Row="2" Margin="0,0,40,0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">חלוקות קודמות</Label>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="חלוקות קודמות" FontSize="20" FontWeight="Bold"></TextBlock>
             <Button Grid.Row="2" Margin="20 0" HorizontalAlignment="Left" Width="150" Command="{Binding SaveChangesCommand}"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="Gray">
                 <StackPanel Orientation="Horizontal">
@@ -114,7 +125,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
 
-                                    <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="4" Background="{x:Null}" BorderBrush="LightGray">
+                                    <Button materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="4" Background="{x:Null}" BorderBrush="LightGray"
+                                            Command="{Binding DataContext.DisplayDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                            CommandParameter="{Binding DistributionId}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock>הצג פרטי חלוקה</TextBlock>
                                             <materialDesign:PackIcon VerticalAlignment="Center" Kind="Search"></materialDesign:PackIcon>
@@ -126,7 +139,30 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </materialDesign:Card>
-           
+
         </Grid>
+
+
+        <!--#region distribution details dialog -->
+
+        <materialDesign:DialogHost CloseOnClickAway="True" Grid.RowSpan="4" DialogMargin="0"
+                                   IsOpen="{Binding IsDisplayingDetails}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="1200" Height="550">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="12*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Margin="10 0" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}"
+                            materialDesign:RippleAssist.IsDisabled="True"
+                            Command="materialDesign:DialogHost.CloseDialogCommand" 
+                            Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
+                    </Button>
+                    <local:DistributionDetailsUC Grid.Row="1" DataContext="{Binding CurrentDetailsDisplay}"></local:DistributionDetailsUC>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+        <!--#endregion-->
     </Grid>
 </UserControl>

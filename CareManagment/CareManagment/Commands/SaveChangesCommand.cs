@@ -8,25 +8,25 @@ using System.Windows.Input;
 
 namespace CareManagment.Commands
 {
-    public class SaveChangesCommand : ICommand
+    class SaveChangesCommand : ICommand
     {
+        public DisplayDistributionsVM CurrentVM { get; set; }
+
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public AdminDistributionsVM CurrentVM { set; get; }
-
-        public SaveChangesCommand(AdminDistributionsVM VM)
+        public SaveChangesCommand(DisplayDistributionsVM vm)
         {
-            CurrentVM = VM;
+            CurrentVM = vm;
         }
 
         public bool CanExecute(object parameter)
         {
             return CurrentVM.DistributionsToUpdate.Count != 0;
-           
         }
 
         public void Execute(object parameter)

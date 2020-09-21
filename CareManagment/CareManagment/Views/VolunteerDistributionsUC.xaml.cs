@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CareManagment.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,16 +19,12 @@ namespace CareManagment.Views
     /// <summary>
     /// Interaction logic for VolunteerDistributionsUC.xaml
     /// </summary>
-    public partial class VolunteerDistributionsVM : UserControl
+    public partial class VolunteerDistributionsUC : UserControl
     {
-        public VolunteerDistributionsVM()
+        public VolunteerDistributionsUC()
         {
             InitializeComponent();
-            // List<Distribution> distributions = new List<Distribution>();
-            List<int> lst = new List<int> { 1, 2 };
-            newDistributions.ItemsSource = lst;
-            List<int> lst2 = new List<int> { 1, 2, 3, 4 };
-            oldDistributions.ItemsSource = lst2;
+            DataContext = new VolunteerDistributionsVM();
         }
 
 

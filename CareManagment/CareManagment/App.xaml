@@ -26,7 +26,7 @@
                 <Views:DonationUC />
             </DataTemplate>
             <DataTemplate DataType="{x:Type ViewModels:VolunteerDistributionsVM}">
-                <Views:VolunteerDistributionsVM/>
+                <Views:VolunteerDistributionsUC/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type ViewModels:VolunteerMainVM}">
                 <Views:VolunteerMainUC/>

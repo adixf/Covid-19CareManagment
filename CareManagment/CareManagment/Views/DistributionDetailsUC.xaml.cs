@@ -25,10 +25,9 @@ namespace CareManagment.Views
         public DistributionDetailsUC()
         {
             InitializeComponent();
-
-            Map.SetView(new Location(31.771959, 35.217018), 12);
+         
         }
 
-        public void SetMapLocation(Location location) { Map.SetView(location, 16); }
+       
     }
 }

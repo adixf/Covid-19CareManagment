@@ -44,12 +44,7 @@
                 <Button Margin="10 0 0 0" VerticalAlignment="Center"  Background="{x:Null}" BorderBrush="{x:Null}"
                     Content="התנתק" Command="{Binding SignOut}"
                     FontSize="12" Foreground="White"></Button>
-                <Button Command="{Binding DisplayOptionsView}"
-                    materialDesign:RippleAssist.IsDisabled="True" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Width="28" Kind="Home" Foreground="White"
-                                            ></materialDesign:PackIcon>
-                </Button>
-
+               
             </StackPanel>
 
         </Grid>

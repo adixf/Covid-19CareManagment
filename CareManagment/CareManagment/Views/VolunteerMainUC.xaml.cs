@@ -23,11 +23,9 @@ namespace CareManagment.Views
     public partial class VolunteerMainUC : UserControl
     {
         
-
         public VolunteerMainUC()
         {
             InitializeComponent();
-
             DataContext = new VolunteerMainVM();
         }
 

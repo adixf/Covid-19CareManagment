@@ -36,7 +36,7 @@ namespace CareManagment.Tools
             }
         }
 
-        public int MaxPackagesPerVolunteer { get { return 5; } }
+        public int MaxPackagesPerVolunteer { get { return 7; } }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyRaised(string propertyname)
