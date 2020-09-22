@@ -28,7 +28,10 @@ namespace CareManagment.Views
         {
             PrintDialog dialog = new PrintDialog();
             if (dialog.ShowDialog() == true)
+            {
                 dialog.PrintVisual(Details, "Distribution Details");
+            }
+                
 
         }
     }

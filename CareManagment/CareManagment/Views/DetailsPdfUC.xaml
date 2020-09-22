@@ -5,11 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Name="Details" Background="White">
+             Height="Auto" MinHeight="29.7cm">
+
+    <Grid MinHeight="29.7cm" Name="Details" Background="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" FlowDirection="RightToLeft">
 
@@ -32,5 +33,17 @@
                 </TextBlock.Text>
             </TextBlock>
         </StackPanel>
+                        <DataGrid Grid.Row="1" Name="dataGrid" Height="Auto" Margin="10" HorizontalAlignment="Stretch" ItemsSource="{Binding Packages, Mode=OneWay}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" 
+           FlowDirection="RightToLeft" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="שם פרטי" Binding="{Binding Recipient.FirstName}"/>
+                                <DataGridTextColumn Header="שם משפחה" Binding="{Binding Recipient.LastName}"/>
+                                <DataGridTextColumn Header="מייל" Binding="{Binding Recipient.MailAddress}"/>
+                                <DataGridTextColumn Header="טלפון" Binding="{Binding Recipient.PhoneNumber}"/>
+                                <DataGridTextColumn Header="כתובת" Binding="{Binding Recipient.Address}"/>
+                                <DataGridTextColumn Header="סוג חבילה" Binding="{Binding Contents}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
     </Grid>
 </UserControl>
