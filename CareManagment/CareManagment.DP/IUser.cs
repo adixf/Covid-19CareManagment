@@ -11,5 +11,8 @@ namespace CareManagment.DP
         Address GetAddress();
         void SetAddress(double lat, double lon);
         string GetMailAddress();
+        string GetFirstName();
+        string GetLastName();
+        string GetPassword();
     }
 }

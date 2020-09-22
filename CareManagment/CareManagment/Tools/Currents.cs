@@ -43,5 +43,8 @@ namespace CareManagment.Tools
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
+
+        public string MailAddress { get { return "covid19caremanagment@gmail.com"; } }
+        public string MailPassword { get { return "covid19123"; } }
     }
 }

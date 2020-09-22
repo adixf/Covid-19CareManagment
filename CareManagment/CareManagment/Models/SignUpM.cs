@@ -33,17 +33,15 @@ namespace CareManagment.Models
             if (userType == UserType.Admin)
                 BL.AddAdmin(user as Admin);
             else BL.AddVolunteer(user as Volunteer);
-           
-            // TODO send mail
-            //MailSender mailSender = new MailSender();
-            //string to = user.MailAddress;
-            //string subject = "ברוך הבא לעמותת יד ביד";
-            //string body = 
-            //    string.Format("לכבוד {0} ההרשמה נקלטה במערכת בהצלחה\n"+" {1}:הסיסמה למערכת היא", user.FirstName,user.Password);
-            //Thread thread = new Thread(() => mailSender.SendMail(to, subject, body));
-            //thread.Start();
-        }
 
-        
+            // send mail
+            MailSender mailSender = new MailSender();
+            string to = user.GetMailAddress();
+            string subject = "ברוך הבא לעמותת יד ביד";
+            string body = "שלום " + user.GetFirstName() + "," + "\n\n" + "הרשמתך נקלטה במערכת בהצלחה." + "\n\n" + "אנו שמחים שהצטרפת למשפחת יד ביד!" + "\n\n" + "הסיסמה למערכת היא: " + user.GetPassword();
+            Thread thread = new Thread(() => mailSender.SendMail(to, subject, body));
+            thread.Start();
+        }
+       
     }
 }

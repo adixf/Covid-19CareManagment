@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CareManagment.Tools
 {
@@ -15,15 +16,14 @@ namespace CareManagment.Tools
         {
 
             MailMessage message = new MailMessage();
-            message.Subject = subject; 
-            message.From = new MailAddress("Covid19caremanagment@gmail.com");
+            message.Subject = subject;
+            message.From = new MailAddress(((App)Application.Current).Currents.MailAddress);
             message.Body = body;
             message.To.Add(to);
             SmtpClient smtp = new SmtpClient("smtp.Gmail.com");
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("Covid19caremanagment@gmail.com","covid19123");
+            smtp.Credentials = new NetworkCredential(((App)Application.Current).Currents.MailAddress, ((App)Application.Current).Currents.MailPassword);
             smtp.EnableSsl = true;
-           
             smtp.Port = 587;
             smtp.Send(message);
 

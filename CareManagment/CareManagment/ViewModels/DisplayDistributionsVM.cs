@@ -1,6 +1,7 @@
 ﻿using CareManagment.Commands;
 using CareManagment.DP;
 using CareManagment.ViewModels;
+using CareManagment.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,6 +36,39 @@ namespace CareManagment.ViewModels
             }
         }
 
+        private PrintPdfVM currentPdfVM;
+        public PrintPdfVM CurrentPdfVM
+        {
+            get { return currentPdfVM; }
+            set
+            {
+                currentPdfVM = value;
+                OnPropertyRaised("CurrentPdfVM");
+            }
+        }
+
+        private DetailsPdfUC pdfView;
+        public DetailsPdfUC PdfView
+        {
+            get { return pdfView; }
+            set
+            {
+                pdfView = value;
+                OnPropertyRaised("PdfView");
+            }
+        }
+
+        private bool isDisplayingPdf;
+        public bool IsDisplayingPdf
+        {
+            get { return isDisplayingPdf; }
+            set
+            {
+                isDisplayingPdf = value;
+                OnPropertyRaised("IsDisplayingPdf");
+            }
+        }
+
         private bool isDisplayingDetails;
         public bool IsDisplayingDetails
         {
@@ -47,6 +81,9 @@ namespace CareManagment.ViewModels
         }
 
         public ICommand DisplayDetailsCommand { get { return new DisplayDistributionDetailsCommand(this); } }
+        public ICommand DisplayPdfCommand { get { return new DisplayPdfCommand(this); } }
+
+        public ICommand SavePdfCommand { get { return new BaseCommand(delegate () { PdfView.Print(); }); } }
 
         public void DisplayDetails(int DistributionId)
         {
@@ -54,6 +91,16 @@ namespace CareManagment.ViewModels
             IsDisplayingDetails = true;
         }
 
+        public void DisplayPdf(int DistributionId)
+        {
+            CurrentPdfVM = new PrintPdfVM(DistributionId);
+            PdfView = new DetailsPdfUC()
+            {
+                DataContext = CurrentPdfVM
+            };
+            IsDisplayingPdf = true;
+
+        }
 
         public void CollectionChanged(Object o)
         {
@@ -75,7 +122,7 @@ namespace CareManagment.ViewModels
             }
         }
 
-        public virtual void SaveChanges() { } 
+        public virtual void SaveChanges() { }
 
     }
 }

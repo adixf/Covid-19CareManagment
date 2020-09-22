@@ -57,7 +57,9 @@
                                               FontWeight="Bold" Background="#FFC66465" Style="{StaticResource MaterialDesignCheckBox}"
                                                   IsChecked="{Binding IsDelivered, Mode=TwoWay}" Command="{Binding DataContext.UpdateCollection, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding DistributionId}">
                                         </CheckBox>
-                                        <Button Grid.Column="2" Background="#FFD17B7C"  Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                                        <Button Grid.Column="2" Background="#FFD17B7C"  Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                                Command="{Binding DataContext.DisplayPdfCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                CommandParameter="{Binding DistributionId}">
                                             <materialDesign:PackIcon Height="20" Width="20" Kind="Printer"></materialDesign:PackIcon>
                                         </Button>
                                         <TextBlock Grid.Column="3" FontWeight="Bold" VerticalAlignment="Center" FlowDirection="RightToLeft">
@@ -158,11 +160,35 @@
                             Command="materialDesign:DialogHost.CloseDialogCommand" 
                             Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
                     </Button>
-                    <local:DistributionDetailsUC Grid.Row="1" DataContext="{Binding CurrentDetailsDisplay}"></local:DistributionDetailsUC>
+                    <ContentControl Grid.Row="1" Content="{Binding PdfView}"></ContentControl>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
         <!--#endregion-->
+
+
+        <!--#region print pdf -->
+        <materialDesign:DialogHost CloseOnClickAway="True" Grid.RowSpan="2" Grid.ColumnSpan="5" DialogMargin="0"
+                                   IsOpen="{Binding IsDisplayingPdf}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="1200" Height="550">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="12*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Margin="10 0" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}"
+                            materialDesign:RippleAssist.IsDisabled="True"
+                            Command="materialDesign:DialogHost.CloseDialogCommand" 
+                            Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
+                    </Button>
+                    <Button Grid.Row="0" Command="{Binding SavePdfCommand}"></Button>
+                    <local:DetailsPdfUC Grid.Row="1" DataContext="{Binding CurrentPdfVM}"></local:DetailsPdfUC>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+        <!--#endregion-->
+
     </Grid>
 </UserControl>

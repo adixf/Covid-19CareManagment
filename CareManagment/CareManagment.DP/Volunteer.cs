@@ -49,5 +49,19 @@ namespace CareManagment.DP
             return MailAddress;
         }
 
+        public string GetFirstName()
+        {
+            return FirstName;
+        }
+
+        public string GetLastName()
+        {
+            return LastName;
+        }
+
+        public string GetPassword()
+        {
+            return Password;
+        }
     }
 }
