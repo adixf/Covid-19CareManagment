@@ -21,6 +21,7 @@ namespace CareManagment.ViewModels
             get { return firstName; }
             set
             {
+                firstName = null;
                 if (new Tools.VerifyString().IsValidName(value)) firstName = value;
                 else throw new ArgumentException("נא הכנס שם הכולל אותיות בלבד");
                 OnPropertyRaised("FirstName");
@@ -32,6 +33,7 @@ namespace CareManagment.ViewModels
             get { return lastName; }
             set
             {
+                lastName = null;
                 if (new Tools.VerifyString().IsValidName(value)) lastName = value;
                 else throw new ArgumentException("נא הכנס שם הכולל אותיות בלבד");
                 OnPropertyRaised("LastName");
@@ -43,7 +45,7 @@ namespace CareManagment.ViewModels
             get { return personId; }
             set
             {
-
+                personId = null;
                 if (new Tools.VerifyString().IsValidPersonId(value)) personId = value;
                 else throw new ArgumentException("נא הכנס מספר זהות תקין");
                 OnPropertyRaised("PersonId");
@@ -55,7 +57,7 @@ namespace CareManagment.ViewModels
             get { return phoneNumber; }
             set
             {
-
+                phoneNumber = null;
                 if (new Tools.VerifyString().IsValidPhoneNumber(value)) phoneNumber = value;
                 else throw new ArgumentException("נא הכנס מספר טלפון תקין");
                 OnPropertyRaised("PhoneNumber");
@@ -67,6 +69,7 @@ namespace CareManagment.ViewModels
             get { return password; }
             set
             {
+                password = null;
                 if (new Tools.VerifyString().IsValidPassword(value)) password = value;
                 else throw new ArgumentException("בחר סיסמה בת 8 תווים");
                 OnPropertyRaised("Password");
@@ -79,6 +82,7 @@ namespace CareManagment.ViewModels
             get { return city; }
             set
             {
+                city = null;
                 if (new Tools.VerifyString().IsValidName(value)) city = value;
                 else throw new ArgumentException("נא הכנס שם עיר תקין");
                 OnPropertyRaised("City");
@@ -91,6 +95,7 @@ namespace CareManagment.ViewModels
             get { return streetName; }
             set
             {
+                streetName = null;
                 if (new Tools.VerifyString().IsValidName(value)) streetName = value;
                 else throw new ArgumentException("נא הכנס שם רחוב תקין");
                 OnPropertyRaised("StreetName");
@@ -103,6 +108,7 @@ namespace CareManagment.ViewModels
             get { return buildingNumber; }
             set
             {
+                buildingNumber = null;
                 if (int.TryParse(value, out int x)) buildingNumber = value;
                 else throw new ArgumentException("נא הכנס מספר בניין תקין");
                 OnPropertyRaised("BuildingNumber");
@@ -115,6 +121,7 @@ namespace CareManagment.ViewModels
             get { return mailAddress; }
             set
             {
+                mailAddress = null;
                 if (new Tools.VerifyString().IsVaildEmail(value)) mailAddress = value;
                 else throw new ArgumentException("נא הכנס כתובת מייל תקינה");
                 OnPropertyRaised("MailAddress");

@@ -158,6 +158,8 @@ namespace CareManagment.ViewModels
                 Application.Current.Dispatcher.BeginInvoke(
                    new Action(() => { AddDistributionM.AddDistributions(new List<Distribution>(Distributions)); }));
 
+                IsDistributionReady = true;
+
                 // finish
                 Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
                 SelectedCity = "כל הארץ";

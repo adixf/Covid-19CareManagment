@@ -47,8 +47,7 @@ namespace CareManagment.Commands
 
         private void DoneCreating(object sender, RunWorkerCompletedEventArgs e)
         {
-            CurrentVM.IsWorking = false;
-            CurrentVM.IsDistributionReady = true;
+            CurrentVM.IsWorking = false;           
         }
        
     }

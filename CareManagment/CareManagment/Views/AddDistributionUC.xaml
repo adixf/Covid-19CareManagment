@@ -95,7 +95,7 @@
                                 <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Recipient.LastName}"></TextBlock>
                                 <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="{Binding Recipient.Address}"></TextBlock>
                                 <TextBlock Grid.Column="4" HorizontalAlignment="Center" Text="{Binding Recipient.PhoneNumber}"></TextBlock>
-                                <ComboBox Margin="3 0" HorizontalAlignment="Center" Grid.Column="5" FlowDirection="RightToLeft"
+                                <ComboBox HorizontalAlignment="Center" Grid.Column="5" FlowDirection="RightToLeft"
                                            SelectedItem="{Binding Contents, Converter={StaticResource StringToPkgType}}"
                                           materialDesign:HintAssist.Hint="מזון" materialDesign:HintAssist.HintOpacity="1">
                                     <ComboBoxItem HorizontalAlignment="Stretch">מזון</ComboBoxItem>
@@ -229,7 +229,7 @@
                     <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Message.Header}" FlowDirection="RightToLeft"
                                TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Message.Content}"
-                               TextAlignment="Center" FontSize="15"/>
+                               TextAlignment="Center" FontSize="15" TextWrapping="Wrap"/>
                     <Grid Grid.Row="3" Background="#FFBD515A" Opacity="1">
 
                         <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFlatButton}"
