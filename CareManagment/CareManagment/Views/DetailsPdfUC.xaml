@@ -6,9 +6,31 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Name="Details" Background="Beige">
-        <TextBlock FontSize="70">hiii</TextBlock>
-        <TextBlock FontSize="40" Text="{Binding Volunteer.FirstName}"></TextBlock>
-        <TextBlock>hiii</TextBlock>
+    <Grid Name="Details" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" FlowDirection="RightToLeft">
+
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="פרטי חלוקה: " FontSize="16" >
+            </TextBlock>
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="{Binding Distribution.DistributionId}" FontSize="16" >
+            </TextBlock>
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       Text="{Binding Distribution.Date, StringFormat={}\{0:dd.MM.yyyy\}}" FontSize="16" >
+            </TextBlock>
+            <TextBlock Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        FontSize="15" >
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
+                        <Binding Path="Volunteer.FirstName"/>
+                        <Binding Path="Volunteer.LastName"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </UserControl>

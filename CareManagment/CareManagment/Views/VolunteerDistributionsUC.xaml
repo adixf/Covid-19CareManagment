@@ -170,7 +170,7 @@
                             Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
                     </Button>
                     <Button Grid.Row="0" Command="{Binding SavePdfCommand}"></Button>
-                    <local:DetailsPdfUC Grid.Row="1" DataContext="{Binding CurrentPdfVM}"></local:DetailsPdfUC>
+                    <ContentControl Grid.Row="1" Content="{Binding PdfView}"></ContentControl>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>

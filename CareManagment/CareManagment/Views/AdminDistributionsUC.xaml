@@ -25,6 +25,8 @@
                 <materialDesign:PackIcon Kind="ArrowForward" />
             </Button>
 
+            <!--#region new distributions -->
+
             <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="חלוקות חדשות" FontSize="20" FontWeight="Bold"></TextBlock>
 
@@ -35,6 +37,7 @@
                     <materialDesign:PackIcon Kind="Plus"></materialDesign:PackIcon>
                 </StackPanel>
             </Button>
+
             <materialDesign:Card Grid.Row="1" Margin="10" UniformCornerRadius="20" >
                 <Grid  Background="LightGray" HorizontalAlignment="Stretch">
                     <ListView Name="newDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
@@ -89,6 +92,10 @@
                 </Grid>
 
             </materialDesign:Card>
+
+            <!--#endregion-->
+
+            <!--#region old distributions -->
             <TextBlock Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="חלוקות קודמות" FontSize="20" FontWeight="Bold"></TextBlock>
             <Button Grid.Row="2" Margin="20 0" HorizontalAlignment="Left" Width="150" Command="{Binding SaveChangesCommand}"
@@ -141,7 +148,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </materialDesign:Card>
-
+            <!--#endregion-->
         </Grid>
 
 
@@ -160,7 +167,7 @@
                             Command="materialDesign:DialogHost.CloseDialogCommand" 
                             Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
                     </Button>
-                    <ContentControl Grid.Row="1" Content="{Binding PdfView}"></ContentControl>
+                    <local:DistributionDetailsUC Grid.Row="1" DataContext="{Binding CurrentDetailsDisplay}"></local:DistributionDetailsUC>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
@@ -182,8 +189,10 @@
                             Command="materialDesign:DialogHost.CloseDialogCommand" 
                             Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
                     </Button>
-                    <Button Grid.Row="0" Command="{Binding SavePdfCommand}"></Button>
-                    <local:DetailsPdfUC Grid.Row="1" DataContext="{Binding CurrentPdfVM}"></local:DetailsPdfUC>
+                    <Button Grid.Row="0" HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20"
+                            Command="{Binding SavePdfCommand}" Content="הדפס קובץ" Background="DarkSeaGreen" Foreground="White"></Button>
+                    <ContentControl Grid.Row="1" Content="{Binding PdfView}"></ContentControl>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
