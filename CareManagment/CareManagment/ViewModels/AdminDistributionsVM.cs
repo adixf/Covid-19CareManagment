@@ -27,12 +27,10 @@ namespace CareManagment.ViewModels
         }
 
 
-        
         public override void SaveChanges()
         {
             AdminDistributionsM.SaveChanges(DistributionsToUpdate);
             DistributionsToUpdate.Clear();
-
         }
 
        

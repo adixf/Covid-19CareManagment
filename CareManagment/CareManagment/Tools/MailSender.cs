@@ -11,10 +11,8 @@ namespace CareManagment.Tools
 {
     public class MailSender
     {
-
         public void SendMail(string to, string subject, string body)
         {
-
             MailMessage message = new MailMessage();
             message.Subject = subject;
             message.From = new MailAddress(((App)Application.Current).Currents.MailAddress);

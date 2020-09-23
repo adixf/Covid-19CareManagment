@@ -24,10 +24,12 @@ namespace CareManagment.ViewModels
             }
         }
 
+
         public VolunteerMainVM()
         {
             CurrentVolunteerVM = new VolunteerDistributionsVM();
         }
+
 
         public ICommand SignOut
         {
@@ -39,6 +41,7 @@ namespace CareManagment.ViewModels
                     ((App)Application.Current).Currents.CurrentVM = new LoginVM();
                 });
             }
-        }
+        }   
+
     }
 }

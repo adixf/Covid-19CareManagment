@@ -13,10 +13,14 @@ namespace CareManagment.Models
      public class RecipientsViewM
      {
         public IBL BL { get; set; }
+
         public  List<Recipient> Recipients { get; set; }
+
+
         public RecipientsViewM()
         {
             BL = new BLImp();
+
             Recipients = new List<Recipient>(BL.GetAllRecipients());
         }
 

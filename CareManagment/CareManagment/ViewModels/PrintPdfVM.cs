@@ -11,7 +11,10 @@ namespace CareManagment.ViewModels
 {
     public class PrintPdfVM : BaseViewModel
     {
+        public PrintPdfM PrintPdfM { get; set; }
+
         public ObservableCollection<Package> Packages { get; set; }
+
         private Volunteer volunteer;
         public Volunteer Volunteer
         {
@@ -33,7 +36,6 @@ namespace CareManagment.ViewModels
             }
         }
 
-        public PrintPdfM PrintPdfM { get; set; }
 
         public PrintPdfVM(int DistributionId)
         {

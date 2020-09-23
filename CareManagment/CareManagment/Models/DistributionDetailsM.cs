@@ -13,10 +13,12 @@ namespace CareManagment.Models
    {
         public IBL BL { get; set; }
 
+
         public DistributionDetailsM()
         {
             BL = new BLImp();
         }
+
 
         public Distribution GetDistribution(int DistributionId)
         {

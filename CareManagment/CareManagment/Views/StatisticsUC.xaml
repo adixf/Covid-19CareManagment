@@ -8,7 +8,88 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock>statistics</TextBlock>
+    <Grid Background="#FFF7F7EE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <!--#region top bar -->
+        <Button Grid.Row="0" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}"
+                Command="{Binding Path=DataContext.DisplayOptionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}">
+            <materialDesign:PackIcon Kind="ArrowForward" />
+        </Button>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="סטטיסטיקת ביצועים" FontSize="25" FontWeight="Bold"></TextBlock>
+            <Button  Margin="8 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20"
+                     Background="#FFC66465"
+                     Command="{Binding GetStatisticsCommand}" CommandParameter="7">
+                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <TextBlock Foreground="White" Text="שבועית" VerticalAlignment="Center"></TextBlock>
+                    <materialDesign:PackIcon Foreground="White" Kind="ExpandMore" VerticalAlignment="Center"></materialDesign:PackIcon>
+                </StackPanel>
+            </Button>
+            <Button  Margin="8 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20"
+                     Background="#FFC66465"
+                     Command="{Binding GetStatisticsCommand}" CommandParameter="30">
+                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <TextBlock Foreground="White" Text="חודשית" VerticalAlignment="Center"></TextBlock>
+                    <materialDesign:PackIcon Foreground="White" Kind="ExpandMore" VerticalAlignment="Center"></materialDesign:PackIcon>
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region column series -->
+        <materialDesign:Card Background="white" Grid.Row="1" UniformCornerRadius="25" Margin="20 0" Visibility="{Binding Path=IsChecked, ElementName=ColumnsCheck, Converter={StaticResource BoolToVisConverter}}">
+            <lvc:CartesianChart LegendLocation="Left">
+                <lvc:CartesianChart.Series>
+                    <lvc:ColumnSeries Title="תכנון" Values="{Binding Planned}" Stroke="#FF4980B6" Fill="#FF4980B6"/>
+                    <lvc:ColumnSeries Title="ביצוע" Values="{Binding Delivered}" Stroke="#FFF74646" Fill="#FFF74646"/>
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="ימים"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="מספר חלוקות"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </materialDesign:Card>
+        <!--#endregion-->
+
+        <!--#region line series -->
+        <materialDesign:Card Background="white" Grid.Row="1" UniformCornerRadius="25" Margin="20 0" Visibility="{Binding Path=IsChecked, ElementName=LinesCheck, Converter={StaticResource BoolToVisConverter}}">
+            <lvc:CartesianChart>
+                <lvc:CartesianChart.Series>
+                    <lvc:LineSeries Title="תכנון" Values="{Binding Planned}" StrokeThickness="4" StrokeDashArray="2" 
+                       Stroke="#FF4980B6" Fill="Transparent" LineSmoothness="0" PointGeometry="{x:Null}" />
+                    <lvc:LineSeries Title="ביצוע" Values="{Binding Delivered}" StrokeThickness="2" 
+                       Stroke="#FFF74646" Fill="Transparent" LineSmoothness="1" 
+                       PointGeometrySize="15" PointForeground="#222E31"/>
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="ימים"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="מספר חלוקות"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </materialDesign:Card>
+        <!--#endregion-->
+
+        <!--#region chart type -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <RadioButton Name="LinesCheck" IsChecked="True" Height="70" Width="40" BorderBrush="#FF5D5D8F" Style="{StaticResource MaterialDesignTabRadioButton}" FontSize="16" Foreground="#FF5D5D8F">
+                <materialDesign:PackIcon Kind="ChartTimelineVariant" Foreground="#FF5D5D8F" Height="40" Width="40"></materialDesign:PackIcon>
+            </RadioButton>
+            <RadioButton Name="ColumnsCheck" Height="70" Width="40" BorderBrush="#FF5D5D8F" Style="{StaticResource MaterialDesignTabRadioButton}" FontSize="16" Foreground="#FF5D5D8F">
+                <materialDesign:PackIcon Kind="Poll" Foreground="#FF5D5D8F" Height="40" Width="40"></materialDesign:PackIcon>
+            </RadioButton>
+        </StackPanel>
+        <!--#endregion-->
     </Grid>
 </UserControl>

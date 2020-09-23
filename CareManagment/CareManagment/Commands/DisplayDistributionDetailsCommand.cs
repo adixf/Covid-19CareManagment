@@ -19,9 +19,9 @@ namespace CareManagment.Commands
 
         public DisplayDistributionsVM CurrentVM { get; set; }
 
-        public DisplayDistributionDetailsCommand(DisplayDistributionsVM vm)
+        public DisplayDistributionDetailsCommand(DisplayDistributionsVM VM)
         {
-            CurrentVM = vm;
+            CurrentVM = VM;
         }
 
         public bool CanExecute(object parameter)

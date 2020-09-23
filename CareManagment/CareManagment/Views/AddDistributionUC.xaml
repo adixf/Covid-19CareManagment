@@ -243,9 +243,7 @@
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
-        <!--#endregion-->
-
-        
+        <!--#endregion-->        
         
     </Grid>
 

@@ -92,15 +92,18 @@
     <Compile Include="Commands\DisplayDistributionDetailsCommand.cs" />
     <Compile Include="Commands\DisplayLocationCommand.cs" />
     <Compile Include="Commands\DisplayPdfCommand.cs" />
+    <Compile Include="Commands\GetStatisticsCommand.cs" />
     <Compile Include="Commands\SaveChangesCommand.cs" />
     <Compile Include="Commands\UpdateCollectionCommand.cs" />
     <Compile Include="Converters\FullNameConverter.cs" />
     <Compile Include="Converters\MultiParameterConverter.cs" />
     <Compile Include="Converters\StringToPkgTypeConverter.cs" />
     <Compile Include="Models\PrintPdfM.cs" />
+    <Compile Include="Models\StatisticsM.cs" />
     <Compile Include="Models\VolunteerDistributionsM.cs" />
     <Compile Include="Models\VolunteersViewM.cs" />
     <Compile Include="Tools\MailSender.cs" />
+    <Compile Include="Tools\ObservableChartValues.cs" />
     <Compile Include="ViewModels\DisplayDistributionsVM.cs" />
     <Compile Include="Models\AddDistributionM.cs" />
     <Compile Include="Models\AddRecipientM.cs" />
@@ -384,9 +387,7 @@
   <ItemGroup>
     <Resource Include="Images\oldcollage.jpg.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\donation-bg.jpg" />
   </ItemGroup>

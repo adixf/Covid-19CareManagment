@@ -16,6 +16,8 @@ namespace CareManagment.ViewModels
 {
     public class DistributionDetailsVM : BaseViewModel
     {
+        public DistributionDetailsM DistributionDetailsM { get; set; }
+
         public Distribution CurrentDistribution { get; set; }
 
         private ObservableCollection<Package> packages;
@@ -28,8 +30,6 @@ namespace CareManagment.ViewModels
                 OnPropertyRaised("Packages");
             }
         }
-
-        public DistributionDetailsM DistributionDetailsM { get; set; }
 
         public MapUC MapView { get; set; }
 
@@ -47,10 +47,12 @@ namespace CareManagment.ViewModels
             }
         }
 
+
         public DistributionDetailsVM(int distributionId)
         {
             MapView = new MapUC();
             DistributionDetailsM = new DistributionDetailsM();
+
             CurrentDistribution = DistributionDetailsM.GetDistribution(distributionId);
             Packages = new ObservableCollection<Package>(DistributionDetailsM.GetAllPackages(distributionId));
         }

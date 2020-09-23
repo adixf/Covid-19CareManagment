@@ -25,6 +25,7 @@ namespace CareManagment.Tools
                 OnPropertyRaised("CurrentVM");
             }
         }
+
         private IUser loggedUser;
         public IUser LoggedUser
         {
@@ -36,7 +37,9 @@ namespace CareManagment.Tools
             }
         }
 
-        public int MaxPackagesPerVolunteer { get { return 25; } }
+        public int MaxPackagesPerVolunteer { get { return 15; } }
+        public string MailAddress { get { return "covid19caremanagment@gmail.com"; } }
+        public string MailPassword { get { return "covid19123"; } }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyRaised(string propertyname)
@@ -44,7 +47,5 @@ namespace CareManagment.Tools
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
 
-        public string MailAddress { get { return "covid19caremanagment@gmail.com"; } }
-        public string MailPassword { get { return "covid19123"; } }
     }
 }

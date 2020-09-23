@@ -19,7 +19,6 @@ namespace CareManagment.ViewModels
     {
         public AddDistributionM AddDistributionM { get; set; }
 
-
         public DateTime DistributionDate { get; set; }
 
         private ObservableCollection<Recipient> recipients;
@@ -41,8 +40,6 @@ namespace CareManagment.ViewModels
             }
         }
 
-
-
         private ObservableCollection<Package> packages;
         public ObservableCollection<Package> Packages
         {
@@ -53,7 +50,6 @@ namespace CareManagment.ViewModels
                 OnPropertyRaised("Packages");
             }
         }
-
 
         private ObservableCollection<Distribution> distributions;
         public ObservableCollection<Distribution> Distributions
@@ -111,6 +107,7 @@ namespace CareManagment.ViewModels
 
         public MapUC AreasMap { get; set; }
 
+
         public AddDistributionVM()
         {
             AddDistributionM = new AddDistributionM();
@@ -136,7 +133,6 @@ namespace CareManagment.ViewModels
             }
             Cities.Add("כל הארץ");
         }
-
 
         public void CreateDistributions()
         {

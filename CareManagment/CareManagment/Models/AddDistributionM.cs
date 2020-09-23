@@ -14,10 +14,11 @@ namespace CareManagment.Models
 {
     class AddDistributionM
     {
+        public IBL BL { get; set; }
+
         public List<Recipient> Recipients { get; set; }
         public List<Distribution> Distributions { get; set; }
 
-        public IBL BL { get; set; }
 
         public AddDistributionM()
         {
@@ -55,7 +56,7 @@ namespace CareManagment.Models
 
         public void SendMail(Volunteer volunteer)
         {
-            // send mail
+            // send mail to volunteer
             MailSender mailSender = new MailSender();
             string to = volunteer.MailAddress;
             string subject = "חלוקה חדשה";

@@ -117,18 +117,15 @@ namespace CareManagment.ViewModels
         #endregion
 
         public AddRecipientM AddRecipientM { get; set; }
-        public ICommand AddRecipientCommand
-        {
-            get
-            {
-                return new BaseCommand(delegate () { SignUp(); });
-            }
-        }
+
+        public ICommand AddRecipientCommand { get { return new BaseCommand(delegate () { SignUp(); }); } }
+
 
         public AddRecipientVM()
         {
-            AddRecipientM = new AddRecipientM(); 
+            AddRecipientM = new AddRecipientM();
         }
+
 
         public void SignUp()
         {

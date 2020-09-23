@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace CareManagment.Commands
 {
-    class SaveChangesCommand : ICommand
+    class GetStatisticsCommand : ICommand
     {
         public event EventHandler CanExecuteChanged
         {
@@ -16,21 +16,22 @@ namespace CareManagment.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public DisplayDistributionsVM CurrentVM { get; set; }
+        public StatisticsVM CurrentVM { get; set; }
 
-        public SaveChangesCommand(DisplayDistributionsVM VM)
+        public GetStatisticsCommand(StatisticsVM VM)
         {
             CurrentVM = VM;
         }
 
         public bool CanExecute(object parameter)
         {
-            return CurrentVM.DistributionsToUpdate.Count != 0;
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            CurrentVM.SaveChanges();
+            int.TryParse(parameter.ToString(), out int Days);
+            CurrentVM.GetStatistics(Days);
         }
     }
 }

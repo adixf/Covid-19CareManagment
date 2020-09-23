@@ -16,14 +16,10 @@ namespace CareManagment.ViewModels
     {       
         public LoginM CurrentModel { get; set; }
 
-        #region commands
-        public ICommand LoginCommand
-        {
-            get
-            {
-                return new BaseCommand(delegate () { Login(); });
-            }
-        }
+        public string Email { get; set; }
+        public string Password { get; set; }
+
+        public ICommand LoginCommand { get { return new BaseCommand(delegate () { Login(); }); } }
 
         public ICommand DisplaySignUpView
         {
@@ -32,17 +28,13 @@ namespace CareManagment.ViewModels
                 return new BaseCommand(delegate () { ((App)Application.Current).Currents.CurrentVM = new SignUpVM();});
             }
         }
-        #endregion
-
-        // properties bound to view
-        public string Email { get; set; }
-        public string Password { get; set; }
 
         
         public LoginVM()
         {
             CurrentModel = new LoginM();
         }
+
 
         // check if email and password describe an existing user
         public bool ValidUser(string email, string password)

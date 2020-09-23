@@ -19,11 +19,8 @@ namespace CareManagment.ViewModels
         public ObservableCollection<Distribution> NewDistributions { get; set; }
         public ObservableCollection<Distribution> OldDistributions { get; set; }
 
-
         public ICommand UpdateCollection { get { return new UpdateCollectionCommand(this); } }
         public ICommand SaveChangesCommand { get { return new SaveChangesCommand(this); } }
-
-
 
         private DistributionDetailsVM currentDetailsDisplay;
         public DistributionDetailsVM CurrentDetailsDisplay

@@ -11,8 +11,11 @@ namespace CareManagment.ViewModels
 {
     class VolunteersViewVM : BaseViewModel
     {
-        public ObservableCollection<Volunteer> Volunteers { get; set; }
         public VolunteersViewM CurrentM { get; set; }
+
+        public ObservableCollection<Volunteer> Volunteers { get; set; }
+        
+
         public VolunteersViewVM()
         {
             CurrentM = new VolunteersViewM();

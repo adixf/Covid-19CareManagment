@@ -135,15 +135,8 @@ namespace CareManagment.ViewModels
 
         public SignUpM SignUpModel { get; set; }
 
-        #region commands
-        public ICommand SignUpCommand
-        {
-            get
-            {
-                return new BaseCommand(delegate () { SignUp(); });
-            }
-        }
-        #endregion
+        public ICommand SignUpCommand { get { return new BaseCommand(delegate () { SignUp(); }); } }
+
 
         public SignUpVM()
         {

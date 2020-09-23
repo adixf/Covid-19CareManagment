@@ -15,10 +15,12 @@ namespace CareManagment.Models
     {
         public IBL BL { get; set; }
 
+
         public SignUpM()
         {
             BL = new BLImp();
         }
+
 
         public void SignUp(IUser user, UserType userType)
         {
@@ -35,11 +37,10 @@ namespace CareManagment.Models
             else BL.AddVolunteer(user as Volunteer);
 
             // send mail
-            MailSender mailSender = new MailSender();
             string to = user.GetMailAddress();
             string subject = "ברוך הבא לעמותת יד ביד";
             string body = "שלום " + user.GetFirstName() + "," + "\n\n" + "הרשמתך נקלטה במערכת בהצלחה." + "\n\n" + "אנו שמחים שהצטרפת למשפחת יד ביד!" + "\n\n" + "הסיסמה למערכת היא: " + user.GetPassword();
-            Thread thread = new Thread(() => mailSender.SendMail(to, subject, body));
+            Thread thread = new Thread(() => new MailSender().SendMail(to, subject, body));
             thread.Start();
         }
        

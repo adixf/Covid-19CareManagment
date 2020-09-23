@@ -17,12 +17,15 @@ namespace CareManagment.Models
         public List<Volunteer> Volunteers { get; set; }
         public List<Admin> Admins { get; set; }
 
+
         public LoginM()
         {
             BL= new BLImp();
+
             Volunteers = BL.GetAllVolunteers();
             Admins = BL.GetAllAdmins();
         }
+
 
         public bool ValidUser(string email, string password)
         {

@@ -13,10 +13,12 @@ namespace CareManagment.Models
     {
         public IBL BL { get; set; }
 
+
         public AddRecipientM()
         {
             BL = new BLImp();
         }
+
 
         public void SignUp(Recipient recipient)
         {

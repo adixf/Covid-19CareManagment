@@ -15,23 +15,17 @@ namespace CareManagment.ViewModels
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
         public void OnPropertyRaised(string propertyname)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
         
 
-        public BaseViewModel()
-        {
-            
-        }
+        public BaseViewModel() { }
+
 
         #region commands 
-        /// <summary>
-        /// commands
-        /// </summary>
-        /// 
+
         public ICommand DisplayContactUsView
         {
             get
@@ -62,8 +56,7 @@ namespace CareManagment.ViewModels
         }
 
         #endregion
-
-        
+       
 
         private Message message;
         public Message Message

@@ -15,8 +15,8 @@ namespace CareManagment.Models
         public IBL BL { get; set; }
 
         public List<Distribution> OldDistributions { get; set; }
-
         public List<Distribution> NewDistributions { get; set; }
+
 
         public VolunteerDistributionsM()
         {
@@ -26,6 +26,7 @@ namespace CareManagment.Models
             NewDistributions = new List<Distribution>(BL.GetAllDistributions(x => (x.Volunteer.MailAddress == ((App)Application.Current).Currents.LoggedUser.GetMailAddress()) && !x.IsDelivered).ToList());
 
         }
+
 
         public void SaveChanges(List<Distribution> distributions)
         {

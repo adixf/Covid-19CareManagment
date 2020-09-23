@@ -31,7 +31,6 @@ namespace CareManagment.ViewModels
         {
             VolunteerDistributionsM.SaveChanges(DistributionsToUpdate);
             DistributionsToUpdate.Clear();
-
         }
     }
 }

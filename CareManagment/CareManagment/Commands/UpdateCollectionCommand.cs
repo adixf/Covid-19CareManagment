@@ -21,9 +21,9 @@ namespace CareManagment.Commands
         public BackgroundWorker CheckDistributionBW;
         public DisplayDistributionsVM CurrentVM { get; set; }
 
-        public UpdateCollectionCommand(DisplayDistributionsVM vm)
+        public UpdateCollectionCommand(DisplayDistributionsVM VM)
         {
-            CurrentVM = vm;           
+            CurrentVM = VM;           
         }
 
         public bool CanExecute(object parameter)

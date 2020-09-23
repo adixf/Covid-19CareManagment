@@ -191,7 +191,7 @@
                     </Button>
                     <Button Grid.Row="0" HorizontalAlignment="Center"
                             Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20"
-                            Command="{Binding SavePdfCommand}" Content="הדפס קובץ" Background="DarkSeaGreen" Foreground="White"></Button>
+                            Command="{Binding SavePdfCommand}" Content="הדפס קובץ" Background="#FF2F2F49" Foreground="White"></Button>
                     <ContentControl Grid.Row="1" Content="{Binding PdfView}"></ContentControl>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>

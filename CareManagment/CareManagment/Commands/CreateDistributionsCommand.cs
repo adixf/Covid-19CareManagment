@@ -12,18 +12,18 @@ namespace CareManagment.Commands
 {
     class CreateDistributionsCommand : ICommand
     {
-        public AddDistributionVM CurrentVM { get; set; }
-        public BackgroundWorker CreateDistributionsBW;
-
-        public CreateDistributionsCommand(AddDistributionVM vm)
-        {
-            CurrentVM = vm;
-        }
-
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public AddDistributionVM CurrentVM { get; set; }
+        public BackgroundWorker CreateDistributionsBW;
+
+        public CreateDistributionsCommand(AddDistributionVM VM)
+        {
+            CurrentVM = VM;
         }
 
         public bool CanExecute(object parameter)

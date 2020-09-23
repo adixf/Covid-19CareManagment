@@ -30,7 +30,7 @@ namespace CareManagment.ViewModels
         }
 
 
-        #region commands
+        #region admin options commands
 
         public ICommand DisplayDistributionsView
         {

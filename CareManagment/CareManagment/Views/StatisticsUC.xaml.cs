@@ -1,4 +1,5 @@
-﻿using LiveCharts;
+﻿using CareManagment.ViewModels;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -28,17 +29,8 @@ namespace CareManagment.Views
         public StatisticsUC()
         {
             InitializeComponent();
-            SeriesCollection = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Values = new ChartValues<double> { 3, 5, 7, 4 }
-                },
-                new ColumnSeries
-                {
-                    Values = new ChartValues<decimal> { 5, 6, 2, 7 }
-                }
-            };
+            DataContext = new StatisticsVM();
         }
+
     }
 }
