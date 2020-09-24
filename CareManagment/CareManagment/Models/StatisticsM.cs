@@ -32,7 +32,7 @@ namespace CareManagment.Models
 
             List<Distribution> Distributions = BL.GetAllDistributions();
             foreach (Distribution distribution in Distributions)
-                if (Today >= distribution.Date.Date && distribution.Date.Date >= WeekAgo)
+                if (Today >= distribution.Date.Date && distribution.Date.Date > WeekAgo)
                 // distribution was created within a week
                 {
                     int dayIndex = PreviousDays - 1 - (int)(Today - distribution.Date.Date).TotalDays;

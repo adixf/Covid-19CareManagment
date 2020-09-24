@@ -17,9 +17,13 @@
             <materialDesign:PackIcon Kind="ArrowForward" />
         </Button>
 
-      
-        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <TextBlock  VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="מתנדבים" FontSize="25" FontWeight="Bold"></TextBlock>
+            <TextBlock Margin="30 0 5 0" FontSize="18" Grid.Row="0" Text="סהכ:" Style="{StaticResource textFont}" VerticalAlignment="Center" FlowDirection="RightToLeft"></TextBlock>
+            <TextBlock Grid.Row="0" FontSize="18" Text="{Binding Count}" Style="{StaticResource textFont}" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
         <materialDesign:Card Grid.Row="1" Margin="10">
             <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding Volunteers}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" 
            FlowDirection="RightToLeft" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">

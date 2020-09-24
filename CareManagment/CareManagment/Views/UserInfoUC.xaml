@@ -6,29 +6,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="250">
+             d:DesignHeight="350" d:DesignWidth="250">
     <Grid>
-        <materialDesign:Card UniformCornerRadius="20">
-            <Grid Background="AntiqueWhite">
+        <Grid >
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Ellipse Height="80" Width="80">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="/CareManagment;component/Images/user.png"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center">your name</TextBlock>
-                <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center">jjj</TextBlock>
-                    <TextBlock HorizontalAlignment="Center">jjj</TextBlock>
-                    <TextBlock HorizontalAlignment="Center">jjj</TextBlock>
-                </StackPanel>
-                
+            <TextBlock Grid.Row="0" Text="שלח תזכורת" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"></TextBlock>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock FlowDirection="RightToLeft" Text="אל:" FontWeight="Bold"></TextBlock>
+                <TextBox Text="{Binding MailAddress}"></TextBox>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="2" Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Right" Text="תוכן" FontSize="16" FontWeight="Bold"></TextBlock>
+                <TextBox BorderBrush="#FFC66465" BorderThickness="1" FlowDirection="RightToLeft" FontSize="16" TextWrapping="Wrap" Background="White" Text="מחכה לך חלוקה שטרם ביצעת. אנא בצע את החלוקה בהקדם האפשרי ועדכן במערכת. תודה!"></TextBox>
+            </StackPanel>
+            <Button Grid.Row="3" Content="שלח" Foreground="White" Background="#FFC66465"></Button>
             </Grid>
-        </materialDesign:Card>
     </Grid>
 </UserControl>

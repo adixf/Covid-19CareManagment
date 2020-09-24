@@ -15,7 +15,7 @@
     </UserControl.Resources>
     <Grid>
         <m:Map Name="Map" Culture="he" CredentialsProvider="AhCDEHftaOj6EV613njroTC61Gy5dFYiQr8Aq5_XyrVvtsu_aRz12GIeoqoa06xs"
-                   Mode="Road" ZoomLevel="16">
+                   Mode="Road" ZoomLevel="16" >
         </m:Map>
     </Grid>
 </UserControl>

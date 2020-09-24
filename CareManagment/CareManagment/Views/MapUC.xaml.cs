@@ -28,7 +28,7 @@ namespace CareManagment.Views
         public MapUC()
         {
             InitializeComponent();
-            Map.SetView(new Location(31.771959, 35.217018), 8);
+            Map.SetView(new Location(32.032527, 34.8851379), 8);
         }
 
         public void SetMapLocation(Location location, int zoom) { Map.SetView(location, zoom); }

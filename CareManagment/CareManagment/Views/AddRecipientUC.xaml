@@ -8,24 +8,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Background>
-        <ImageBrush ImageSource="/CareManagment;component/Images/old-ppl.jpg" Opacity="0.3"></ImageBrush>
+        <ImageBrush ImageSource="/CareManagment;component/Images/bg0.jpeg" Opacity="0.1"></ImageBrush>
     </UserControl.Background>
-    <Grid Name="MainGrid">
+    <Grid Name="MainGrid" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <!--<Image Grid.Row="2" Grid.Column="0" Source="/CareManagment;component/Images/old1.jpg"></Image>-->
+     
+        <Button Grid.Row="0" Grid.Column="2" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}"
+                Command="{Binding Path=DataContext.DisplayRecipientsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}">
+            <materialDesign:PackIcon Kind="ArrowForward" />
+        </Button>
+
         <TextBlock Style="{StaticResource textFont}" Grid.Row="1" Grid.ColumnSpan="3" Text="הכנס פרטי נמען"  FontSize="25" FontWeight="DemiBold" 
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
-
+     
+        <!--#region recipient details -->
         <Grid Grid.Column="1" Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -40,7 +46,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Style="{StaticResource roundedCornersBorder}" >
+                <Border Grid.Column="0" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -57,7 +63,7 @@
 
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" Style="{StaticResource roundedCornersBorder}" >
+                <Border Grid.Column="1" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -77,7 +83,7 @@
                 </Border>
             </Grid>
 
-            <Border Grid.Row="1" Style="{StaticResource roundedCornersBorder}" >
+            <Border Grid.Row="1" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -92,11 +98,11 @@
                                  Text="{Binding PersonId, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
-                    <materialDesign:PackIcon Grid.Column="2" Kind="Family" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="AccountLockOutline" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
 
-            <Border Grid.Row="2" Style="{StaticResource roundedCornersBorder}" >
+            <Border Grid.Row="2" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -114,7 +120,7 @@
                     <materialDesign:PackIcon Grid.Column="2" Kind="Phone" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
-            <Border Grid.Row="3" Style="{StaticResource roundedCornersBorder}" >
+            <Border Grid.Row="3" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -138,7 +144,7 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Style="{StaticResource roundedCornersBorder}" >
+                <Border Grid.Column="0" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -155,7 +161,7 @@
 
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" Style="{StaticResource roundedCornersBorder}" >
+                <Border Grid.Column="1" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -173,7 +179,7 @@
 
                     </Grid>
                 </Border>
-                <Border Grid.Column="2" Style="{StaticResource roundedCornersBorder}" >
+                <Border Grid.Column="2" Style="{StaticResource roundedCornersBorder}" BorderBrush="Black" BorderThickness="1" Margin="4">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -188,7 +194,7 @@
                                  Text="{Binding City, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                         </TextBox>
-                        <!--materialDesign:PackIcon Grid.Column="2" Kind="House" HorizontalAlignment="Left" VerticalAlignment="Center"/-->
+   
                     </Grid>
                 </Border>
             </Grid>
@@ -199,8 +205,9 @@
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="הוסף" />
             </Button>
-
+       
         </Grid>
+        <!--#endregion-->
         
         <!--#region dialog message-->
         <materialDesign:DialogHost Grid.ColumnSpan="3" Grid.RowSpan="4" CloseOnClickAway="True" FlowDirection="RightToLeft"
@@ -260,8 +267,9 @@
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        
+
         <!--#endregion-->
+   
     </Grid>
 
 </UserControl>

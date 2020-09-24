@@ -93,7 +93,7 @@
                                  Text="{Binding PersonId, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
-                    <materialDesign:PackIcon Grid.Column="2" Kind="Family" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon Grid.Column="2" Kind="AccountLockOutline" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
 

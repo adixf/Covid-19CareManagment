@@ -19,7 +19,12 @@
         </materialDesign:Card>
 
         <StackPanel Margin="20,0,20,0" HorizontalAlignment="Right" Orientation="Horizontal" Background="Transparent">
-            <Button Command="{Binding DisplayDonationView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="לתרומה" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
+            <Button Command="{Binding DisplayDonationView}" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" materialDesign:RippleAssist.IsDisabled="True">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">לתרומה</TextBlock>
+                    <materialDesign:PackIcon Margin="2 0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Kind="HeartOutline"></materialDesign:PackIcon>
+                </StackPanel>
+            </Button>
             <Button Command="{Binding DisplayContactUsView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="צור קשר" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
             <Button Command="{Binding DisplayAboutUsView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="קצת עלינו" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>
             <Button Command="{Binding DisplayLoginView}" BorderBrush="{x:Null}" Background="{x:Null}" Content="כניסה" Foreground="White" materialDesign:RippleAssist.IsDisabled="True"></Button>

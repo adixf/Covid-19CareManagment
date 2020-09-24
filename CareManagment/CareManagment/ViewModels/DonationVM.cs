@@ -10,27 +10,34 @@ namespace CareManagment.ViewModels
 {
     public class DonationVM : BaseViewModel
     {
+        private bool first;
+        public bool First
+        {
+            get { return first; }
+            set
+            {
+                first = value;
+                OnPropertyRaised("First");
+            }
+        }
 
-        //    public ICommand DonationCommand { get { return new DonationCommand(this); } }
-        //    private string text;
-        //    public string TotalSumText
-        //    {
-        //        get { return text; }
-        //        set { text = value;
-        //            OnPropertyRaised("TotalSumText"); }
-        //    }
-        //    private string textBox;
-        //    public string TotalSumTextBox
-        //    {
-        //        get { return textBox; }
-        //        set
-        //        {
-        //            textBox = value;
-        //            OnPropertyRaised("TotalSumTextBox");
-        //        }
-        //    }
+        private bool second;
+        public bool Second
+        {
+            get { return second; }
+            set
+            {
+                second = value;
+                OnPropertyRaised("Second");
+            }
+        }
 
+        public ICommand NextCommand { get { return new BaseCommand(delegate () { First = false; Second = true; }); } }
 
-        //}
+        public DonationVM()
+        {
+            First = true;
+        }
+
     }
 }

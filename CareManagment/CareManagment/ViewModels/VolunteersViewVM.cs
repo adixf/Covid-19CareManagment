@@ -14,7 +14,7 @@ namespace CareManagment.ViewModels
         public VolunteersViewM CurrentM { get; set; }
 
         public ObservableCollection<Volunteer> Volunteers { get; set; }
-        
+        public int Count { get { return Volunteers.Count(); } }
 
         public VolunteersViewVM()
         {

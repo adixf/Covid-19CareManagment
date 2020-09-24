@@ -7,66 +7,255 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Coral">
+    <Grid >
 
-        <materialDesign:Card Margin="30" UniformCornerRadius="20" Opacity="1">
-            
+        <materialDesign:Card  UniformCornerRadius="20" Opacity="1" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.ColumnSpan="3" >
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  FlowDirection="RightToLeft" Style="{StaticResource textFont}"
+                               Text="התרומה שלך יכולה להציל חיים!" FontSize="30" FontWeight="DemiBold"></TextBlock>
+                </Grid>
+                <Button Grid.Row="1" Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Height="100">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Kind="ChevronDoubleLeft" Height="50" Width="50"></materialDesign:PackIcon>
+                        <TextBlock FlowDirection="RightToLeft" Text="המשך לתרומה" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    
+                </Button>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card Grid.Column="0" Margin="15 30" UniformCornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="#FF4C606E" >
+                                <materialDesign:PackIcon Kind="HandHeart" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             Height="50" Width="50"></materialDesign:PackIcon>
+                            </Grid>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FlowDirection="RightToLeft" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource textFont}"
+                                       Text="עזור לנו להרחיב את הארגון"
+                               Foreground="#FFC66465" FontSize="18" FontWeight="Bold"></TextBlock>
+                                <TextBlock Foreground="#FFC66465" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Text="500₪"></TextBlock>
+                            </StackPanel>
+                            <Button Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Height="60">
+                                <materialDesign:PackIcon HorizontalAlignment="Center" Kind="HeartOutline" Height="40" Width="40"></materialDesign:PackIcon>
+                            </Button>
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Grid.Column="1" Margin="15 30" UniformCornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="#FFD15D5D">
+                                <materialDesign:PackIcon Kind="Donate" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             Height="50" Width="50"></materialDesign:PackIcon>
+                            </Grid>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource textFont}"
+                                       Text="תרום ארוחת חג למשפחה"
+                               Foreground="#FFC66465" FontSize="18" FontWeight="Bold"></TextBlock>
+                                <TextBlock FlowDirection="RightToLeft" Foreground="#FFC66465" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Text="360₪"></TextBlock>
+                            </StackPanel>
+                            <Button Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Height="60">
+                                <materialDesign:PackIcon HorizontalAlignment="Center" Kind="HeartOutline" Height="40" Width="40"></materialDesign:PackIcon>
+                            </Button>
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Grid.Column="2" Margin="15 30" UniformCornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="#FF4C606E">
+                                <materialDesign:PackIcon Kind="Pasta" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             Height="50" Width="50"></materialDesign:PackIcon>
+                            </Grid>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FlowDirection="RightToLeft" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource textFont}"
+                                       Text="תרום סל מזון למשפחה"
+                               Foreground="#FFC66465" FontSize="18" FontWeight="Bold"></TextBlock>
+                                <TextBlock Foreground="#FFC66465" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Text="260₪"></TextBlock>
+                            </StackPanel>
+                            <Button Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Height="60">
+                                <materialDesign:PackIcon HorizontalAlignment="Center" Kind="HeartOutline" Height="40" Width="40"></materialDesign:PackIcon>
+                            </Button>
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Grid.Column="3" Margin="15 30" UniformCornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="#FF4C606E" >
+                                <materialDesign:PackIcon Kind="BoxVariantClosed" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             Height="50" Width="50"></materialDesign:PackIcon>
+                            </Grid>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock FlowDirection="RightToLeft" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource textFont}"
+                                       Text="תרום ארוחה למשפחה"
+                               Foreground="#FFC66465" FontSize="18" FontWeight="Bold"></TextBlock>
+                                <TextBlock Foreground="#FFC66465" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Text="180₪"></TextBlock>
+                            </StackPanel>
+                            <Button Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Height="60">
+                                <materialDesign:PackIcon HorizontalAlignment="Center" Kind="HeartOutline" Height="40" Width="40"></materialDesign:PackIcon>
+                            </Button>
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <!--<Grid Grid.Column="1" Grid.Row="1" Visibility="{Binding First, Converter={StaticResource BoolToVisConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" FlowDirection="RightToLeft" FontSize="24" FontWeight="Bold"
+                           Text="כמה תרצו לתרום?"></TextBlock>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+                        <Button x:Name="b50"  Style="{StaticResource DonationButtonStyle}" Content="₪50" ></Button>
+                        <Button x:Name="b180"  Style="{StaticResource DonationButtonStyle}" Content="₪180"></Button>
+                        <Button x:Name="b260"  Style="{StaticResource DonationButtonStyle}" Content="₪260"></Button>
+                        <Button x:Name="b360"  Style="{StaticResource DonationButtonStyle}" Content="₪360"></Button>
+                        <Button x:Name="other"  Style="{StaticResource DonationButtonStyle}" Content="אחר"></Button>
+                        <Border Height="50" Width="70" Margin="10 0" CornerRadius="15"  BorderBrush="#FFB45050" BorderThickness="1">
+                            <TextBox Margin="2 0" Background="Transparent"  VerticalAlignment="Center" 
+                                 materialDesign:HintAssist.Hint="הזן סכום"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                            </TextBox>
+                        </Border>
+                    </StackPanel>
+                    <TextBlock Grid.Row="2" FlowDirection="RightToLeft"  Text="סהכ לתרומה: 60" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                    <Button Grid.Row="2" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20"
+                     Background="#FFC66465"
+                            Command="{Binding NextCommand}">
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                            <TextBlock Foreground="White" Text="המשך" VerticalAlignment="Center"></TextBlock>
+                            <materialDesign:PackIcon Foreground="White" Kind="ArrowLeft" VerticalAlignment="Center"></materialDesign:PackIcon>
+                        </StackPanel>
+                    </Button>
+                </Grid>-->
+
+                    <!--<Grid Grid.Column="1" Grid.Row="1" Visibility="{Binding Second, Converter={StaticResource BoolToVisConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="4*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" FlowDirection="RightToLeft" FontSize="24" FontWeight="Bold"
+                           Text="פרטים אישיים"></TextBlock>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Margin="5" Grid.Row="1" Grid.Column="3" CornerRadius="20" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Text="{Binding Password}" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="שם פרטי"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                                </TextBox>
+                            </Border>
+                            <Border Margin="5" Grid.Row="1" Grid.Column="2" CornerRadius="20" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="שם משפחה"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                                </TextBox>
+                            </Border>
+                            <Border Margin="5" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" CornerRadius="20" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="מספר נייד"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                                </TextBox>
+                            </Border>
+                            <Border Margin="5" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" CornerRadius="20" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="כתובת מייל"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                                </TextBox>
+                            </Border>
+                            <Border Margin="5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="20" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="מספר אשראי"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                                </TextBox>
+                            </Border>
+                            <Border Margin="5" Grid.Row="2" Grid.Column="0" CornerRadius="20" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="CVV"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                                </TextBox>
+                            </Border>
+                            <Border Margin="5" Grid.Row="2" Grid.Column="1" CornerRadius="20" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                                 materialDesign:HintAssist.Hint="תוקף"
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center">
+                                </TextBox>
+                            </Border>
+                            <Button Margin="5" Grid.Row="3" Grid.Column="0"  Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20"
+                     Background="#FFC66465">
+                                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                                    <TextBlock Foreground="White" Text="תרום" VerticalAlignment="Center"></TextBlock>
+                                    <materialDesign:PackIcon Foreground="White" Kind="Heart" VerticalAlignment="Center"></materialDesign:PackIcon>
+                                </StackPanel>
+                            </Button>
+
+                        </Grid>
+
+                    </Grid>-->
+                </Grid>
+                <Image Opacity="0.9" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Stretch="Fill" Source="/CareManagment;component/Images/donation-hands.jpg"></Image>
+             
+            </Grid>
         </materialDesign:Card>
     </Grid>
+
   
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-
-            </Grid.ColumnDefinitions>
-          
-                <Button x:Name="b50"  Style="{StaticResource DonationButtonStyle}"
-                Content="₪50"  Grid.Column="5" Command="{Binding DonationCommand}" CommandParameter="{Binding ElementName=b50,Path=Content}">
-
-                </Button>
-            <Button x:Name="b180" Style="{StaticResource DonationButtonStyle}"
-                Content="₪180 " Grid.Column="4" Command="{Binding DonationCommand}" CommandParameter="{Binding ElementName=b180,Path=Content}" >
-            </Button>
-            <Button x:Name="b260" Style="{StaticResource DonationButtonStyle}"
-                Content="₪260"  Grid.Column="3" Command="{Binding DonationCommand}" CommandParameter="{Binding ElementName=b260,Path=Content}">
-            </Button>
-
-            <Button x:Name="b360" Style="{StaticResource DonationButtonStyle}"
-                Content="₪360"  Grid.Column="2" Command="{Binding DonationCommand}" CommandParameter="{Binding ElementName=b360,Path=Content}">
-            </Button>
-            <Button x:Name="אחר" Style="{StaticResource DonationButtonStyle}"
-                Content="אחר"  Grid.Column="1" Command="{Binding DonationCommand}" CommandParameter="{Binding ElementName=אחר,Path=Content}">
-            </Button>
-        </Grid>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding TotalSumText}"  HorizontalAlignment="Right"  FontSize="30" Foreground="Red" Opacity="0.4" FontWeight="Bold"/>
-            <TextBox Grid.Column="1"  HorizontalAlignment="Right"  FontSize="25" Foreground="Red" Opacity="0.4" FontWeight="Bold"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text=":פרטים אישיים"  HorizontalAlignment="Right"  FontSize="30" Foreground="Red" Opacity="0.4" FontWeight="Bold"/>
-        </Grid>
-
-       
-    </Grid>-->
 </UserControl>

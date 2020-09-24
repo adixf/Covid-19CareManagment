@@ -175,7 +175,7 @@
                                    IsOpen="{Binding IsWorking}">
 
             <materialDesign:DialogHost.DialogContent>
-                <Grid Height="150" Width="400" Background="white">
+                <Grid Height="120" Width="300" Background="white">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>

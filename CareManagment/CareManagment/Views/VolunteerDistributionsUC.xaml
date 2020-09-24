@@ -17,11 +17,11 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-         
+            <!--#region new distributions -->
             <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
                    Text="חלוקות חדשות" FontSize="20" ></TextBlock>
 
-            
+
             <materialDesign:Card Grid.Row="1" Margin="10" UniformCornerRadius="20" >
                 <Grid  Background="LightGray" HorizontalAlignment="Stretch">
                     <ListView Name="newDistributions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
@@ -76,8 +76,11 @@
                 </Grid>
 
             </materialDesign:Card>
+          <!--#endregion-->
+        
+            <!--#region old distributions -->
             <TextBlock Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,100,0" VerticalAlignment="Center" Style="{StaticResource textFont}"
-                   Text="חלוקות קודמות" FontSize="20" FontWeight="Bold"></TextBlock>
+                   Text="חלוקות קודמות" FontSize="20" ></TextBlock>
             <Button Grid.Row="2" Margin="20 0" HorizontalAlignment="Left" Width="150" Command="{Binding SaveChangesCommand}"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20" Background="Gray">
                 <StackPanel Orientation="Horizontal">
@@ -107,7 +110,7 @@
                                     <TextBlock Grid.Column="3" Text="{Binding Date, StringFormat={}\{0:dd.MM.yyyy\}}"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <TextBlock Grid.Column="2" VerticalAlignment="Center" FlowDirection="RightToLeft">
                                         <TextBlock.Text>
-                                            <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">
+                                            <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מנהל אחראי:">
                                                 <Binding Path="Admin.FirstName"/>
                                                 <Binding Path="Admin.LastName"/>
                                             </MultiBinding>
@@ -128,7 +131,8 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </materialDesign:Card>
-
+            <!--#endregion-->
+       
         </Grid>
 
 
@@ -169,7 +173,9 @@
                             Command="materialDesign:DialogHost.CloseDialogCommand" 
                             Content="X" Foreground="DarkRed" FontSize="15" FontWeight="Bold">
                     </Button>
-                    <Button Grid.Row="0" Command="{Binding SavePdfCommand}"></Button>
+                    <Button Grid.Row="0" HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ButtonAssist.CornerRadius="20"
+                            Command="{Binding SavePdfCommand}" Content="הדפס קובץ" Background="#FF2F2F49" Foreground="White"></Button>
                     <ContentControl Grid.Row="1" Content="{Binding PdfView}"></ContentControl>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>

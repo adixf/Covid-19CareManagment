@@ -65,6 +65,7 @@
                                                 CommandParameter="{Binding DistributionId}">
                                             <materialDesign:PackIcon Height="20" Width="20" Kind="Printer"></materialDesign:PackIcon>
                                         </Button>
+                                      
                                         <TextBlock Grid.Column="3" FontWeight="Bold" VerticalAlignment="Center" FlowDirection="RightToLeft">
                                             <TextBlock.Text>
                                                 <MultiBinding Converter="{StaticResource FullNameConverter}" ConverterParameter="מתנדב אחראי:">

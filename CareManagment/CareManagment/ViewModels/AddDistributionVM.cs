@@ -3,6 +3,7 @@ using CareManagment.DP;
 using CareManagment.DP.Types;
 using CareManagment.Models;
 using CareManagment.Views;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -158,7 +159,7 @@ namespace CareManagment.ViewModels
 
                 // finish
                 Recipients = new ObservableCollection<Recipient>(AddDistributionM.Recipients);
-                SelectedCity = "כל הארץ";
+                
 
             }
 
@@ -172,6 +173,18 @@ namespace CareManagment.ViewModels
         {
 
             AreasMap.Clear();
+            Location location = new Location();
+            if(selectedCity!="כל הארץ")
+            {
+                try
+                {
+                    location.Latitude = Distributions[0].Packages[0].Recipient.Address.Lat;
+                    location.Longitude = Distributions[0].Packages[0].Recipient.Address.Lon;
+                    AreasMap.SetMapLocation(location, 9);
+                }
+                catch { }
+            }
+                       
             List<Address> Addresses = new List<Address>();
             foreach (Distribution distribution in Distributions.ToList())
             {
@@ -183,6 +196,7 @@ namespace CareManagment.ViewModels
                 AreasMap.AddAreas(Addresses);
                 Addresses.Clear();
             }
+            SelectedCity = "כל הארץ";
         }
 
         private void AddDistributions(List<Package>[] DividedPackages)
@@ -198,8 +212,9 @@ namespace CareManagment.ViewModels
                         AdminId = (((App)Application.Current).Currents.LoggedUser as Admin).AdminId
                     });
                 }
-
+                
                 AssignVolunteers();
+                
             }
             catch (Exception e)
             {

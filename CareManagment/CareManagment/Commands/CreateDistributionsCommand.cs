@@ -42,6 +42,7 @@ namespace CareManagment.Commands
         private void CreateDistributions(object sender, DoWorkEventArgs e)
         {
             CurrentVM.IsWorking = true;
+            Thread.Sleep(1000);
             CurrentVM.CreateDistributions();
         }
 
