@@ -13,15 +13,112 @@
         </Grid.Background>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Image Grid.Row="0" Source="/CareManagment;component/Images/aboutus1.jpg"></Image>
+
+        <materialDesign:Transitioner SelectedIndex="0">
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers1.jpeg"></Image>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
+                        </Button>
+                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide >
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers2.jpg"></Image>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
+                        </Button>
+                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers3.jpg"></Image>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
+                        </Button>
+                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide>
+                 <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers4.jpg"></Image>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
+                        </Button>
+                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:TransitionerSlide>
+        </materialDesign:Transitioner>
+
+
+        <!--<Image Grid.Row="0" Source="/CareManagment;component/Images/aboutus1.jpg"></Image>
         <StackPanel Grid.Row="1">
             <TextBlock Text="יד ביד - איתכם תמיד ביחד" HorizontalAlignment="Center" FontSize="30" Foreground="#FFD17B7C" FontWeight="Bold"></TextBlock>
-            <TextBlock Text="אנחנו ביד ויד פועלים יחד עם אלפי מתנדבים ברחבי הארץ" HorizontalAlignment="Center" FontSize="25" Foreground="Black" ></TextBlock>
-            <TextBlock Text="עוד שורה חסרת משמעות כאן אוקיי יופי" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
-            <TextBlock Text="ועוד אחת כאן ממש מעניין פה" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
+            <TextBlock Text="אנחנו ביד ויד פועלים יחד עם מאות מתנדבים ברחבי הארץ" HorizontalAlignment="Center" FontSize="25" Foreground="Black" ></TextBlock>
+            <TextBlock Text="לספק חבילות מזון, תרופות ועוד" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
+            <TextBlock Text="לאלפי בתים בישראל בכל יום" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
             <TextBlock Text="ועוד אחת כאן אתם לא תאמינו מה יבוא אחרי זה" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </UserControl>
