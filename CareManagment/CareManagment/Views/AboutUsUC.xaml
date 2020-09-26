@@ -7,118 +7,150 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid >
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="/CareManagment;component/Images/top-bg.jpg" Opacity="0.5"></ImageBrush>
-        </Grid.Background>-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
 
-        <materialDesign:Transitioner SelectedIndex="0">
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="6*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers1.jpeg"></Image>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
-                        </Button>
-                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:TransitionerSlide>
-            <materialDesign:TransitionerSlide >
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="6*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers2.jpg"></Image>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
-                        </Button>
-                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:TransitionerSlide>
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="6*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers3.jpg"></Image>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
-                        </Button>
-                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:TransitionerSlide>
-            <materialDesign:TransitionerSlide>
-                 <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:CircleWipe />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="6*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="/CareManagment;component/Images/volunteers4.jpg"></Image>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowBack"></materialDesign:PackIcon>
-                        </Button>
-                        <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <materialDesign:PackIcon Kind="ArrowForward"></materialDesign:PackIcon>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:TransitionerSlide>
-        </materialDesign:Transitioner>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid Margin="10" Grid.Column="0" Background="#FFF1F1D6">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="30" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+                <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="25" FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap"
+                           Text="ההשראה שלנו" >
+                </TextBlock>
+                <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="18" TextAlignment="Center" TextWrapping="Wrap"
+                           Text="כמה מאלפי התגובות שאנו מקבלים יום-יום " >
+                </TextBlock>
+                <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="18" TextAlignment="Center" TextWrapping="Wrap" FlowDirection="RightToLeft"
+                           Text="זה מה שנותן לנו את הכוח להמשיך." Foreground="#FFC66465">
+                </TextBlock>
+            </StackPanel>
+            <Border Margin="20 10" Grid.Row="1" BorderBrush="White" BorderThickness="2">
+                <Border.Background>
+                    <ImageBrush ImageSource="/CareManagment;component/Images/notebook.jpg" Opacity="0.5"></ImageBrush>
+                </Border.Background>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+                <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="למתנדבים המדהימים">
+                </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="שבלעדיהם לא היינו פה היום.">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="אין מילים להודות על טוב הלב שלכם">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="סוניה ועמיר פרץ">
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Margin="20 10" Grid.Row="2" BorderBrush="White" BorderThickness="2" >
+                <Border.Background>
+                    <ImageBrush ImageSource="/CareManagment;component/Images/notebook.jpg" Opacity="0.5"></ImageBrush>
+                </Border.Background>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="לעמותת יד ביד היקרים,">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="אין מילים לתאר את גודל העזרה שלכם!">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="מודים לכם מקרב לב">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="אורן ומעיין כהן">
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Margin="20 10" Grid.Row="3" BorderBrush="White" BorderThickness="2">
+                <Border.Background>
+                    <ImageBrush ImageSource="/CareManagment;component/Images/notebook.jpg" Opacity="0.5"></ImageBrush>
+                </Border.Background>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="יד ביד כשמם כן הם">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text=" הליווי הצמוד והחיוך בזמנים קשים">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="יישארו איתנו עוד הרבה שנים">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="14" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="אוהבים! משפחת לוינסון">
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
 
-        <!--<Image Grid.Row="0" Source="/CareManagment;component/Images/aboutus1.jpg"></Image>
-        <StackPanel Grid.Row="1">
-            <TextBlock Text="יד ביד - איתכם תמיד ביחד" HorizontalAlignment="Center" FontSize="30" Foreground="#FFD17B7C" FontWeight="Bold"></TextBlock>
-            <TextBlock Text="אנחנו ביד ויד פועלים יחד עם מאות מתנדבים ברחבי הארץ" HorizontalAlignment="Center" FontSize="25" Foreground="Black" ></TextBlock>
-            <TextBlock Text="לספק חבילות מזון, תרופות ועוד" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
-            <TextBlock Text="לאלפי בתים בישראל בכל יום" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
-            <TextBlock Text="ועוד אחת כאן אתם לא תאמינו מה יבוא אחרי זה" HorizontalAlignment="Center" FontSize="25" Foreground="Black"></TextBlock>
-        </StackPanel>-->
+        <Grid Margin="10" Grid.Column="1" Background="#FFC66465">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image VerticalAlignment="Top" Source="/CareManagment;component/Images/volunteer3.jpg" Stretch="UniformToFill"></Image>
+            <StackPanel Margin="10 0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                <TextBlock Foreground="White" Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="25" Text="האנשים שלנו" FontWeight="Bold" TextAlignment="Center">
+                </TextBlock>
+                <TextBlock Foreground="White" Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FlowDirection="RightToLeft" TextWrapping="Wrap" TextAlignment="Center"
+                       FontSize="16" Text="כיום פועלים בארגון מאות מתנדבים מרחבי הארץ, שעושים לילות כימים למען האחר." >
+                </TextBlock>
+                <TextBlock Foreground="White" Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FlowDirection="RightToLeft" TextWrapping="Wrap" TextAlignment="Center"
+                       FontSize="20" Text="הצטרפו לעשייה!" >
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Margin="10" Grid.Column="2" >
+            <Grid.Background>
+                <ImageBrush ImageSource="/CareManagment;component/Images/volunteers2.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Grid.Background>
+            <Rectangle Stretch="Fill" Fill="Black" Opacity="0.6">
+            </Rectangle>
+            <StackPanel Margin="20 50" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+                <TextBlock Foreground="White" Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="30" Text="קצת עלינו" FontWeight="Bold">
+                </TextBlock>
+                <TextBlock Foreground="White" Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="16" Text="עמותת יד ביד">
+                </TextBlock>
+                <TextBlock Margin="0 10" Foreground="White" Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="25" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="נוסדנו לראשונה בשנת 1980 ומאז ועד היום אנו פועלים לעתיד טוב יותר.">
+                </TextBlock>
+                <TextBlock Margin="0 10" Foreground="White" Style="{StaticResource textFont}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="20" TextWrapping="Wrap" TextAlignment="Center" FlowDirection="RightToLeft"
+                           Text="חרטנו על דגלנו את ההתחייבות שאף ילד לא ילך לישון רעב">
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </UserControl>

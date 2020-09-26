@@ -174,16 +174,18 @@ namespace CareManagment.ViewModels
 
             AreasMap.Clear();
             Location location = new Location();
-            if(selectedCity!="כל הארץ")
+            if (selectedCity != "כל הארץ")
             {
                 try
                 {
+                    // re-center map
                     location.Latitude = Distributions[0].Packages[0].Recipient.Address.Lat;
                     location.Longitude = Distributions[0].Packages[0].Recipient.Address.Lon;
                     AreasMap.SetMapLocation(location, 9);
                 }
                 catch { }
             }
+            else AreasMap.SetMapLocation(new Location(32.032527, 34.8851379), 8);
                        
             List<Address> Addresses = new List<Address>();
             foreach (Distribution distribution in Distributions.ToList())

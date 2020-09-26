@@ -8,6 +8,7 @@
              xmlns:local="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid Background="#FFF7F7EE">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -80,14 +81,24 @@
             </lvc:CartesianChart>
         </materialDesign:Card>
         <!--#endregion-->
-
+    
+        <!--#region pie chart -->
+        <materialDesign:Card Background="white" Grid.Row="1" UniformCornerRadius="25" Margin="20 0" Visibility="{Binding Path=IsChecked, ElementName=PieCheck, Converter={StaticResource BoolToVisConverter}}">
+            <lvc:PieChart LegendLocation="Bottom" Series="{Binding PieChartSeries}">
+            </lvc:PieChart>
+        </materialDesign:Card>
+        <!--#endregion-->
+        
         <!--#region chart type -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <RadioButton Name="LinesCheck" IsChecked="True" Height="70" Width="40" BorderBrush="#FF5D5D8F" Style="{StaticResource MaterialDesignTabRadioButton}" FontSize="16" Foreground="#FF5D5D8F">
-                <materialDesign:PackIcon Kind="ChartTimelineVariant" Foreground="#FF5D5D8F" Height="40" Width="40"></materialDesign:PackIcon>
+                <materialDesign:PackIcon Kind="ChartTimelineVariant" Foreground="#FF5D5D8F" Height="35" Width="35"></materialDesign:PackIcon>
             </RadioButton>
             <RadioButton Name="ColumnsCheck" Height="70" Width="40" BorderBrush="#FF5D5D8F" Style="{StaticResource MaterialDesignTabRadioButton}" FontSize="16" Foreground="#FF5D5D8F">
-                <materialDesign:PackIcon Kind="Poll" Foreground="#FF5D5D8F" Height="40" Width="40"></materialDesign:PackIcon>
+                <materialDesign:PackIcon Kind="Poll" Foreground="#FF5D5D8F" Height="35" Width="35"></materialDesign:PackIcon>
+            </RadioButton>
+            <RadioButton Name="PieCheck" Height="70" Width="40" BorderBrush="#FF5D5D8F" Style="{StaticResource MaterialDesignTabRadioButton}" FontSize="16" Foreground="#FF5D5D8F">
+                <materialDesign:PackIcon Kind="ChartPie" Foreground="#FF5D5D8F" Height="35" Width="35"></materialDesign:PackIcon>
             </RadioButton>
         </StackPanel>
         <!--#endregion-->

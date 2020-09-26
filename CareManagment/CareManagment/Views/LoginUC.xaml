@@ -7,10 +7,12 @@
              xmlns:local="clr-namespace:CareManagment"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <UserControl.Background>
         <ImageBrush Opacity="0.9" ImageSource="/CareManagment;component/Images/hands.jpg" />
     </UserControl.Background>
-    <Grid Name="MainGrid">
+    
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="2*"/>
@@ -23,18 +25,14 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.ColumnSpan="3">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
 
-        </Grid>
         <Border Grid.Column="1" Grid.Row="1" BorderBrush="#FFD17B7C" Background="#FFD17B7C"
                 BorderThickness="15" CornerRadius="360" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Image Stretch="Uniform"  Source="/CareManagment;component/Images/voluntary-service.png"></Image>
         </Border>
+        
         <TextBlock Style="{StaticResource textFont}" Grid.Row="2" Grid.ColumnSpan="3" Text="פורטל משתמשים"  FontSize="40" FontWeight="DemiBold"  Foreground="White" HorizontalAlignment="Center" />
+        
         <Grid Grid.Row="3" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -43,7 +41,6 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-
             <Border Grid.Row="0" Style="{StaticResource roundedCornersBorder}" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -55,7 +52,6 @@
                              materialDesign:HintAssist.Hint="כתובת מייל"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center">
-
                     </TextBox>
                     <materialDesign:PackIcon Grid.Column="2" Kind="User" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
@@ -70,7 +66,7 @@
                     <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
                                  materialDesign:HintAssist.Hint="סיסמה"
                                  materialDesign:HintAssist.HintOpacity="0.6"
-                                 HorizontalContentAlignment="Center">
+                                 HorizontalContentAlignment="Center" >
 
                     </TextBox>
                     <materialDesign:PackIcon Grid.Column="2" Kind="Lock" HorizontalAlignment="Left" VerticalAlignment="Center"/>
