@@ -31,7 +31,6 @@ namespace CareManagment.DP
             Password = password;
 
         }
-        public Admin(Admin admin) { }
 
 
         public Address GetAddress()

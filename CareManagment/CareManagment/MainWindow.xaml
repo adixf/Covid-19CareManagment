@@ -15,7 +15,7 @@
 
         <!-- top menu -->
         <materialDesign:Card Background="Transparent" UniformCornerRadius="20" Margin="10,0,10,0">
-            <Image Stretch="Fill" Source="/CareManagment;component/Images/top-bg.jpg"/>
+            <Image Stretch="UniformToFill" Source="/CareManagment;component/Images/top-bg.jpg"/>
         </materialDesign:Card>
 
         <StackPanel Margin="20,0,20,0" HorizontalAlignment="Right" Orientation="Horizontal" Background="Transparent">
@@ -38,7 +38,7 @@
             <Rectangle Fill="Transparent" Width="20"></Rectangle>
         </StackPanel>
 
-        <!-- user controls -->
+        <!-- current user control -->
 
         <materialDesign:Card Margin="10" Grid.Row="1" UniformCornerRadius="20">
             <Grid>

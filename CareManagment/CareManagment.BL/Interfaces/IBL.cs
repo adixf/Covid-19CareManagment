@@ -15,10 +15,7 @@ namespace CareManagment.BL.Interfaces
         void AddAdmin(Admin admin);
         void AddRecipient(Recipient recipient);
         void AddPackage(Package package);
-
-        //void UpdatePerson(Person person);
         void UpdateDistribution(Distribution distribution);
-        //void DeletePerson(Person person);
 
         List<Volunteer> GetAllVolunteers(Func<Volunteer, bool> predicate = null);
         List<Admin> GetAllAdmins(Func<Admin, bool> predicate = null);

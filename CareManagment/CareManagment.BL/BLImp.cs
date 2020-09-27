@@ -22,7 +22,6 @@ namespace CareManagment.BL
         }
 
         #region update db
-
         public void AddVolunteer(Volunteer volunteer)
         {
             IRepository.AddVolunteer(volunteer);
@@ -67,9 +66,7 @@ namespace CareManagment.BL
 
         #endregion
 
-
         #region fetch from db
-
         public List<Recipient> GetAllRecipients(Func<Recipient, bool> predicate = null)
         {
            return IRepository.GetAllRecipients(predicate);
@@ -103,9 +100,7 @@ namespace CareManagment.BL
 
         #endregion
 
-
         #region Distribution Creation
-
         public List<Package>[] DividePackages(List<Package> Packages, int K)
         {
             // create locations array for k-means algorithm

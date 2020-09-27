@@ -189,7 +189,6 @@
                                  Text="{Binding City, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                         </TextBox>
-                        <!--materialDesign:PackIcon Grid.Column="2" Kind="House" HorizontalAlignment="Left" VerticalAlignment="Center"/-->
                     </Grid>
                 </Border>
             </Grid>

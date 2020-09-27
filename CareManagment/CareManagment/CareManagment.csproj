@@ -179,8 +179,8 @@
     <Compile Include="Views\StatisticsUC.xaml.cs">
       <DependentUpon>StatisticsUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserInfoUC.xaml.cs">
-      <DependentUpon>UserInfoUC.xaml</DependentUpon>
+    <Compile Include="Views\ReminderUC.xaml.cs">
+      <DependentUpon>ReminderUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VolunteerDistributionsUC.xaml.cs">
       <DependentUpon>VolunteerDistributionsUC.xaml</DependentUpon>
@@ -267,7 +267,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserInfoUC.xaml">
+    <Page Include="Views\ReminderUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -358,9 +358,6 @@
     <Resource Include="Images\collage1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\aboutus1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\donation-hands.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -369,23 +366,12 @@
   <ItemGroup>
     <Resource Include="Images\volunteers1.jpeg" />
     <Resource Include="Images\volunteers2.jpg" />
-    <Resource Include="Images\volunteers3.jpg" />
-    <Resource Include="Images\volunteers4.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\top-bg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\volunteer.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\boxes.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\notebook.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\volunteer2.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\volunteer3.jpg" />

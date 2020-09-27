@@ -48,7 +48,7 @@
                         <ColumnDefinition Width="6*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Text="{Binding Email}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                    <TextBox Text="{Binding Email}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="15"
                              materialDesign:HintAssist.Hint="כתובת מייל"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center">
@@ -63,7 +63,7 @@
                         <ColumnDefinition Width="6*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="16"
+                    <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="15"
                                  materialDesign:HintAssist.Hint="סיסמה"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center" >

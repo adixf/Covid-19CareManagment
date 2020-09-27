@@ -9,21 +9,40 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="13*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
+        
         <Button Grid.Row="0" Margin="0,0,20,0" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignIconForegroundButton}"
                 Command="{Binding Path=DataContext.DisplayOptionsView, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel =2}, Mode=OneWay}">
             <materialDesign:PackIcon Kind="ArrowForward" />
         </Button>
 
+        <Border Grid.Row="0" BorderBrush="#FFC66465" BorderThickness="1" CornerRadius="10" Width="400" VerticalAlignment="Center" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Grid.Column="2" Kind="Search" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14"
+                                 materialDesign:HintAssist.Hint="חפש מתנדב לפי שם, כתובת, מייל..." 
+                                 materialDesign:HintAssist.HintOpacity="0.6"
+                                 HorizontalContentAlignment="Center" FlowDirection="RightToLeft" 
+                                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <TextBlock  VerticalAlignment="Center" Style="{StaticResource textFont}"
-                   Text="מתנדבים" FontSize="25" FontWeight="Bold"></TextBlock>
-            <TextBlock Margin="30 0 5 0" FontSize="18" Grid.Row="0" Text="סהכ:" Style="{StaticResource textFont}" VerticalAlignment="Center" FlowDirection="RightToLeft"></TextBlock>
-            <TextBlock Grid.Row="0" FontSize="18" Text="{Binding Count}" Style="{StaticResource textFont}" VerticalAlignment="Center"></TextBlock>
-        </StackPanel>
+            </Grid>
+        </Border>
+
+
+
+        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,100,0" FlowDirection="RightToLeft"  VerticalAlignment="Center" Style="{StaticResource textFont}"
+                   Text="מתנדבים" FontSize="25" FontWeight="Bold">
+        </TextBlock>
+
         <materialDesign:Card Grid.Row="1" Margin="10">
             <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding Volunteers}" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" 
            FlowDirection="RightToLeft" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalContentAlignment="Center">
@@ -36,6 +55,14 @@
                 </DataGrid.Columns>
             </DataGrid>
         </materialDesign:Card>
+
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0"  FlowDirection="RightToLeft"  FontSize="16" Style="{StaticResource textFont}">
+            <Run Text="סהכ: "/>
+            <Run Text="{Binding Count, Mode=OneWay}"/>
+        </TextBlock>
+
+
     </Grid>
+
 
 </UserControl>

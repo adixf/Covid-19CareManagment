@@ -18,9 +18,9 @@ namespace CareManagment.Views
     /// <summary>
     /// Interaction logic for UserInfoUC.xaml
     /// </summary>
-    public partial class UserInfoUC : UserControl
+    public partial class ReminderUC : UserControl
     {
-        public UserInfoUC()
+        public ReminderUC()
         {
             InitializeComponent();
         }

@@ -42,7 +42,7 @@ namespace CareManagment.ViewModels
 
         private SeriesCollection pieChartSeries;
         public SeriesCollection PieChartSeries
-        {
+        {            
             get { return pieChartSeries; }
             set
             {
@@ -50,7 +50,7 @@ namespace CareManagment.ViewModels
                 OnPropertyRaised("PieChartSeries");
             }
         }
-
+        
         public ICommand GetStatisticsCommand { get { return new GetStatisticsCommand(this); } }
 
 
@@ -97,7 +97,7 @@ namespace CareManagment.ViewModels
 
         public void AddCities()
         {
-            Func<ChartPoint, string> labelPoint = chartPoint =>
+            string labelPoint(ChartPoint chartPoint) =>
                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
             List<string> Cities = GetAllCities();

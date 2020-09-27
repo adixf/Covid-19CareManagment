@@ -13,7 +13,6 @@ namespace CareManagment.DAL
 {
     public class Repository : IRepository
     {
-
         public JsonAddress GetAddressDetails(Address address)
         {
             var addressDetails = address.Street + " " + address.BuildingNumber + " " + address.City;
@@ -28,16 +27,18 @@ namespace CareManagment.DAL
             {
                 var content = JsonConvert.DeserializeObject<object>(res.Content);
                 var parsedJson = JArray.Parse(content.ToString());
-                var Jaddress = new JsonAddress();
-                Jaddress.Latitude = parsedJson[0]["lat"].ToString();
-                Jaddress.Longitude = parsedJson[0]["lon"].ToString();
-                Jaddress.DisplayName = parsedJson[0]["display_name"].ToString();
+                var Jaddress = new JsonAddress
+                {
+                    Latitude = parsedJson[0]["lat"].ToString(),
+                    Longitude = parsedJson[0]["lon"].ToString(),
+                    DisplayName = parsedJson[0]["display_name"].ToString()
+                };
                 return Jaddress;
             }
             return null;
         }
 
-
+        #region update db
         public void AddVolunteer(Volunteer volunteer)
         {
             using (var ctx = new CareManagmentDb())
@@ -46,6 +47,7 @@ namespace CareManagment.DAL
                 ctx.SaveChanges();
             }
         }
+
         public void AddAdmin(Admin admin)
         {
             using (var ctx = new CareManagmentDb())
@@ -54,6 +56,7 @@ namespace CareManagment.DAL
                 ctx.SaveChanges();
             }
         }
+
         public void AddRecipient(Recipient recipient)
         {
             using (var ctx = new CareManagmentDb())
@@ -88,6 +91,22 @@ namespace CareManagment.DAL
             }
         }
 
+        public void UpdateDistribution(Distribution distribution)
+        {
+            using (var context = new CareManagmentDb())
+            {
+                var old = context.Distributions.Find(distribution.DistributionId);
+                old.AdminId = distribution.AdminId;
+                old.VolunteerId = distribution.VolunteerId;
+                old.IsDelivered = distribution.IsDelivered;
+                old.Packages = distribution.Packages;
+                old.Date = distribution.Date;
+                context.SaveChanges();
+            }
+        }
+        #endregion
+
+        #region fetch from db
         public List<Volunteer> GetAllVolunteers(Func<Volunteer, bool> predicate = null)
         {
             List<Volunteer> result = new List<Volunteer>();
@@ -133,7 +152,6 @@ namespace CareManagment.DAL
             return result;
         }
 
-
         public List<Distribution> GetAllDistributions(Func<Distribution, bool> predicate = null)
         {
             List<Distribution> result = new List<Distribution>();
@@ -166,37 +184,8 @@ namespace CareManagment.DAL
 
             }
             return result;
-        }   
-
-        public void UpdateDistribution(Distribution distribution)
-        {
-            using (var context = new CareManagmentDb())
-            {
-                var old = context.Distributions.Find(distribution.DistributionId);
-                old.AdminId = distribution.AdminId;
-                old.VolunteerId = distribution.VolunteerId;
-                old.IsDelivered = distribution.IsDelivered;
-                old.Packages = distribution.Packages;
-                old.Date = distribution.Date;
-                context.SaveChanges();
-            }
         }
-
-
-        //public void DeletePerson(Person p)
-        //{
-        //    var context = new CareManagmentDb();
-        //    context.Entry(p).State = EntityState.Deleted;
-        //    context.SaveChanges();
-        //}
-
-        //public void DeletePackage(Package package)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-    
-
+        #endregion
 
     }
 }
