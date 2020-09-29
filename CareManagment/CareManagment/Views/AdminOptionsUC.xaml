@@ -23,7 +23,7 @@
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/charts.jpg"></Image>
+                    <Image Grid.Row="0" Stretch="UniformToFill" Opacity="0.8" Source="/CareManagment;component/Images/charts.jpg"></Image>
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="סטטיסטיקה"
                                Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
@@ -41,7 +41,7 @@
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/old-ppl.jpg"></Image>
+                    <Image Stretch="UniformToFill" Opacity="0.8" Source="/CareManagment;component/Images/old-ppl.jpg"></Image>
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="נמענים"
                                Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
@@ -59,7 +59,7 @@
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/kids.jpeg"></Image>
+                    <Image Stretch="UniformToFill" Opacity="0.8" Source="/CareManagment;component/Images/kids.jpeg"></Image>
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="מתנדבים"
                                Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>
@@ -77,7 +77,7 @@
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Image Stretch="Fill" Opacity="0.8" Source="/CareManagment;component/Images/box3.jpg"></Image>
+                    <Image Stretch="UniformToFill" Opacity="0.8" Source="/CareManagment;component/Images/box.jpg"></Image>
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
                         <TextBlock Style="{StaticResource textFont}" HorizontalAlignment="Center" Text="חלוקות"
                                Foreground="#FFC66465" FontSize="25" FontWeight="Bold"></TextBlock>

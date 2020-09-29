@@ -64,7 +64,7 @@
 
         <!--#region line series -->
         <materialDesign:Card Background="white" Grid.Row="1" UniformCornerRadius="25" Margin="20 0" Visibility="{Binding Path=IsChecked, ElementName=LinesCheck, Converter={StaticResource BoolToVisConverter}}">
-            <lvc:CartesianChart>
+            <lvc:CartesianChart LegendLocation="Left">
                 <lvc:CartesianChart.Series>
                     <lvc:LineSeries Title="תכנון" Values="{Binding Planned}" StrokeThickness="4" StrokeDashArray="2" 
                        Stroke="#FF4980B6" Fill="Transparent" LineSmoothness="0" PointGeometry="{x:Null}" />
@@ -84,7 +84,7 @@
     
         <!--#region pie chart -->
         <materialDesign:Card Background="white" Grid.Row="1" UniformCornerRadius="25" Margin="20 0" Visibility="{Binding Path=IsChecked, ElementName=PieCheck, Converter={StaticResource BoolToVisConverter}}">
-            <lvc:PieChart LegendLocation="Bottom" Series="{Binding PieChartSeries}">
+            <lvc:PieChart LegendLocation="Bottom" FlowDirection="RightToLeft" Series="{Binding PieChartSeries}">
             </lvc:PieChart>
         </materialDesign:Card>
         <!--#endregion-->

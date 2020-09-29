@@ -37,7 +37,7 @@ namespace CareManagment.Tools
             }
         }
 
-        public int MaxPackagesPerVolunteer { get { return 10; } }
+        public int MaxPackagesPerVolunteer { get { return 8; } }
         public string MailAddress { get { return "covid19caremanagment@gmail.com"; } }
         public string MailPassword { get { return "covid19123"; } }
 

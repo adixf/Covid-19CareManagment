@@ -22,8 +22,8 @@ namespace CareManagment.Views
     /// </summary>
     public partial class MapUC : UserControl
     {
-        public List<Brush> colors = new List<Brush> { Brushes.Red, Brushes.DarkCyan, Brushes.Coral, Brushes.Violet, Brushes.Green };
-        public int colorindex { get; set; }
+        public List<Brush> Colors = new List<Brush> { Brushes.Red, Brushes.DarkCyan, Brushes.Coral, Brushes.Violet, Brushes.Green, Brushes.LightPink, Brushes.LightSeaGreen };
+        public int Colorindex { get; set; }
 
         public MapUC()
         {
@@ -43,7 +43,7 @@ namespace CareManagment.Views
 
                 Pushpin pin = new Pushpin
                 {
-                    Foreground = colors[colorindex],
+                    Foreground = Colors[Colorindex],
                     Template = template,
                     PositionOrigin = PositionOrigin.BottomLeft,
                     Location = pinLocation
@@ -51,7 +51,7 @@ namespace CareManagment.Views
                 
                 Map.Children.Add(pin);
             }
-            colorindex = (colorindex + 1) % colors.Count;
+            Colorindex = (Colorindex + 1) % Colors.Count;
         }
     }
 }

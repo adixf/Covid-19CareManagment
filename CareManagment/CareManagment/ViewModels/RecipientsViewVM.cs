@@ -21,10 +21,20 @@ namespace CareManagment.ViewModels
             {
                 recipients = value;
                 OnPropertyRaised("Recipients");
+                Count = Recipients.Count;
             }
         }
 
-        public int Count { get { return Recipients.Count(); } }
+        private int count;
+        public int Count
+        {
+            get { return count; }
+            set
+            {
+                count = value;
+                OnPropertyRaised("Count");
+            }
+        }
 
         private string searchText;
         public string SearchText

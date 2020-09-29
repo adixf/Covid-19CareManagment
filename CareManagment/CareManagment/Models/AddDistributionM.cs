@@ -60,7 +60,7 @@ namespace CareManagment.Models
             MailSender mailSender = new MailSender();
             string to = volunteer.MailAddress;
             string subject = "חלוקה חדשה";
-            string body = "שלום " + volunteer.GetFirstName() + "," + "\n\n" + "נוספה לך חלוקה חדשה במערכת." + "\n\n" + "אנא היכנס למערכת לצפייה בפרטי החלוקה.";
+            string body = "שלום " + volunteer.GetFirstName() + "," + "\n\n" + "נוספה לך חלוקה חדשה במערכת." + "\n\n" + "אנא היכנס/י למערכת לצפייה בפרטי החלוקה.";
             Thread thread = new Thread(() => mailSender.SendMail(to, subject, body));
             thread.Start();
         }

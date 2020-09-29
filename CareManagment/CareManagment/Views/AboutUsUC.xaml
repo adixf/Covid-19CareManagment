@@ -130,7 +130,7 @@
 
         <Grid Margin="10" Grid.Column="2" >
             <Grid.Background>
-                <ImageBrush ImageSource="/CareManagment;component/Images/volunteers2.jpg" Stretch="UniformToFill"></ImageBrush>
+                <ImageBrush ImageSource="/CareManagment;component/Images/volunteers1.jpeg" Stretch="UniformToFill"></ImageBrush>
             </Grid.Background>
             <Rectangle Stretch="Fill" Fill="Black" Opacity="0.6">
             </Rectangle>

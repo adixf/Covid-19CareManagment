@@ -63,7 +63,7 @@
         </materialDesign:Card>
 
         <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,100,0"  FlowDirection="RightToLeft"  FontSize="16" Style="{StaticResource textFont}">
-            <Run Text="סהכ: "/>
+            <Run Text="סהכ תוצאות: "/>
             <Run Text="{Binding Count, Mode=OneWay}"/>
         </TextBlock>
 

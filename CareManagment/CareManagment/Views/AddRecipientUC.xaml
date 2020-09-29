@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Background>
-        <ImageBrush ImageSource="/CareManagment;component/Images/bg0.jpeg" Opacity="0.1"></ImageBrush>
+        <ImageBrush ImageSource="/CareManagment;component/Images/white-bg.jpeg" Opacity="0.1"></ImageBrush>
     </UserControl.Background>
     <Grid Name="MainGrid" >
         <Grid.ColumnDefinitions>
