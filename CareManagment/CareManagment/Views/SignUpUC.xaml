@@ -207,7 +207,7 @@
                                  Text="{Binding Password, Mode=TwoWay, ValidatesOnExceptions=True}">
 
                     </TextBox>
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Eye" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon Grid.Column="0" Kind="Lock" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
 

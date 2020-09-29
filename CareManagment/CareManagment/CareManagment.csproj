@@ -96,6 +96,7 @@
     <Compile Include="Commands\DisplayLocationCommand.cs" />
     <Compile Include="Commands\DisplayPdfCommand.cs" />
     <Compile Include="Commands\GetStatisticsCommand.cs" />
+    <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\SaveChangesCommand.cs" />
     <Compile Include="Commands\UpdateCollectionCommand.cs" />
     <Compile Include="Converters\FullNameConverter.cs" />
@@ -154,9 +155,6 @@
     </Compile>
     <Compile Include="Views\AdminOptionsUC.xaml.cs">
       <DependentUpon>AdminOptionsUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BindablePasswordBox.xaml.cs">
-      <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ContactUsUC.xaml.cs">
       <DependentUpon>ContactUsUC.xaml</DependentUpon>
@@ -230,10 +228,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AdminOptionsUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\BindablePasswordBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

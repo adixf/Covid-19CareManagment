@@ -19,7 +19,7 @@ namespace CareManagment.ViewModels
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public ICommand LoginCommand { get { return new BaseCommand(delegate () { Login(); }); } }
+        public ICommand LoginCommand { get { return new LoginCommand(this); } }
 
         public ICommand DisplaySignUpView
         {

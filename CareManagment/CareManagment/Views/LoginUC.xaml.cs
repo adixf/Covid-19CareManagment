@@ -21,13 +21,11 @@ namespace CareManagment.Views
     /// </summary>
     public partial class LoginUC : UserControl
     {
-
         public LoginUC()
         {
             InitializeComponent();
             DataContext = new LoginVM();
         }
-
      
     }
 }

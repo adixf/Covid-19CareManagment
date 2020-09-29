@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CareManagment"
+             xmlns:views="clr-namespace:CareManagment.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
@@ -63,18 +64,18 @@
                         <ColumnDefinition Width="6*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Text="{Binding Password}" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="15"
+                    <PasswordBox Name="passwordBox" Grid.Column="1" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="15"
                                  materialDesign:HintAssist.Hint="סיסמה"
                                  materialDesign:HintAssist.HintOpacity="0.6"
                                  HorizontalContentAlignment="Center" >
 
-                    </TextBox>
+                    </PasswordBox>
                     <materialDesign:PackIcon Grid.Column="2" Kind="Lock" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
 
             <Button Grid.Row="2" Background="#FFC66465" BorderThickness="0" 
-                Style="{StaticResource MaterialDesignRaisedDarkButton}" Command="{Binding LoginCommand}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=passwordBox}"
                 materialDesign:ButtonAssist.CornerRadius="20" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <TextBlock Text="כניסה" />
             </Button>
